@@ -1,0 +1,193 @@
+html {
+    scroll-behavior: smooth;
+    background-color: #b42935;
+
+}
+
+body {
+    margin: 0;
+    background-color: #b42935;
+}
+
+.projectIconCover {
+    /*position: absolute;*/
+    background-image: url('../images/project_cover.png');
+    background-repeat: repeat;
+    background-size: 768px 768px;
+    width: 100vw;
+    height: 100vh;
+}
+
+.projectTitleSection {
+    background-color: #b42935;
+
+    width: 100vw;
+    height: 100vh;
+
+    text-align: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.projectTitleSection .background {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background: repeating-linear-gradient(
+            -45deg,
+                /*F2071B*/
+            #b42935 0px,
+            #b42935 200px,
+            #024059 200px,
+            #024059 400px,
+            #037F8C 400px,
+            #037F8C 600px,
+            #03A6A6 600px,
+            #03A6A6 800px,
+            #D94E4E 800px,
+            #D94E4E 1000px
+    );
+}
+
+.projectTitleSection .container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.projectTitleSection .container .icon {
+    max-width: 256px;
+    border-radius: 40px;
+    box-shadow:
+            rgba(0, 0, 0, 0.25) 0px 54px 55px,
+            rgba(0, 0, 0, 0.12) 0px -12px 30px,
+            rgba(0, 0, 0, 0.12) 0px 4px 6px,
+            rgba(0, 0, 0, 0.17) 0px 12px 13px,
+            rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.projectTitleSection .container .link {
+    max-width: 250px;
+    max-height: 75px;
+    cursor: pointer;
+}
+
+.projectTitleSection .container p {
+    font-family: Helvetica Neue, sans-serif;
+    font-weight: 300;
+    color: whitesmoke;
+
+    text-shadow: black 1px 0 10px;
+}
+
+.projectTitleSection .container .title {
+    font-size: 40px;
+}
+
+.projectTitleSection .container .caption {
+    font-size: 30px;
+}
+
+
+.projectInfoSection {
+    width: 100%;
+}
+
+#topProjectInfoSection {
+    margin-top: 100vh;
+}
+
+.projectInfoSection .container {
+    position: relative;
+
+    /*width: 100%;*/
+
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-row-gap: 50px;
+
+    padding-top: 70px;
+    padding-bottom: 70px;
+
+    max-width: 1500px;
+}
+
+.projectInfoSection .textContainer {
+    padding-left: 60px;
+    padding-right: 60px;
+    text-align: left;
+}
+
+
+.projectInfoSection .textContainer p {
+    font-family: Helvetica Neue, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: whitesmoke;
+
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.projectInfoSection .imageContainer {
+
+}
+
+.projectInfoSection .imageContainer img {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    max-width: 320px;
+}
+
+.shadedScreenshot {
+    box-shadow:
+            rgba(0, 0, 0, 0.25) 0px 54px 55px,
+            rgba(0, 0, 0, 0.12) 0px -12px 30px,
+            rgba(0, 0, 0, 0.12) 0px 4px 6px,
+            rgba(0, 0, 0, 0.17) 0px 12px 13px,
+            rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.desktopScreenshot {
+
+}
+
+.callToAction {
+    background-color: #D94E4E;
+    text-align: center;
+    padding: 30px;
+}
+
+.callToAction p {
+    font-family: Helvetica Neue, sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+    color: whitesmoke;
+
+    cursor: pointer;
+}
+
+.sectionTitle {
+    font-family: Helvetica Neue, sans-serif;
+    font-weight: 300;
+    /*margin: 0 20px 20px;*/
+
+    margin-top: 80px;
+    margin-bottom: 20px;
+    font-size: 40px;
+
+    text-align: center;
+
+    color: whitesmoke;
+}

@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en" style="background-color: #024059">
+<head>
+  <meta charset="UTF-8">
+  <title>404</title>
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <link rel="stylesheet" href="/css/navigation.css">
+  <link rel="stylesheet" href="/css/menu.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+
+  <style>
+
+    html {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    p {
+      font-family: "Arial", sans-serif;
+      color: whitesmoke;
+      text-align: center;
+      margin: 0;
+    }
+
+    .outer {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .container {
+      position: relative;
+      top: 45%;
+      transform: translateY(-50%);
+    }
+
+    .wkynavigation {
+      transition: none;
+      top: 0;
+      background-color: transparent;
+    }
+  </style>
+
+    
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<div class="outer">
+  <div class="container">
+    <p style="font-size: 75px; margin: 0">404</p>
+    <p style="font-size: 20px"><br>The requested page does not exist<br>Please check your link and try again</p>
+  </div>
+</div>
+
+
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+</body>
+</html>

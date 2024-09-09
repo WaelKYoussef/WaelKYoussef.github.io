@@ -1,0 +1,136 @@
+
+@media only screen and (min-width: 500px) {
+
+    /*services*/
+    .services .container {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto;
+    }
+
+    /*skills*/
+    .skills .container {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    /*projects*/
+    .projects .container {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto;
+    }
+
+    .desktopScreenshot {
+        max-width: 400px !important;
+    }
+
+    .wkycontact .social .innerSocial {
+        width: 80%;
+        margin-left: 0;
+    }
+
+    .wkycontact .container {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto;
+    }
+
+    /* For mobile phones: */
+    .wkycontact .social p {
+        font-size: 20px;
+    }
+
+    .wkycontact .social img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media only screen and (min-width: 660px) {
+    /*about*/
+    .about .container {
+        grid-template-columns: 40% 60%;
+        grid-template-rows: auto;
+    }
+
+    /*blog*/
+    .articleFooterSection .container {
+        grid-template-columns: auto 30% 30%;
+        grid-template-rows: auto auto auto;
+    }
+
+    .articleFooterSection .container .searchContainer {
+        grid-row: 1;
+        grid-column:  1;
+    }
+
+    .articleFooterSection .container .latestContainer {
+        grid-row: 1;
+        grid-column:  2;
+    }
+
+    .articleFooterSection .container .categoriesContainer {
+        grid-row: 1;
+        grid-column:  3;
+    }
+
+}
+
+@media only screen and (min-width:800px) {
+
+    /*navigation*/
+    .wkynavigation .menuButton {
+        display: none;
+    }
+    .wkynavigation .linksContainer {
+        display: block;
+    }
+
+    /*skills*/
+    .skills .container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    /*.skills .container .itemContainer:last-child {*/
+    /*    grid-column-start: auto;*/
+    /*}*/
+
+
+    /*projects*/
+    .projects .container {
+        grid-template-columns: 33.3% 33.3% 33.3%;
+        grid-template-rows: auto;
+    }
+
+    /*project*/
+    .projectInfoSection .container {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto;
+    }
+
+    .projectInfoSection .reversedContainer .imageContainer {
+        grid-column-start: 1;
+        grid-row-start: 1;
+    }
+    .projectInfoSection .reversedContainer .textContainer {
+        grid-column-start: 2;
+        grid-row-start: 1;
+    }
+
+}
+
+
+@media only screen and (min-width:1024px) {
+    /*services*/
+    .services .container {
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-template-rows: auto;
+    }
+
+    /*skills*/
+    .skills .container {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    /*.skills .container .itemContainer:last-child {*/
+    /*    grid-column-start: 3;*/
+    /*}*/
+
+
+}

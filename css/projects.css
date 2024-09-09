@@ -1,0 +1,152 @@
+
+
+#projectsMainSection {
+    margin-top: 100vh;
+}
+
+.projects {
+    padding-top: 40px;
+    padding-bottom: 150px;
+
+    background: #024059;
+}
+
+.projects .title {
+    font-family: Helvetica Neue, sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+
+    text-align: center;
+}
+
+.projects .container {
+    position: relative;
+    width: 100%;
+    /*max-width: 700px;*/
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    gap: 0;
+    padding: 0;
+
+    max-width: 1024px;
+}
+
+.projects .container .card {
+    text-align: center;
+    /*box-shadow: rgba(149, 157, 165, 0.9) 0px 8px 24px;*/
+    transform: scale(0.9);
+
+    border: 2px solid whitesmoke;
+    position: relative;
+    height: 350px;
+    background-size: contain;
+    -webkit-background-size: cover;
+    transition: 0.3s;
+    cursor: pointer;
+
+    box-shadow: black 5px 5px 34px;
+
+    /*linear-gradient(45deg, #03A6A6, #D94E4E) 1;*/
+    /*border-width: 4px;*/
+    /*border-style: solid;*/
+}
+
+.projects .container .card:hover {
+    transform: scale(.95);
+}
+
+.projects .container .card .cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    /*box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;*/
+}
+
+.projects .container .card .icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    object-fit: cover;
+
+    height: 25%;
+    aspect-ratio: 1;
+    /*height: 25%;*/
+    margin: 5px;
+
+    border-radius: 20px;
+    box-shadow: black -3px 3px 15px;
+}
+
+.projects .container .card img:hover {
+    opacity: 0.8;
+}
+
+.projects .container .card .shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: transparent;
+    /*background: linear-gradient(45deg, #b42935 0%, transparent 100%);*/
+    background: linear-gradient(22deg, black 0%, transparent 49%);
+}
+
+.projects .container .card .textContainer p {
+    font-family: Helvetica Neue, sans-serif;
+    font-weight: 300;
+    margin: 0;
+    color: whitesmoke;
+    text-align: left;
+}
+
+.projects .container .card .textContainer {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.projects .container .card .textContainer .title {
+    font-size: 20px;
+}
+
+.projects .container .card .textContainer .type {
+    font-size: 16px;
+}
+
+.projects .container .card .dynamicCover {
+    overflow: hidden;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.projects .container .card .dynamicCover .dynamicCoverImage1 {
+    position: absolute;
+    height: 115%;
+    object-fit: cover;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.projects .container .card .dynamicCover .dynamicCoverImage2 {
+    position: absolute;
+    height: 90%;
+    object-fit: cover;
+    right: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+}

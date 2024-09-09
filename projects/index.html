@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Projects</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/menu.css"><link rel="stylesheet" href="/css/projects.css"><link rel="stylesheet" href="/css/contact.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/project.css"><link rel="stylesheet" href="/css/responsive.css">
+    
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<!--Cover-->
+<div class="cover">
+    <div class="projectIconCover"></div>
+    <div class="filter"></div>
+    <div class="shade"></div>
+
+    <div class="textContainer">
+        <h1 class="writer">Please,<br>Check out my</h1>
+        <p id="wael">Project portfolio</p>
+        <h1 class="writer">
+            <a href="" class="typewrite" data-period="500"
+               data-type='[ "Cairo Festival City.", "Newgiza.", "Betterhome.", "EGIPA.", "INERTIA.", "M squared." ]'>
+                <span class="wrap"></span>
+            </a>
+        </h1>
+    </div>
+</div>
+
+<!--projects-->
+<div class="projects" id="projectsMainSection">
+    <div class="container">
+        <div class="card" onclick="goToProject('betterhome')">
+                    <img class="cover" src="/files/projects/betterhome/cover.png">
+                    <img class="icon" src="/files/projects/betterhome/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Betterhome</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('cairo-festival-city-2')">
+                    <img class="cover" src="/files/projects/cairo-festival-city-2/cover.png">
+                    <img class="icon" src="/files/projects/cairo-festival-city-2/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Cairo Festival City 2.0</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('newgiza')">
+                    <img class="cover" src="/files/projects/newgiza/cover.png">
+                    <img class="icon" src="/files/projects/newgiza/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Newgiza</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('msquared')">
+                    <img class="cover" src="/files/projects/msquared/cover.png">
+                    <img class="icon" src="/files/projects/msquared/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">M squared</p>
+                        <p class="type">Website</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('timelapse-capture-system')">
+                    <img class="cover" src="/files/projects/timelapse-capture-system/cover.png">
+                    <img class="icon" src="/files/projects/timelapse-capture-system/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Timelapse Capture System</p>
+                        <p class="type">Raspberry Pi</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('egipa-new-cairo')">
+                    <img class="cover" src="/files/projects/egipa-new-cairo/cover.png">
+                    <img class="icon" src="/files/projects/egipa-new-cairo/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">EGIPA New Cairo</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('cairo-festival-city-sales-center')">
+                    <img class="cover" src="/files/projects/cairo-festival-city-sales-center/cover.png">
+                    <img class="icon" src="/files/projects/cairo-festival-city-sales-center/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Cairo Festival City Sales Center</p>
+                        <p class="type">UWP touch table & desktop application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('betterhome-website')">
+                    <img class="cover" src="/files/projects/betterhome-website/cover.png">
+                    <img class="icon" src="/files/projects/betterhome-website/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Betterhome</p>
+                        <p class="type">Website</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('msquared-cms')">
+                    <img class="cover" src="/files/projects/msquared-cms/cover.png">
+                    <img class="icon" src="/files/projects/msquared-cms/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">M squared | CMS</p>
+                        <p class="type">Angular web application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('egipa-survey')">
+                    <img class="cover" src="/files/projects/egipa-survey/cover.png">
+                    <img class="icon" src="/files/projects/egipa-survey/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">EGIPA Survey</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('inertia')">
+                    <img class="cover" src="/files/projects/inertia/cover.png">
+                    <img class="icon" src="/files/projects/inertia/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Inertia</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('newgiza-desktop')">
+                    <img class="cover" src="/files/projects/newgiza-desktop/cover.png">
+                    <img class="icon" src="/files/projects/newgiza-desktop/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Newgiza | Desktop</p>
+                        <p class="type">Cross-platform desktop application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('seashell-north-coast')">
+                    <img class="cover" src="/files/projects/seashell-north-coast/cover.png">
+                    <img class="icon" src="/files/projects/seashell-north-coast/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Seashell North Coast</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('dubai-festival-city')">
+                    <img class="cover" src="/files/projects/dubai-festival-city/cover.png">
+                    <img class="icon" src="/files/projects/dubai-festival-city/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Dubai Festival City</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('cairo-festival-city')">
+                    <img class="cover" src="/files/projects/cairo-festival-city/cover.png">
+                    <img class="icon" src="/files/projects/cairo-festival-city/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Cairo Festival City</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('picturize')">
+                    <img class="cover" src="/files/projects/picturize/cover.png">
+                    <img class="icon" src="/files/projects/picturize/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Picturize</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('calendar-2')">
+                    <img class="cover" src="/files/projects/calendar-2/cover.png">
+                    <img class="icon" src="/files/projects/calendar-2/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Calendar N+W 2</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('stripes-2')">
+                    <img class="cover" src="/files/projects/stripes-2/cover.png">
+                    <img class="icon" src="/files/projects/stripes-2/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Stripes N+W 2</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('calendar')">
+                    <img class="cover" src="/files/projects/calendar/cover.png">
+                    <img class="icon" src="/files/projects/calendar/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Calendar N+W</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('icon-notes')">
+                    <img class="cover" src="/files/projects/icon-notes/cover.png">
+                    <img class="icon" src="/files/projects/icon-notes/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">IconNotes N+W</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('note-grid')">
+                    <img class="cover" src="/files/projects/note-grid/cover.png">
+                    <img class="icon" src="/files/projects/note-grid/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">NoteGrid N+W</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('time')">
+                    <img class="cover" src="/files/projects/time/cover.png">
+                    <img class="icon" src="/files/projects/time/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Time N+W</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('expenses')">
+                    <img class="cover" src="/files/projects/expenses/cover.png">
+                    <img class="icon" src="/files/projects/expenses/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Expenses N+W</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('habits')">
+                    <img class="cover" src="/files/projects/habits/cover.png">
+                    <img class="icon" src="/files/projects/habits/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Habits N+W</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('write')">
+                    <img class="cover" src="/files/projects/write/cover.png">
+                    <img class="icon" src="/files/projects/write/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Write N+W</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('stripes')">
+                    <img class="cover" src="/files/projects/stripes/cover.png">
+                    <img class="icon" src="/files/projects/stripes/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">Stripes N+W</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div><div class="card" onclick="goToProject('iknowmee')">
+                    <img class="cover" src="/files/projects/iknowmee/cover.png">
+                    <img class="icon" src="/files/projects/iknowmee/icon_small.png">
+                    <div class="shade"></div>
+                    <div class="textContainer">
+                        <p class="title">iKnowMee</p>
+                        <p class="type">iOS mobile application</p>     
+                    </div>
+                </div>    </div>
+</div>
+
+<script src="../js/index_1.js"></script>
+
+
+            <div class="callToAction">
+                <p onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Interested in what I do? get in touch</p>
+            </div>
+        
+            <!--contact-->
+            <div class="wkycontact" id="contact">
+                <p class="sectionTitle">Contacts</p>
+            
+                <div class="container">
+                    <div class="social">
+                     <div class="innerSocial">
+                         <div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/location.png'); -webkit-mask-image: url('/images/icons/location.png');"></div>
+                                 <p><a href="" target=”_blank”>Located in Cairo, Egypt</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/linkedin.png'); -webkit-mask-image: url('/images/icons/linkedin.png');"></div>
+                                 <p><a href="https://linkedin.com/in/wael-youssef-630206108" target=”_blank”>linkedin.com/in/wael-youssef-630206108</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/github.png'); -webkit-mask-image: url('/images/icons/github.png');"></div>
+                                 <p><a href="https://github.com/WaelKYoussef" target=”_blank”>github.com/WaelKYoussef</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/email.png'); -webkit-mask-image: url('/images/icons/email.png');"></div>
+                                 <p><a href="mailto:wael.k.youssef@gmail.com" target=”_blank”>wael.k.youssef@gmail.com</a></p>
+                              </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright © 2023; ALL RIGHTS RESERVED.</p>
+                <p>Designed & developed by Wael Youssef</p>
+            </div>
+        
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+</body>
+</html>

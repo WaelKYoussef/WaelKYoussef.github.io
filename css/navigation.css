@@ -1,0 +1,77 @@
+
+.wkynavigation {
+    width: 100vw;
+    height: 60px;
+    top: -60px;
+    left: 0;
+    background-color: #b42935;
+    position: fixed;
+    transition: 0.3s;
+    z-index: 999;
+}
+
+.wkynavigation .label {
+    font-family: Helvetica Neue, sans-serif;
+    font-weight: 200;
+    overflow: visible;
+
+    font-size: 35px;
+    color: whitesmoke;
+    padding: 0 10px 0 0;
+
+    margin: 0 0 0 30px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    cursor: pointer;
+}
+
+.wkynavigation .menuButton {
+    width: 35px;
+    right: 0;
+    position: absolute;
+    margin-left: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    top: 50%;
+    cursor: pointer;
+}
+
+.wkynavigation .menuButton .bar {
+    width: 35px;
+    height: 5px;
+    background-color: whitesmoke;
+    margin: 0;
+}
+
+.wkynavigation .menuButton .space {
+    width: 35px;
+    height: 5px;
+    background-color: transparent;
+    margin: 0;
+}
+
+.wkynavigation .linksContainer {
+    width: 515px;
+    position: absolute;
+    margin-left: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    transform: translate(-100%, -50%);
+    padding: 0;
+    top: 50%;
+    cursor: pointer;
+    display: none;
+}
+
+.wkynavigation .linksContainer a {
+    font-family: Helvetica Neue, sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    color: whitesmoke;
+    margin-right: 20px;
+    cursor: pointer;
+}

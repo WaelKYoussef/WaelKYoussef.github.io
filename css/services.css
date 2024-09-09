@@ -1,0 +1,89 @@
+
+.services {
+    background-color: #037F8C;
+
+    padding-top: 30px;
+    padding-bottom: 150px;
+}
+
+.services .title {
+    font-family: Helvetica Neue, sans-serif;
+    font-weight: 300;
+    margin: 0 0 0;
+    font-size: 40px;
+
+    text-align: center;
+}
+
+.services .container {
+    position: relative;
+    width: 100%;
+    /*max-width: 700px;*/
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    gap: 0;
+    padding: 0;
+
+    max-width: 1024px;
+}
+
+.services .container .card {
+    text-align: center;
+    /*box-shadow: rgba(149, 157, 165, 0.9) 0px 8px 24px;*/
+    transform: scale(0.9);
+    /*border-radius: 20px;*/
+
+    border: solid whitesmoke 2px;
+
+    background: red;
+    padding-left: 10px;
+    padding-right: 10px
+    /*background: linear-gradient(27deg, rgba(236,236,236,1) 0%, rgba(255,255,255,1) 100%);*/
+}
+
+.services .container .card .icon {
+    margin-top: 50px;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+    object-fit: cover;
+
+    background-color: whitesmoke;
+
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: cover;
+
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.services .container .card p {
+    font-family: Helvetica Neue, sans-serif;
+    font-weight: 300;
+    margin: 0;
+}
+
+.services .container .card .title {
+    font-family: Helvetica Neue, sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+
+    color: whitesmoke;
+}
+
+.services .container .card .body {
+    font-family: Helvetica Neue, sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    color: whitesmoke;
+
+}
+
