@@ -8,5 +8,5 @@ function closeNav() {
 }
 
 function goToProject(project_folder) {
-    window.location.href = "/projects/" + project_folder + "/index.html";
+    window.location.href = "/projects/" + project_folder;
 }
