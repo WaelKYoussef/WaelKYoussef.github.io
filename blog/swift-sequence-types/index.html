@@ -15,6 +15,9 @@
                 gtag("js", new Date());
                 gtag("config", "G-1MYX80W6J2");
             </script>
+            
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
         </head>
 
 <body>
@@ -32,11 +35,20 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">05, Jul 2024</p>
         <p class="title">Swift: Sequence Types</p>
-        Sequence types are a fundamental concept in Swift that provide a unified interface for working with collections of elements. They offer a powerful way to iterate over, filter, map, and reduce collections of data. In this post, we'll explore the various sequence types available in Swift, their key features, and best practices for using them effectively.<br><br><img src='cover.jpg'></img><br><br><b>Understanding Sequence Types</b><br><br>A sequence type is any type that conforms to the `Sequence` protocol. This protocol defines a single requirement: the `elements` property, which returns a generator that can be used to iterate over the sequence's elements.<br><br><pre class="swift"><code>protocol Sequence {
-    associatedtype Element
+        Sequence types provide a unified interface for working with collections of elements. They offer a powerful way to iterate over, filter, map, and reduce collections of data. Let's explore the sequence types available in Swift, their key features, and best practices for using them to dramatically simplify what used to take quite a bit of boiler-plate code.<br><br><img src='cover.jpg'></img><br><br><b>Understanding Sequence Types</b><br><br>A sequence type is any type that conforms to the `Sequence` protocol. This protocol defines a single requirement: the `makeIterator()` function implementation, which returns an `IteratorProtocol` that can be used to iterate over the sequence's elements.<br><br><pre class="swift"><code>protocol Sequence {
+    associatedtype Element where Self.Element == Self.Iterator.Element
 
-    func makeIterator() -> IteratorProtocol where IteratorProtocol.Element == Element
-}</code></pre><br><br><b>Common Sequence Types</b><br><br>Swift provides several built-in sequence types, including:<br><br>&#8226; <b>Array:</b> An ordered collection of elements of the same type.<br>&#8226; <b>Dictionary:</b> An unordered collection of key-value pairs.<br>&#8226; <b>Set:</b> An unordered collection of unique values.<br>&#8226; <b>Range:</b> A sequence of consecutive values.<br>&#8226; <b>String:</b> A sequence of characters.<br><br><b>Sequence Operations</b><br><br>Sequence types provide a rich set of operations for working with collections of data. Some of the most common operations include:<br><br>&#8226; <b>Iteration:</b> Use a `for-in` loop to iterate over the elements of a sequence.<br>&#8226; <b>Filtering:</b> Use the `filter` method to create a new sequence containing only the elements that satisfy a given condition.<br>&#8226; <b>Mapping:</b> Use the `map` method to create a new sequence by transforming each element of the original sequence.<br>&#8226; <b>Reducing:</b> Use the `reduce` method to combine the elements of a sequence into a single value.<br>&#8226; <b>Chaining:</b> Combine multiple sequence operations using chaining.<br><br><b>Example:</b><br><br><pre class="swift"><code>let numbers = [1, 2, 3, 4, 5]
+    func makeIterator() -> Self.Iterator
+}</code></pre><br><br>Here's a <i>very</i> minimal implementation for Sequence in a custom struct:<br><pre class="swift"><code>struct CustomSequence<Element>: Sequence {
+    let items: [Element]
+    func makeIterator() -> IndexingIterator<[Element]> {
+        items.makeIterator()
+    }
+}
+
+
+let customSequence = CustomSequence(items: [1,2,3,4,5])
+print(customSequence.map({ $0 + 3 }))</code></pre><br><br><b>Common Sequence types</b><br><br>Swift provides several built-in sequence types, including:<br><br>&#8226; <b>Array:</b> An ordered collection of elements of the same type.<br><pre class="swift"><code>print([1,2,3,4].map({ $0 + 3 }))</code></pre><br><br>&#8226; <b>Dictionary:</b> An unordered collection of key-value pairs.<br><pre class="swift"><code>print(["one": 1, "two": 2].map({ $1 + 3 }))</code></pre><br><br>&#8226; <b>Set:</b> An unordered collection of unique values.<br><pre class="swift"><code>print(Set([1,1,2,2,3,3,3]).map({ $0 + 3 }))</code></pre><br><br>&#8226; <b>Range:</b> A sequence of consecutive values.<br><pre class="swift"><code>print((0..<5).map({ $0 + 3 }))</code></pre><br><br>&#8226; <b>String:</b> A sequence of characters.<br><pre class="swift"><code>print("ABC".map({ $0.lowercased() }))</code></pre><br><br><b>Sequence operations</b><br><br>Sequence types provide a rich set of operations for working with collections of data. Some of the most common operations include:<br><br>&#8226; <b>Iteration:</b> Use a `for-in` loop to iterate over the elements of a sequence.<br>&#8226; <b>Filtering:</b> Use the `filter` method to create a new sequence containing only the elements that satisfy a given condition.<br>&#8226; <b>Mapping:</b> Use the `map` method to create a new sequence by transforming each element of the original sequence.<br>&#8226; <b>Reducing:</b> Use the `reduce` method to combine the elements of a sequence into a single value.<br>&#8226; <b>Chaining:</b> Combine multiple sequence operations using chaining.<br><br><b>Example:</b><br><br><pre class="swift"><code>let numbers = [1, 2, 3, 4, 5]
 
 // Filter even numbers
 let evenNumbers = numbers.filter { $0 % 2 == 0 }
@@ -45,7 +57,9 @@ let evenNumbers = numbers.filter { $0 % 2 == 0 }
 let squares = evenNumbers.map { $0 &#8226; $0 }
 
 // Reduce numbers to their sum
-let sum = squares.reduce(0, +)</code></pre><br><br><img src='1.jpg'></img><br><br><b>Custom Sequences</b><br><br>You can create custom sequence types by conforming to the `Sequence` protocol and implementing the `makeIterator()` method.<br><br><pre class="swift"><code>struct FibonacciSequence: Sequence {
+let sum = squares.reduce(0, +)</code></pre><br><br>Or to make it shorter:<br><pre class="swift"><code>let numbers = [1, 2, 3, 4, 5]
+
+let sum = numbers.filter { $0 % 2 == 0 }.map { $0 &#8226; $0 }.reduce(0, +)</code></pre><br><br><img src='1.jpg'></img><br><br><b>Custom Sequences</b><br><br>As mentioned previously, you can create custom sequence types by conforming to the `Sequence` protocol and implementing the `makeIterator()` method.<br><br><pre class="swift"><code>struct FibonacciSequence: Sequence {
     typealias Element = Int
 
     func makeIterator() -> FibonacciIterator {
@@ -54,16 +68,20 @@ let sum = squares.reduce(0, +)</code></pre><br><br><img src='1.jpg'></img><br><b
 }
 
 struct FibonacciIterator: IteratorProtocol {
-    var current = 0
-    var next = 1
+
+    var currentInt = 0
+    var nextInt = 1
 
     mutating func next() -> Int? {
-        let result = current
-        current = next
-        next += result
+        guard currentInt < 100 else { return nil }
+        let result = currentInt
+        currentInt = nextInt
+        nextInt += result
         return result
     }
-}</code></pre><br><br><b>Best Practices</b><br><br>&#8226; <b>Choose the appropriate sequence type:</b> Select the sequence type that best suits your needs.<br>&#8226; <b>Use sequence operations effectively:</b> Leverage the power of sequence operations to write concise and efficient code.<br>&#8226; <b>Consider performance implications:</b> Some sequence operations can be computationally expensive.<br>&#8226; <b>Create custom sequences when necessary:</b> Define custom sequences for specialized use cases.<br><br><b>Conclusion</b><br><br>Sequence types are a fundamental concept in Swift that provide a powerful way to work with collections of data. By understanding the various sequence types and their operations, you can write more efficient and expressive code. Remember to choose the right sequence type for your specific use case and follow best practices to ensure your code is maintainable and performant.<br>    </div>
+}
+
+print(Array(FibonacciSequence()))</code></pre><br><br>It's very important to note the line `guard currentInt < 100 else { return nil }`; this puts a cap on what otherwise would become and infinite Sequence. What do you thing will happen if you remove that line and attempt to iterate over the Sequence?<br><br><b>Best Practices</b><br><br>&#8226; <b>Choose the appropriate sequence type:</b> It's very unlikely that your need for a Sequence is not already covered by one of the builtin collection types. So select the sequence type that best suits your needs.<br>&#8226; <b>Use sequence operations effectively:</b> Leverage the power of sequence operations to write concise and efficient transformative code.<br>&#8226; <b>Consider performance implications:</b> Some sequence operations can be computationally expensive depending on the operation and the size of the Sequence. The previous "Infinite Sequence" example is an extreme case for Sequence size consideration.<br>&#8226; <b>Create custom sequences when necessary:</b> Define custom sequences for specialized use cases while maintaining the importance of Sequence bounds consideration and operational cost.<br><br><hr><br><br>Sequence types provide a powerful way to work with collections of data. By understanding the various sequence types and their operations, you can write much more concise code. Remember to choose the right sequence type for your specific use case and follow best practices to ensure your code is maintainable and performant.<br>    </div>
 </div>
 
 
