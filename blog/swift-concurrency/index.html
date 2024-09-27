@@ -59,7 +59,7 @@ let operation2 = BlockOperation {
     print("Two")
 }
 queue.addOperations([operation1, operation2], waitUntilFinished: false)
-print("Three")</code></pre><br><br>`waitUntilFinished` is set to `false`, so this will print first an immediate "Three", a "One" after a 2 second delay and a "Two" after a 3 second delay. What do you think will happen if `waitUntilFinished` is set to `true` ?<br><br><img src='1.jpg'></img><br><br>**Asynchronous Programming with `async` and `await`*&#8226; <br>Swift 5.5 introduced `async` and `await` keywords, which make asynchronous programming more concise and easier to read.<br><br><pre class="swift"><code>class User {
+print("Three")</code></pre><br><br>`waitUntilFinished` is set to `false`, so this will print first an immediate "Three", a "One" after a 2 second delay and a "Two" after a 3 second delay. What do you think will happen if `waitUntilFinished` is set to `true` ?<br><br><img src='1.jpg'></img><br><br>**Asynchronous Programming with `async` and `await`**<br><br>Swift 5.5 introduced `async` and `await` keywords, which make asynchronous programming more concise and easier to read.<br><br><pre class="swift"><code>class User {
     let name: String
 
     init(data: Data) {

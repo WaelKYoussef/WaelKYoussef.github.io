@@ -71,7 +71,7 @@ let sortedNumbers2 = numbers.sorted(by: { (n1, n2) in
 })
 
 print(sortedNumbers1) // Equals
-print(sortedNumbers2) // Equals</code></pre><br><br>The shorthand version used for <i>sortedNumbers1</i> is exactly the same as for <i>sortedNumbers1</i>. Notice how we used `$0` and $1`, these are known as anonymous closure parameters.<br><br>**Capturing `self`*&#8226; <br>When a closure is defined within an instance method, it can capture `self`. This means that the closure can access and modify the instance's properties.<br><br><pre class="swift"><code>class MyClass {
+print(sortedNumbers2) // Equals</code></pre><br><br>The shorthand version used for <i>sortedNumbers1</i> is exactly the same as for <i>sortedNumbers1</i>. Notice how we used `$0` and $1`, these are known as anonymous closure parameters.<br><br>**Capturing `self`**<br><br>When a closure is defined within an instance method, it can capture `self`. This means that the closure can access and modify the instance's properties.<br><br><pre class="swift"><code>class MyClass {
     var value = 0
 
     func doSomething() {
