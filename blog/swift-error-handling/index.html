@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Swift: Error Handling</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/menu.css"><link rel="stylesheet" href="/css/article.css"><link rel="stylesheet" href="/css/contact.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/skills.css"><link rel="stylesheet" href="/css/responsive.css">
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<div class="articleTitleSection cover">
+    <div class="background"></div>
+    <div class="container">
+        <img class="icon" src="/images/avatar_email.png">
+        <p class="title" style="cursor: pointer" onclick="goToBlog()">wael.blog</p>
+        <p class="caption">Where I talk about anything and everything Code!</p>
+    </div>
+</div>
+
+<div class="articleInfoSection">
+    <div class="textContainer">
+        <p style="font-size: 28px; margin: 0;">25, Jan 2024</p>
+        <p class="title">Swift: Error Handling</p>
+        Error handling is a crucial aspect of software development that helps you write reliable code. Swift provides a powerful and flexible error handling mechanism that allows you to gracefully handle errors and prevent your application from crashing. Let's explore the different ways to handle errors in Swift, including throwing, catching, and propagating errors.<br><br><img src='cover.jpg'></img><br><br><b>Throwing Errors</b><br><br>To indicate that a function can throw an error, you use the `throws` keyword after the function's parameter list. When a function throws an error, it must be called within a `do-catch` block.<br><br><pre class="swift"><code>struct DivisionByZeroError: Error {
+
+}
+
+func divide(a: Int, b: Int) throws -> Int {
+    if b == 0 {
+        throw DivisionByZeroError()
+    }
+    return a / b
+}
+
+do {
+    let result = try divide(a: 10, b: 0)
+    print(result)
+} catch is DivisionByZeroError {
+    print("Division by zero error")
+} catch {
+    print("Unknown error")
+}</code></pre><br><br>This is very beneficial when there are different behaviours for each error type, for example, a network failure error may lead to an immediate <i>Retry</i> operation, while am input failure may lead to a <i>Re-enter</i> info prompt.<br><br><b>Custom Error Types</b><br><br>You can define your own custom error types by conforming to the `Error` protocol. This allows you to provide more specific information about the error that occurred.<br><br><pre class="swift"><code>enum MyEnumError: Error {
+    case invalidInput
+    case networkError
+}
+
+// OR
+
+struct MyStructError: Error {
+
+}</code></pre><br><br><img src='1.jpg'></img><br><br><b>Propagating Errors</b><br><br>If a function throws an error, you can propagate it to the calling function using the `try` operator.<br><br><pre class="swift"><code>func fetchData() throws -> Data {
+    // Fetch data from network
+    return try Data(contentsOf: URL(string: "https://api.example.com")!)
+}
+
+func processData() throws {
+    let data = try fetchData()
+    // Process data
+}</code></pre><br><br>This will allow the caller function to <i>choose</i> how to handle each individual error. This is extremely efficient in that it gives the freedom for every implementation to throw its own errors while maintaining the freedom of <i>where</i> to handle each error.<br><br><b>Optional Chaining and Error Handling</b><br><br>You can combine optional chaining with error handling to safely handle potential errors in property access or method calls without the need to propagate them.<br><br><pre class="swift"><code>func fetchData() throws -> Data {
+    // Fetch data from network
+    return try Data(contentsOf: URL(string: "https://api.example.com")!)
+}
+
+func processData() {
+    if let data = try? fetchData() {
+        // Process data
+    }
+}</code></pre><br><br>This is the same exact example as before, but with one small change; we removed `throws` from next to <i>processData()</i>. We were still able to call <i>fetchData()</i> but with a `try?` rather than `try`.<br><br><b>Best Practices</b><br><br>&#8226; <b>Use custom error types:</b> Define custom error types to provide more specific information about the error that occurred.<br>&#8226; <b>Handle errors gracefully:</b> Provide informative error messages and handle errors in a way that doesn't crash your application.<br>&#8226; <b>Handle errors in a way that makes sense:</b> Do your best to avoid catching all errors and displaying a message, some errors may be silently handled by the app while others require user input.<br><i> </i>*Use `try?` and `try!` judiciously:*&#8226; Use `try?` to handle errors gracefully and avoid crashes. Use `try!` only when you're absolutely certain that the function will not throw an error, and from experience, 99% that won't be the case no matter how sure you feel.<br>&#8226; <b>Test your error handling code:</b> Write unit tests to ensure that your error handling code works as expected. Add specific test cases to explicits test for each particular error potentially thrown.<br><br><hr><br><br>Error handling is a critical aspect of software development that helps you write more robust and reliable code. By understanding how to throw, catch, and propagate errors in Swift, you can effectively handle errors and prevent your application from crashing and creating a wonderful user experience.    </div>
+</div>
+
+
+
+        <div class="articleFooterSection">
+   <div class="container">
+       <div class="searchContainer articleFooterSectionContainer">
+           <p class="title">Search:</p>
+
+           <form action="/blog">
+               <input type="text" id="search" name="search" placeholder="swift, php, raspberry pi ... etc">
+           </form>
+
+       </div>
+       <div class="latestContainer articleFooterSectionContainer">
+           <p class="title">Latest:</p><p class="item"><a href='/blog/swift-guard-statements'>Swift: Guard Statements</a></p><p class="item"><a href='/blog/solving-common-string-problems'>Solving Common String Problems</a></p><p class="item"><a href='/blog/array-manipulation-challenges'>Array Manipulation Challenges</a></p><p class="item"><a href='/blog/swift-concurrency'>Swift: Concurrency</a></p><p class="item"><a href='/blog/solving-the-fizzbuzz-problem'>Solving the FizzBuzz problem</a></p><p class="item"><a href='/blog/swift-sequence-types'>Swift: Sequence Types</a></p></div>
+       <div class="categoriesContainer articleFooterSectionContainer">
+           <p class="title">Categories:</p><p class="item"><a href='/blog/?category=Swift'>Swift</a></p><p class="item"><a href='/blog/?category=Coding'>Coding</a></p><p class="item"><a href='/blog/?category=Slice of life'>Slice of life</a></p></div>
+   </div>
+</div>
+
+        
+            <div class="callToAction">
+                <p onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Interested in what I do? get in touch</p>
+            </div>
+        
+            <!--contact-->
+            <div class="wkycontact" id="contact">
+                <p class="sectionTitle">Contacts</p>
+            
+                <div class="container">
+                    <div class="social">
+                     <div class="innerSocial">
+                         <div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/location.png'); -webkit-mask-image: url('/images/icons/location.png');"></div>
+                                 <p><a href="" target=”_blank”>Located in Cairo, Egypt</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/linkedin.png'); -webkit-mask-image: url('/images/icons/linkedin.png');"></div>
+                                 <p><a href="https://linkedin.com/in/wael-youssef-630206108" target=”_blank”>linkedin.com/in/wael-youssef-630206108</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/github.png'); -webkit-mask-image: url('/images/icons/github.png');"></div>
+                                 <p><a href="https://github.com/WaelKYoussef" target=”_blank”>github.com/WaelKYoussef</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/email.png'); -webkit-mask-image: url('/images/icons/email.png');"></div>
+                                 <p><a href="mailto:wael.k.youssef@gmail.com" target=”_blank”>wael.k.youssef@gmail.com</a></p>
+                              </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright © 2024-2025; ALL RIGHTS RESERVED.</p>
+                <p>Designed & developed by Wael Youssef</p>
+            </div>
+        
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+<link rel="stylesheet" href="/css/highlight.min.css"><script src="/js/highlight.min.js"></script><script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Swift: Subscripts</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/menu.css"><link rel="stylesheet" href="/css/article.css"><link rel="stylesheet" href="/css/contact.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/skills.css"><link rel="stylesheet" href="/css/responsive.css">
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<div class="articleTitleSection cover">
+    <div class="background"></div>
+    <div class="container">
+        <img class="icon" src="/images/avatar_email.png">
+        <p class="title" style="cursor: pointer" onclick="goToBlog()">wael.blog</p>
+        <p class="caption">Where I talk about anything and everything Code!</p>
+    </div>
+</div>
+
+<div class="articleInfoSection">
+    <div class="textContainer">
+        <p style="font-size: 28px; margin: 0;">01, Jun 2024</p>
+        <p class="title">Swift: Subscripts</p>
+        <p style='margin-bottom: 0; font-size: 22px'> Subscripts in Swift: A Powerful Tool for Custom Collections</p><br><br><b>Introduction</b><br><br>Subscripts are a powerful feature in Swift that allow you to access elements in custom collections using a syntax similar to accessing elements in arrays or dictionaries. By defining custom subscripts, you can create more expressive and intuitive collection types. In this post, we'll explore what subscripts are, how to define them, and when they're most beneficial.<br><br><img src='cover.jpg'></img><br><br><b>Understanding Subscripts</b><br><br>A subscript is a computed property that takes an index as a parameter and returns a value of a specific type. It's used to access elements in a collection using a syntax similar to accessing elements in arrays or dictionaries.<br><br><pre class="swift"><code>struct MyCollection {
+    var items = [Int]()
+
+    subscript(index: Int) -> Int? {
+        get {
+            if index >= 0 && index < items.count {
+                return items[index]
+            } else {
+                return nil
+            }
+        }
+        set {
+            if let newValue = newValue {
+                if index >= 0 && index < items.count {
+                    items[index] = newValue
+                }
+            }
+        }
+    }
+}</code></pre><br><br>In the above example, the `MyCollection` struct defines a subscript that allows you to access and modify elements in the `items` array using an index.<br><br><img src='1.jpg'></img><br><br><b>Key Features of Subscripts</b><br><br>&#8226; <b>Customizable:</b> You can define subscripts with any number of parameters and return types.<br>&#8226; <b>Read-only or read-write:</b> Subscripts can be read-only (only `get`) or read-write (both `get` and `set`).<br>&#8226; <b>Type safety:</b> Subscripts provide type safety by specifying the types of the index and the returned value.<br>&#8226; <b>Flexibility:</b> Subscripts can be used to implement various collection behaviors, such as accessing elements by index, key, or range.<br><br><b>Common Use Cases</b><br><br>&#8226; <b>Custom collections:</b> Create custom collection types with specific behaviors.<br>&#8226; <b>Matrix operations:</b> Implement matrix operations using subscripts to access elements by row and column.<br>&#8226; <b>Sparse data structures:</b> Store sparse data efficiently using subscripts.<br>&#8226; <b>Specialized data structures:</b> Create specialized data structures with custom access patterns.<br><br><b>Best Practices</b><br><br>&#8226; <b>Use clear and descriptive names:</b> Choose names for your subscripts that clearly convey their purpose.<br>&#8226; <b>Validate input:</b> Ensure that the input to your subscripts is valid to avoid errors.<br>&#8226; <b>Consider performance implications:</b> Subscripts can have performance implications, especially when dealing with large collections.<br>&#8226; <b>Use read-only subscripts when appropriate:</b> If your collection should be read-only, define read-only subscripts.<br><br><b>Advanced Topics</b><br><br>&#8226; <b>Multiple subscripts:</b> You can define multiple subscripts with different parameters and return types.<br>&#8226; <b>Subscripts with ranges:</b> Implement subscripts that take a range as an index.<br>&#8226; <b>Subscripts with custom types:</b> Create subscripts that take custom types as indices.<br><br><b>Conclusion</b><br><br>Subscripts are a powerful feature in Swift that allow you to create custom collection types with expressive and intuitive access patterns. By understanding how to define and use subscripts effectively, you can write more flexible and maintainable code. Remember to choose the right use cases for subscripts and consider the best practices outlined in this post.<br>    </div>
+</div>
+
+
+
+        <div class="articleFooterSection">
+   <div class="container">
+       <div class="searchContainer articleFooterSectionContainer">
+           <p class="title">Search:</p>
+
+           <form action="/blog">
+               <input type="text" id="search" name="search" placeholder="swift, php, raspberry pi ... etc">
+           </form>
+
+       </div>
+       <div class="latestContainer articleFooterSectionContainer">
+           <p class="title">Latest:</p><p class="item"><a href='/blog/swift-guard-statements'>Swift: Guard Statements</a></p><p class="item"><a href='/blog/solving-common-string-problems'>Solving Common String Problems</a></p><p class="item"><a href='/blog/array-manipulation-challenges'>Array Manipulation Challenges</a></p><p class="item"><a href='/blog/swift-concurrency'>Swift: Concurrency</a></p><p class="item"><a href='/blog/solving-the-fizzbuzz-problem'>Solving the FizzBuzz problem</a></p><p class="item"><a href='/blog/swift-sequence-types'>Swift: Sequence Types</a></p></div>
+       <div class="categoriesContainer articleFooterSectionContainer">
+           <p class="title">Categories:</p><p class="item"><a href='/blog/?category=Swift'>Swift</a></p><p class="item"><a href='/blog/?category=Coding'>Coding</a></p><p class="item"><a href='/blog/?category=Slice of life'>Slice of life</a></p></div>
+   </div>
+</div>
+
+        
+            <div class="callToAction">
+                <p onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Interested in what I do? get in touch</p>
+            </div>
+        
+            <!--contact-->
+            <div class="wkycontact" id="contact">
+                <p class="sectionTitle">Contacts</p>
+            
+                <div class="container">
+                    <div class="social">
+                     <div class="innerSocial">
+                         <div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/location.png'); -webkit-mask-image: url('/images/icons/location.png');"></div>
+                                 <p><a href="" target=”_blank”>Located in Cairo, Egypt</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/linkedin.png'); -webkit-mask-image: url('/images/icons/linkedin.png');"></div>
+                                 <p><a href="https://linkedin.com/in/wael-youssef-630206108" target=”_blank”>linkedin.com/in/wael-youssef-630206108</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/github.png'); -webkit-mask-image: url('/images/icons/github.png');"></div>
+                                 <p><a href="https://github.com/WaelKYoussef" target=”_blank”>github.com/WaelKYoussef</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/email.png'); -webkit-mask-image: url('/images/icons/email.png');"></div>
+                                 <p><a href="mailto:wael.k.youssef@gmail.com" target=”_blank”>wael.k.youssef@gmail.com</a></p>
+                              </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright © 2024-2025; ALL RIGHTS RESERVED.</p>
+                <p>Designed & developed by Wael Youssef</p>
+            </div>
+        
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+<link rel="stylesheet" href="/css/highlight.min.css"><script src="/js/highlight.min.js"></script><script>hljs.highlightAll();</script>
+</body>
+</html>

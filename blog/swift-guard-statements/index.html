@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Swift: Guard Statements</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/menu.css"><link rel="stylesheet" href="/css/article.css"><link rel="stylesheet" href="/css/contact.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/skills.css"><link rel="stylesheet" href="/css/responsive.css">
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<div class="articleTitleSection cover">
+    <div class="background"></div>
+    <div class="container">
+        <img class="icon" src="/images/avatar_email.png">
+        <p class="title" style="cursor: pointer" onclick="goToBlog()">wael.blog</p>
+        <p class="caption">Where I talk about anything and everything Code!</p>
+    </div>
+</div>
+
+<div class="articleInfoSection">
+    <div class="textContainer">
+        <p style="font-size: 28px; margin: 0;">29, Aug 2024</p>
+        <p class="title">Swift: Guard Statements</p>
+        Guard statements are a powerful feature in Swift that allow you to early exit from a function if a certain condition is not met. They're a clean and concise way to avoid deeply nested `if-else` statements, making your code more readable and maintainable, so let's delve into what guard statements are, how to use them effectively!<br><br><img src='cover.jpg'></img><br><br><b>Understanding Guard Statements</b><br><br>A guard statement consists of the `guard` keyword followed by a condition and an `else` clause. If the condition is true, the execution continues within the function. However, if the condition is false, the `else` clause is executed, which must contain a `return`, `continue`, `break`, or `throw` statement to exit the current scope.<br><br><pre class="swift"><code>func greet(name: String?) {
+    guard let name = name else {
+        print("Name is nil")
+        return
+    }
+    print("Hello, \(name)!")
+}</code></pre><br><br>In the above example, the `guard` statement checks if `name` is not `nil`. If it's `nil`, the `else` clause is executed, and the function returns early. Otherwise, the execution continues with the greeting message. Think of having multiple checks on your input:<br><br><pre class="swift"><code>func greet(name: String?) {
+    guard let name = name else { return }
+    guard !name.isEmpty else { return }
+    guard name.rangeOfCharacter(from: .decimalDigits) == nil else { return }
+    print("Hello, \(name)!")
+}
+
+greet(name: "Swift") // Hello, Swift!
+greet(name: "Swift1") // Nothing
+greet(name: "") // Nothing
+greet(name: nil) // Nothing</code></pre><br><br>Re-writing the same logic with if-else nesting would yield:<br><pre class="swift"><code>func greet(name: String?) {
+    if let name = name {
+        if !name.isEmpty {
+            if name.rangeOfCharacter(from: .decimalDigits) == nil {
+                print("Hello, \(name)!")
+            }
+        }
+    }
+}</code></pre><br>Hadooooken!!!! ... Brownie points if you get the reference!<br><br><b>Key Benefits of Guard Statements</b><br><br>&#8226; <b>Improved Readability:</b> Guard statements make your code more readable by reducing the indentation level of nested `if-else` statements.<br>&#8226; <b>Early Exit:</b> They allow you to exit a function early if a certain condition is not met, preventing unnecessary code execution.<br>&#8226; <b>Error Handling:</b> Guard statements can be used to handle errors and exceptions gracefully.<br>&#8226; <b>Conciseness:</b> They provide a concise, ordered way to express conditional logic.<br><br><img src='1.jpg'></img><br><br><b>Common Use Cases</b><br><br>&#8226; <b>Error Handling:</b> Check for errors and return early if necessary.<br>&#8226; <b>Input Validation:</b> Validate user input and return if it's invalid.<br>&#8226; <b>Optional Unwrapping:</b> Safely unwrap optionals and return if they're `nil`.<br>&#8226; <b>Precondition Checks:</b> Ensure that preconditions are met before proceeding with a task.<br><br><b>Best Practices</b><br><br>&#8226; <b>Keep conditions simple:</b> Avoid complex conditions that can be difficult to read. Try grouping multiple similar conditions into simpler check functions.<br>&#8226; <b>Use meaningful error messages:</b> If you're using guard statements for error handling, provide informative error messages/or types.<br><br><hr><br><br>Guard statements are a valuable tool in Swift that can help you write cleaner, more readable, and maintainable code. By understanding their syntax and use cases, you can effectively use them to improve the structure and flow of your functions. Guard statements are so useful that you may even consider using the same pattern even if your language doesn't support `guard` as a first class citizen.<br>    </div>
+</div>
+
+
+
+        <div class="articleFooterSection">
+   <div class="container">
+       <div class="searchContainer articleFooterSectionContainer">
+           <p class="title">Search:</p>
+
+           <form action="/blog">
+               <input type="text" id="search" name="search" placeholder="swift, php, raspberry pi ... etc">
+           </form>
+
+       </div>
+       <div class="latestContainer articleFooterSectionContainer">
+           <p class="title">Latest:</p><p class="item"><a href='/blog/swift-guard-statements'>Swift: Guard Statements</a></p><p class="item"><a href='/blog/solving-common-string-problems'>Solving Common String Problems</a></p><p class="item"><a href='/blog/array-manipulation-challenges'>Array Manipulation Challenges</a></p><p class="item"><a href='/blog/swift-concurrency'>Swift: Concurrency</a></p><p class="item"><a href='/blog/solving-the-fizzbuzz-problem'>Solving the FizzBuzz problem</a></p><p class="item"><a href='/blog/swift-sequence-types'>Swift: Sequence Types</a></p></div>
+       <div class="categoriesContainer articleFooterSectionContainer">
+           <p class="title">Categories:</p><p class="item"><a href='/blog/?category=Swift'>Swift</a></p><p class="item"><a href='/blog/?category=Coding'>Coding</a></p><p class="item"><a href='/blog/?category=Slice of life'>Slice of life</a></p></div>
+   </div>
+</div>
+
+        
+            <div class="callToAction">
+                <p onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Interested in what I do? get in touch</p>
+            </div>
+        
+            <!--contact-->
+            <div class="wkycontact" id="contact">
+                <p class="sectionTitle">Contacts</p>
+            
+                <div class="container">
+                    <div class="social">
+                     <div class="innerSocial">
+                         <div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/location.png'); -webkit-mask-image: url('/images/icons/location.png');"></div>
+                                 <p><a href="" target=”_blank”>Located in Cairo, Egypt</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/linkedin.png'); -webkit-mask-image: url('/images/icons/linkedin.png');"></div>
+                                 <p><a href="https://linkedin.com/in/wael-youssef-630206108" target=”_blank”>linkedin.com/in/wael-youssef-630206108</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/github.png'); -webkit-mask-image: url('/images/icons/github.png');"></div>
+                                 <p><a href="https://github.com/WaelKYoussef" target=”_blank”>github.com/WaelKYoussef</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/email.png'); -webkit-mask-image: url('/images/icons/email.png');"></div>
+                                 <p><a href="mailto:wael.k.youssef@gmail.com" target=”_blank”>wael.k.youssef@gmail.com</a></p>
+                              </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright © 2024-2025; ALL RIGHTS RESERVED.</p>
+                <p>Designed & developed by Wael Youssef</p>
+            </div>
+        
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+<link rel="stylesheet" href="/css/highlight.min.css"><script src="/js/highlight.min.js"></script><script>hljs.highlightAll();</script>
+</body>
+</html>

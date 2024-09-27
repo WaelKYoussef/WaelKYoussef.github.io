@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Swift: Sequence Types</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/menu.css"><link rel="stylesheet" href="/css/article.css"><link rel="stylesheet" href="/css/contact.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/skills.css"><link rel="stylesheet" href="/css/responsive.css">
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<div class="articleTitleSection cover">
+    <div class="background"></div>
+    <div class="container">
+        <img class="icon" src="/images/avatar_email.png">
+        <p class="title" style="cursor: pointer" onclick="goToBlog()">wael.blog</p>
+        <p class="caption">Where I talk about anything and everything Code!</p>
+    </div>
+</div>
+
+<div class="articleInfoSection">
+    <div class="textContainer">
+        <p style="font-size: 28px; margin: 0;">05, Jul 2024</p>
+        <p class="title">Swift: Sequence Types</p>
+        Sequence types are a fundamental concept in Swift that provide a unified interface for working with collections of elements. They offer a powerful way to iterate over, filter, map, and reduce collections of data. In this post, we'll explore the various sequence types available in Swift, their key features, and best practices for using them effectively.<br><br><img src='cover.jpg'></img><br><br><b>Understanding Sequence Types</b><br><br>A sequence type is any type that conforms to the `Sequence` protocol. This protocol defines a single requirement: the `elements` property, which returns a generator that can be used to iterate over the sequence's elements.<br><br><pre class="swift"><code>protocol Sequence {
+    associatedtype Element
+
+    func makeIterator() -> IteratorProtocol where IteratorProtocol.Element == Element
+}</code></pre><br><br><b>Common Sequence Types</b><br><br>Swift provides several built-in sequence types, including:<br><br>&#8226; <b>Array:</b> An ordered collection of elements of the same type.<br>&#8226; <b>Dictionary:</b> An unordered collection of key-value pairs.<br>&#8226; <b>Set:</b> An unordered collection of unique values.<br>&#8226; <b>Range:</b> A sequence of consecutive values.<br>&#8226; <b>String:</b> A sequence of characters.<br><br><b>Sequence Operations</b><br><br>Sequence types provide a rich set of operations for working with collections of data. Some of the most common operations include:<br><br>&#8226; <b>Iteration:</b> Use a `for-in` loop to iterate over the elements of a sequence.<br>&#8226; <b>Filtering:</b> Use the `filter` method to create a new sequence containing only the elements that satisfy a given condition.<br>&#8226; <b>Mapping:</b> Use the `map` method to create a new sequence by transforming each element of the original sequence.<br>&#8226; <b>Reducing:</b> Use the `reduce` method to combine the elements of a sequence into a single value.<br>&#8226; <b>Chaining:</b> Combine multiple sequence operations using chaining.<br><br><b>Example:</b><br><br><pre class="swift"><code>let numbers = [1, 2, 3, 4, 5]
+
+// Filter even numbers
+let evenNumbers = numbers.filter { $0 % 2 == 0 }
+
+// Map numbers to their squares
+let squares = evenNumbers.map { $0 &#8226; $0 }
+
+// Reduce numbers to their sum
+let sum = squares.reduce(0, +)</code></pre><br><br><img src='1.jpg'></img><br><br><b>Custom Sequences</b><br><br>You can create custom sequence types by conforming to the `Sequence` protocol and implementing the `makeIterator()` method.<br><br><pre class="swift"><code>struct FibonacciSequence: Sequence {
+    typealias Element = Int
+
+    func makeIterator() -> FibonacciIterator {
+        return FibonacciIterator()
+    }
+}
+
+struct FibonacciIterator: IteratorProtocol {
+    var current = 0
+    var next = 1
+
+    mutating func next() -> Int? {
+        let result = current
+        current = next
+        next += result
+        return result
+    }
+}</code></pre><br><br><b>Best Practices</b><br><br>&#8226; <b>Choose the appropriate sequence type:</b> Select the sequence type that best suits your needs.<br>&#8226; <b>Use sequence operations effectively:</b> Leverage the power of sequence operations to write concise and efficient code.<br>&#8226; <b>Consider performance implications:</b> Some sequence operations can be computationally expensive.<br>&#8226; <b>Create custom sequences when necessary:</b> Define custom sequences for specialized use cases.<br><br><b>Conclusion</b><br><br>Sequence types are a fundamental concept in Swift that provide a powerful way to work with collections of data. By understanding the various sequence types and their operations, you can write more efficient and expressive code. Remember to choose the right sequence type for your specific use case and follow best practices to ensure your code is maintainable and performant.<br>    </div>
+</div>
+
+
+
+        <div class="articleFooterSection">
+   <div class="container">
+       <div class="searchContainer articleFooterSectionContainer">
+           <p class="title">Search:</p>
+
+           <form action="/blog">
+               <input type="text" id="search" name="search" placeholder="swift, php, raspberry pi ... etc">
+           </form>
+
+       </div>
+       <div class="latestContainer articleFooterSectionContainer">
+           <p class="title">Latest:</p><p class="item"><a href='/blog/swift-guard-statements'>Swift: Guard Statements</a></p><p class="item"><a href='/blog/solving-common-string-problems'>Solving Common String Problems</a></p><p class="item"><a href='/blog/array-manipulation-challenges'>Array Manipulation Challenges</a></p><p class="item"><a href='/blog/swift-concurrency'>Swift: Concurrency</a></p><p class="item"><a href='/blog/solving-the-fizzbuzz-problem'>Solving the FizzBuzz problem</a></p><p class="item"><a href='/blog/swift-sequence-types'>Swift: Sequence Types</a></p></div>
+       <div class="categoriesContainer articleFooterSectionContainer">
+           <p class="title">Categories:</p><p class="item"><a href='/blog/?category=Swift'>Swift</a></p><p class="item"><a href='/blog/?category=Coding'>Coding</a></p><p class="item"><a href='/blog/?category=Slice of life'>Slice of life</a></p></div>
+   </div>
+</div>
+
+        
+            <div class="callToAction">
+                <p onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Interested in what I do? get in touch</p>
+            </div>
+        
+            <!--contact-->
+            <div class="wkycontact" id="contact">
+                <p class="sectionTitle">Contacts</p>
+            
+                <div class="container">
+                    <div class="social">
+                     <div class="innerSocial">
+                         <div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/location.png'); -webkit-mask-image: url('/images/icons/location.png');"></div>
+                                 <p><a href="" target=”_blank”>Located in Cairo, Egypt</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/linkedin.png'); -webkit-mask-image: url('/images/icons/linkedin.png');"></div>
+                                 <p><a href="https://linkedin.com/in/wael-youssef-630206108" target=”_blank”>linkedin.com/in/wael-youssef-630206108</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/github.png'); -webkit-mask-image: url('/images/icons/github.png');"></div>
+                                 <p><a href="https://github.com/WaelKYoussef" target=”_blank”>github.com/WaelKYoussef</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/email.png'); -webkit-mask-image: url('/images/icons/email.png');"></div>
+                                 <p><a href="mailto:wael.k.youssef@gmail.com" target=”_blank”>wael.k.youssef@gmail.com</a></p>
+                              </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright © 2024-2025; ALL RIGHTS RESERVED.</p>
+                <p>Designed & developed by Wael Youssef</p>
+            </div>
+        
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+<link rel="stylesheet" href="/css/highlight.min.css"><script src="/js/highlight.min.js"></script><script>hljs.highlightAll();</script>
+</body>
+</html>

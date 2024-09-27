@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Swift: Extensions</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/menu.css"><link rel="stylesheet" href="/css/article.css"><link rel="stylesheet" href="/css/contact.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/skills.css"><link rel="stylesheet" href="/css/responsive.css">
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<div class="articleTitleSection cover">
+    <div class="background"></div>
+    <div class="container">
+        <img class="icon" src="/images/avatar_email.png">
+        <p class="title" style="cursor: pointer" onclick="goToBlog()">wael.blog</p>
+        <p class="caption">Where I talk about anything and everything Code!</p>
+    </div>
+</div>
+
+<div class="articleInfoSection">
+    <div class="textContainer">
+        <p style="font-size: 28px; margin: 0;">20, Mar 2024</p>
+        <p class="title">Swift: Extensions</p>
+        Extensions in Swift provide a mechanism to add new functionality to existing types without modifying their original implementation. This is a powerful feature that can enhance code reusability and modularity.<br><br><img src='cover.jpg'></img><br><br><b>Understanding Extensions</b><br><br>An extension is a declaration that adds new functionality to an existing type, such as a class, struct, enum, or protocol. Extensions can add new computed properties, methods, and subscripts to the type they extend.<br><br><pre class="swift"><code>extension Int {
+    var isEven: Bool {
+        self % 2 == 0
+    }
+}
+
+print(5.isEven) //false
+print(4.isEven) //true</code></pre><br><br>In the above example, the `isEven()` method is added as an extension to the `Int` type. This allows you to check if an `Int` value is even without modifying the `Int` type itself.<br><br><b>Common Use Cases for Extensions</b><br><br>&#8226; <b>Adding functionality to existing types:</b> Extend existing types with new features that are relevant to your specific use case.<br>&#8226; <b>Creating utility methods:</b> Define utility methods that can be used across multiple parts of your code.<br>&#8226; <b>Providing default implementations:</b> Provide default implementations for protocol requirements.<br>&#8226; <b>Improving code organization:</b> Group related functionality into extensions to make your code more modular.<br><br><b>Defining Extensions</b><br><br>To define an extension, use the `extension` keyword followed by the type you want to extend. You can then add new computed properties, methods, and subscripts within the extension's body.<br><br><pre class="swift"><code>extension String {
+    func uniqueChars() -> Set<String> {
+        Set(map { String($0) })
+    }
+}
+
+print("Hello".uniqueChars())</code></pre><br><br><b>Computed Properties</b><br><br>You can add computed properties to extensions. These properties are calculated on-demand and don't store any values.<br><br><pre class="swift"><code>extension String {
+    var isPalindrome: Bool {
+        return self == String(reversed())
+    }
+}
+
+print("OHIHO".isPalindrome)</code></pre><br><br><img src='1.jpg'></img><br><br><b>Methods</b><br><br>You can add methods to extensions. These methods can be used to add new functionality to the type they extend.<br><br><pre class="swift"><code>extension Array<String> {
+    func containsReverse(of element: String) -> Bool {
+        for item in self {
+            if String(item.reversed()) == element {
+                return true
+            }
+        }
+        return false
+    }
+}
+
+print(["olleh"].containsReverse(of: "hello")) //true
+print(["olleh"].containsReverse(of: "hi")) //false</code></pre><br><br>Did you also notice in the previous example how we declared the extension on `Array<String>` rather than `Array`? This means that this extension is applicable only to arrays of strings an not any other type of arrays.<br><br><b>Subscripts</b><br><br>You can add subscripts to extensions. Subscripts provide a way to access elements in a collection using a custom index.<br><br><pre class="swift"><code>class User {
+    private(set) var name = "John Doe"
+}
+
+extension User {
+    subscript(key: String) -> String? {
+        get {
+            switch key {
+            case "first_name": return name.components(separatedBy: " ")[0]
+            case "last_name": return name.components(separatedBy: " ")[1]
+            default: return nil }
+        }
+        set {
+            if key == "full_name" {
+                name = newValue ?? ""
+            }
+        }
+    }
+}
+
+let user = User()
+user["full_name"] = "Monkey D.Luffy"
+print(user["first_name"])
+print(user["last_name"])</code></pre><br><br>This example as well showcases the use of extensions as a way to separate and organize different sections of implementation for the same class.<br><br><b>Best Practices</b><br><br>&#8226; <b>Use extensions judiciously:</b> Don't overuse extensions to the point where your code becomes difficult to understand.<br>&#8226; <b>Avoid naming conflicts:</b> Ensure that the names of properties, methods, and subscripts in your extensions don't conflict -or create confusion- with existing members of the type.<br>&#8226; <b>Test your extensions thoroughly:</b> Test your extensions to ensure they work as expected.<br>&#8226; <b>Consider using protocol extensions:</b> Protocol extensions can be used to provide default implementations for protocol requirements.<br><br><hr><br><br>Extensions are a powerful tool in Swift that can enhance code reusability and modularity; allowing you to write more expressive and maintainable code. Remember to use extensions judiciously and follow best practices to ensure your code is well-structured and is easy to understand. And finally, if you plan on using extensions whether to extend functionality or for organizational purposes, always coordinate with your team over what's already available and what would be beneficial to add.    </div>
+</div>
+
+
+
+        <div class="articleFooterSection">
+   <div class="container">
+       <div class="searchContainer articleFooterSectionContainer">
+           <p class="title">Search:</p>
+
+           <form action="/blog">
+               <input type="text" id="search" name="search" placeholder="swift, php, raspberry pi ... etc">
+           </form>
+
+       </div>
+       <div class="latestContainer articleFooterSectionContainer">
+           <p class="title">Latest:</p><p class="item"><a href='/blog/swift-guard-statements'>Swift: Guard Statements</a></p><p class="item"><a href='/blog/solving-common-string-problems'>Solving Common String Problems</a></p><p class="item"><a href='/blog/array-manipulation-challenges'>Array Manipulation Challenges</a></p><p class="item"><a href='/blog/swift-concurrency'>Swift: Concurrency</a></p><p class="item"><a href='/blog/solving-the-fizzbuzz-problem'>Solving the FizzBuzz problem</a></p><p class="item"><a href='/blog/swift-sequence-types'>Swift: Sequence Types</a></p></div>
+       <div class="categoriesContainer articleFooterSectionContainer">
+           <p class="title">Categories:</p><p class="item"><a href='/blog/?category=Swift'>Swift</a></p><p class="item"><a href='/blog/?category=Coding'>Coding</a></p><p class="item"><a href='/blog/?category=Slice of life'>Slice of life</a></p></div>
+   </div>
+</div>
+
+        
+            <div class="callToAction">
+                <p onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Interested in what I do? get in touch</p>
+            </div>
+        
+            <!--contact-->
+            <div class="wkycontact" id="contact">
+                <p class="sectionTitle">Contacts</p>
+            
+                <div class="container">
+                    <div class="social">
+                     <div class="innerSocial">
+                         <div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/location.png'); -webkit-mask-image: url('/images/icons/location.png');"></div>
+                                 <p><a href="" target=”_blank”>Located in Cairo, Egypt</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/linkedin.png'); -webkit-mask-image: url('/images/icons/linkedin.png');"></div>
+                                 <p><a href="https://linkedin.com/in/wael-youssef-630206108" target=”_blank”>linkedin.com/in/wael-youssef-630206108</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/github.png'); -webkit-mask-image: url('/images/icons/github.png');"></div>
+                                 <p><a href="https://github.com/WaelKYoussef" target=”_blank”>github.com/WaelKYoussef</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/email.png'); -webkit-mask-image: url('/images/icons/email.png');"></div>
+                                 <p><a href="mailto:wael.k.youssef@gmail.com" target=”_blank”>wael.k.youssef@gmail.com</a></p>
+                              </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright © 2024-2025; ALL RIGHTS RESERVED.</p>
+                <p>Designed & developed by Wael Youssef</p>
+            </div>
+        
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+<link rel="stylesheet" href="/css/highlight.min.css"><script src="/js/highlight.min.js"></script><script>hljs.highlightAll();</script>
+</body>
+</html>

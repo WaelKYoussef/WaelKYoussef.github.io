@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Swift: Optionals</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/menu.css"><link rel="stylesheet" href="/css/article.css"><link rel="stylesheet" href="/css/contact.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/skills.css"><link rel="stylesheet" href="/css/responsive.css">
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<div class="articleTitleSection cover">
+    <div class="background"></div>
+    <div class="container">
+        <img class="icon" src="/images/avatar_email.png">
+        <p class="title" style="cursor: pointer" onclick="goToBlog()">wael.blog</p>
+        <p class="caption">Where I talk about anything and everything Code!</p>
+    </div>
+</div>
+
+<div class="articleInfoSection">
+    <div class="textContainer">
+        <p style="font-size: 28px; margin: 0;">18, Jun 2024</p>
+        <p class="title">Swift: Optionals</p>
+        Optionals are a fundamental concept in Swift that allow you to represent values that may or may not be present. They're a powerful tool for handling potential `nil` values and preventing runtime errors. Long have we gone since the lovely numerous crashes our code was plagued with in the good ol' days of Objective-C.<br><br><img src='cover.jpg'></img><br><br><b>Understanding Optionals</b><br><br>An optional is a type that can hold either a value of the specified type or `nil`. This is particularly useful when dealing with values that might not always be available, such as data from a network request or user input.<br><br><pre class="swift"><code>var name: String? = "John"
+var age: Int? = nil</code></pre><br><br>In the above example, `name` is an optional string that currently holds the value "John", while `age` is an optional integer that is currently `nil`.<br><br><b>Creating Optionals</b><br><br>There are several ways to create optionals:<br><br>&#8226; <b>Implicitly:</b> When you declare a variable from a function which;s return type is optional without specifying a default value, it becomes an optional.<br>&#8226; <b>Explicitly:</b> Use the `?` symbol after a type to indicate that it's optional.<br><i> </i>*Using the `Optional` type:*&#8226; Wrap a value in the `Optional` type.<br><br><pre class="swift"><code>func getResult() -> Int? {
+    return nil
+}
+let x = getResult() // Implicitly optional
+let y: String? = "Hello" // Explicitly optional
+let z: Optional<Bool> = Optional(true) // Using the Optional type, very uncommon though</code></pre><br><br><b>Unwrapping Optionals</b><br><br>To work with the value inside an optional, you need to unwrap it. There are several ways to unwrap optionals:<br><br>&#8226; <b>Forced Unwrapping:</b> Use the `!` operator to force unwrap an optional. This should be done with caution, as it can lead to runtime errors if the optional is `nil`. In fact, many teams' lint rules contain a definit "No force unwraps". This means that it has been determined to be more dangerous to have a forced unwrap in your code than any extra work you may need to avoid it.<br><br><pre class="swift"><code>let name: String? = "John"
+let greeting = "Hello, \(name!)" // Forced unwrapping</code></pre><br><br><img src='1.jpg'></img><br><br>&#8226; <b>Optional Binding:</b> Use `if let` or `guard let` to bind the value of an optional to a temporary constant or variable if it's not `nil`.<br><br><pre class="swift"><code>let name: String? = "John"
+if let unwrappedName = name {
+    print("Hello, \(unwrappedName)!")
+} else {
+    print("Name is nil")
+}</code></pre><br><br>Not only is this much safer at runtime, it also forces us to handle the other cases when the value is nil.<br><br>&#8226; <b>Nil-Coalescing Operator:</b> Use the `??` operator to provide a default value if an optional is `nil`.<br><br><pre class="swift"><code>let name: String? = "John"
+let greeting = "Hello, \(name ?? "World")"</code></pre><br><br>This is pretty useful if you are working with a remote service where JSON keys are potentially not present or of an unpredictable value.<br><br><b>Optional Chaining</b><br><br>Optional chaining is a concise way to access properties or call methods on optional values. If any of the optional values in the chain is `nil`, the chain is terminated, and the result is also `nil`. This prevents runtime errors.<br><br><pre class="swift"><code>let person: Person? = Person(name: "Alice")
+let city = person?.address?.city // city is of type String?</code></pre><br><br><b>Best Practices</b><br><br>&#8226; <b>Use optional binding and nil-coalescing:</b> These techniques are safer than forced unwrapping, by far.<br>&#8226; <b>Avoid forced unwrapping:</b> Only use forced unwrapping when you're absolutely certain that the optional value will never be `nil`.<br>&#8226; <b>Consider using guard statements with optional chaining:</b> Guard statements can help you avoid nested `if-else` blocks when dealing with multiple nested optionals.<br>&#8226; <b>Test your code thoroughly:</b> Ensure that your code handles `nil` values gracefully.<br><br><hr><br><br>Optionals are a powerful feature in Swift that allow you to write safer and more robust code. By understanding their syntax, use cases, and best practices, you can effectively handle optional values in your applications. I admit how difficult it was to wrap my head around these concepts back since Swift's inception. But many years later it's decisively one of the ever best improvements in modern languages.<br>    </div>
+</div>
+
+
+
+        <div class="articleFooterSection">
+   <div class="container">
+       <div class="searchContainer articleFooterSectionContainer">
+           <p class="title">Search:</p>
+
+           <form action="/blog">
+               <input type="text" id="search" name="search" placeholder="swift, php, raspberry pi ... etc">
+           </form>
+
+       </div>
+       <div class="latestContainer articleFooterSectionContainer">
+           <p class="title">Latest:</p><p class="item"><a href='/blog/swift-guard-statements'>Swift: Guard Statements</a></p><p class="item"><a href='/blog/solving-common-string-problems'>Solving Common String Problems</a></p><p class="item"><a href='/blog/array-manipulation-challenges'>Array Manipulation Challenges</a></p><p class="item"><a href='/blog/swift-concurrency'>Swift: Concurrency</a></p><p class="item"><a href='/blog/solving-the-fizzbuzz-problem'>Solving the FizzBuzz problem</a></p><p class="item"><a href='/blog/swift-sequence-types'>Swift: Sequence Types</a></p></div>
+       <div class="categoriesContainer articleFooterSectionContainer">
+           <p class="title">Categories:</p><p class="item"><a href='/blog/?category=Swift'>Swift</a></p><p class="item"><a href='/blog/?category=Coding'>Coding</a></p><p class="item"><a href='/blog/?category=Slice of life'>Slice of life</a></p></div>
+   </div>
+</div>
+
+        
+            <div class="callToAction">
+                <p onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Interested in what I do? get in touch</p>
+            </div>
+        
+            <!--contact-->
+            <div class="wkycontact" id="contact">
+                <p class="sectionTitle">Contacts</p>
+            
+                <div class="container">
+                    <div class="social">
+                     <div class="innerSocial">
+                         <div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/location.png'); -webkit-mask-image: url('/images/icons/location.png');"></div>
+                                 <p><a href="" target=”_blank”>Located in Cairo, Egypt</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/linkedin.png'); -webkit-mask-image: url('/images/icons/linkedin.png');"></div>
+                                 <p><a href="https://linkedin.com/in/wael-youssef-630206108" target=”_blank”>linkedin.com/in/wael-youssef-630206108</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/github.png'); -webkit-mask-image: url('/images/icons/github.png');"></div>
+                                 <p><a href="https://github.com/WaelKYoussef" target=”_blank”>github.com/WaelKYoussef</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/email.png'); -webkit-mask-image: url('/images/icons/email.png');"></div>
+                                 <p><a href="mailto:wael.k.youssef@gmail.com" target=”_blank”>wael.k.youssef@gmail.com</a></p>
+                              </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright © 2024-2025; ALL RIGHTS RESERVED.</p>
+                <p>Designed & developed by Wael Youssef</p>
+            </div>
+        
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+<link rel="stylesheet" href="/css/highlight.min.css"><script src="/js/highlight.min.js"></script><script>hljs.highlightAll();</script>
+</body>
+</html>

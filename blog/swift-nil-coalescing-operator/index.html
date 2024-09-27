@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Swift: Nil-Coalescing Operator</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/menu.css"><link rel="stylesheet" href="/css/article.css"><link rel="stylesheet" href="/css/contact.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/skills.css"><link rel="stylesheet" href="/css/responsive.css">
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<div class="articleTitleSection cover">
+    <div class="background"></div>
+    <div class="container">
+        <img class="icon" src="/images/avatar_email.png">
+        <p class="title" style="cursor: pointer" onclick="goToBlog()">wael.blog</p>
+        <p class="caption">Where I talk about anything and everything Code!</p>
+    </div>
+</div>
+
+<div class="articleInfoSection">
+    <div class="textContainer">
+        <p style="font-size: 28px; margin: 0;">30, Mar 2024</p>
+        <p class="title">Swift: Nil-Coalescing Operator</p>
+        Optionals are a powerful concept for representing values that might or might not be present. It's the definite roads towards dramatically reducing nil-related runtime errors. When working with optionals, it's crucial to handle potential `nil` values gracefully to avoid runtime errors. One of the most useful tools in Swift for dealing with optionals is the <b>nil-coalescing operator</b> (??). So let's tap into what the nil-coalescing operator does, how to use it effectively, and when to consider alternative approaches.<br><br><img src='cover.jpg'></img><br><br><b>Understanding Optionals</b><br><br>First, let's recap what optionals are in Swift. An optional is a type that can hold either a value of the specified type or `nil`. This is particularly useful when dealing with values that might not always be available, such as data from a network request or user input.<br><br><pre class="swift"><code>var name: String? = "John"
+var age: Int? = nil</code></pre><br><br><b>Introducing the Nil-Coalescing Operator</b><br><br>The nil-coalescing operator (??) provides a concise and efficient way to provide a default value for an optional if it's `nil`. It takes two operands: an optional value and a default value. If the optional value is not `nil`, the operator returns the unwrapped value. Otherwise, it returns the default value.<br><br><pre class="swift"><code>let person: Person? = Person(name: "Alice")
+let city = person?.address?.city ?? "Unknown"</code></pre><br><br>In the above example, if `person`, `address`, or `city` is `nil` (optional chaining), the `??` operator will return the default value "Unknown". Notice that in this case, the compiler will infer the type of `city` to be `String` rather than `String?`<br><br><b>Common Use Cases</b><br><br>The nil-coalescing operator is a versatile tool with many practical applications:<br><br><p style='margin-bottom: 0; font-size: 19px'> Providing Default Values</p><br>&#8226; <b>User Interface:</b> Set default values for UI elements based on user preferences or system settings.<br>&#8226; <b>Data Validation:</b> Provide default values for missing data in forms or user input.<br>&#8226; <b>Configuration Files:</b> Set default values for configuration options.<br><br><pre class="swift"><code>let username = userPreferences["username"] ?? "Guest"
+let defaultLanguage = languageSetting ?? "English"</code></pre><br><br><img src='1.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 19px'> Chaining Optionals</p><br>&#8226; <b>Accessing Nested Properties:</b> Safely access nested properties of optional values.<br>&#8226; <b>Handling Optional Collections:</b> Provide default values for empty collections or missing elements.<br><br><pre class="swift"><code>let firstPerson = people.first?.name ?? "No person found"
+let defaultColor = colorPreferences["accentColor"] ?? .systemBlue</code></pre><br><br><p style='margin-bottom: 0; font-size: 19px'> Simplifying Conditional Logic</p><br><i> </i>*Avoid Nested `if-else` Statements:*&#8226; Reduce code complexity by using the nil-coalescing operator instead of multiple conditional checks.<br><br><pre class="swift"><code>let isLoggedIn = userSession?.isLoggedIn ?? false
+if isLoggedIn {
+    // User is logged in
+} else {
+    // User is not logged in
+}</code></pre><br><br><hr><br><br>The nil-coalescing operator is a powerful tool in Swift that simplifies the handling of optionals. By understanding its syntax and use cases, you can write more concise and readable code. Remember to use it judiciously and consider alternative approaches when necessary.<br>    </div>
+</div>
+
+
+
+        <div class="articleFooterSection">
+   <div class="container">
+       <div class="searchContainer articleFooterSectionContainer">
+           <p class="title">Search:</p>
+
+           <form action="/blog">
+               <input type="text" id="search" name="search" placeholder="swift, php, raspberry pi ... etc">
+           </form>
+
+       </div>
+       <div class="latestContainer articleFooterSectionContainer">
+           <p class="title">Latest:</p><p class="item"><a href='/blog/swift-guard-statements'>Swift: Guard Statements</a></p><p class="item"><a href='/blog/solving-common-string-problems'>Solving Common String Problems</a></p><p class="item"><a href='/blog/array-manipulation-challenges'>Array Manipulation Challenges</a></p><p class="item"><a href='/blog/swift-concurrency'>Swift: Concurrency</a></p><p class="item"><a href='/blog/solving-the-fizzbuzz-problem'>Solving the FizzBuzz problem</a></p><p class="item"><a href='/blog/swift-sequence-types'>Swift: Sequence Types</a></p></div>
+       <div class="categoriesContainer articleFooterSectionContainer">
+           <p class="title">Categories:</p><p class="item"><a href='/blog/?category=Swift'>Swift</a></p><p class="item"><a href='/blog/?category=Coding'>Coding</a></p><p class="item"><a href='/blog/?category=Slice of life'>Slice of life</a></p></div>
+   </div>
+</div>
+
+        
+            <div class="callToAction">
+                <p onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Interested in what I do? get in touch</p>
+            </div>
+        
+            <!--contact-->
+            <div class="wkycontact" id="contact">
+                <p class="sectionTitle">Contacts</p>
+            
+                <div class="container">
+                    <div class="social">
+                     <div class="innerSocial">
+                         <div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/location.png'); -webkit-mask-image: url('/images/icons/location.png');"></div>
+                                 <p><a href="" target=”_blank”>Located in Cairo, Egypt</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/linkedin.png'); -webkit-mask-image: url('/images/icons/linkedin.png');"></div>
+                                 <p><a href="https://linkedin.com/in/wael-youssef-630206108" target=”_blank”>linkedin.com/in/wael-youssef-630206108</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/github.png'); -webkit-mask-image: url('/images/icons/github.png');"></div>
+                                 <p><a href="https://github.com/WaelKYoussef" target=”_blank”>github.com/WaelKYoussef</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/email.png'); -webkit-mask-image: url('/images/icons/email.png');"></div>
+                                 <p><a href="mailto:wael.k.youssef@gmail.com" target=”_blank”>wael.k.youssef@gmail.com</a></p>
+                              </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright © 2024-2025; ALL RIGHTS RESERVED.</p>
+                <p>Designed & developed by Wael Youssef</p>
+            </div>
+        
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+<link rel="stylesheet" href="/css/highlight.min.css"><script src="/js/highlight.min.js"></script><script>hljs.highlightAll();</script>
+</body>
+</html>

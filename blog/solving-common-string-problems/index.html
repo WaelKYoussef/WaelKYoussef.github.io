@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Solving Common String Problems</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/menu.css"><link rel="stylesheet" href="/css/article.css"><link rel="stylesheet" href="/css/contact.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/skills.css"><link rel="stylesheet" href="/css/responsive.css">
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<div class="articleTitleSection cover">
+    <div class="background"></div>
+    <div class="container">
+        <img class="icon" src="/images/avatar_email.png">
+        <p class="title" style="cursor: pointer" onclick="goToBlog()">wael.blog</p>
+        <p class="caption">Where I talk about anything and everything Code!</p>
+    </div>
+</div>
+
+<div class="articleInfoSection">
+    <div class="textContainer">
+        <p style="font-size: 28px; margin: 0;">20, Aug 2024</p>
+        <p class="title">Solving Common String Problems</p>
+        Okay, so sometimes the little things matter a whole lot, it may sound odd but I've found great benefit in taking a break from the big stuff and returning to the bare basics every once in a while. So let's play around a bit with one of these basics: Strings.<br>You’ve probably spent some time wrangling with strings. Strings are fundamental in programming, but they can be a bit tricky to handle at times. Whether you're just starting out or have been coding for a while, mastering string manipulation is essential. Today, we’re going to explore some common string problems and how to solve them using Swift. So grab your coffee you beautiful nerd ...<br><br><img src='cover.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 22px'> 1. <b>Basic String Operations</b></p><br><br>Before the complex stuff, let’s cover some basics. Swift provides a range of powerful tools for string manipulation. Here are a few essential operations:<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>1.1 Concatenation</b></p><br><br>Combining strings is a frequent task. In Swift, you can concatenate strings using the `+` operator or the `append` method.<br><br><b>Example:</b><br><br><pre class="swift"><code>let firstName = "John"
+let lastName = "Doe"
+let fullName = firstName + " " + lastName
+print(fullName) // Output: John Doe</code></pre><br><br>Or, using `append`:<br><br><pre class="swift"><code>var greeting = "Hello"
+greeting.append(", World!")
+print(greeting) // Output: Hello, World!</code></pre><br><br>Or use the returning, non-mutating `appending` variation:<br><br><pre class="swift"><code>let greeting = "Hello"
+print(greeting.appending(", World!")) // Output: Hello, World!</code></pre><br><br><p style='margin-bottom: 0; font-size: 19px'> <b>1.2 Substrings</b></p><br><br>Sometimes, you need to extract a part of a string. Swift makes this easy with substrings.<br><br><b>Example:</b><br><br><pre class="swift"><code>let sentence = "Hello, Swift World!"
+let index = sentence.index(sentence.startIndex, offsetBy: 7)
+let substring = sentence[index...] // "Swift World!"
+print(substring)</code></pre><br><br>Here, `index` gives us the starting point of the substring which is 7 positions from the `startIndex`. The `string[Range]` syntax slices the string from that index to the end. When we say `[index...]` we say Range from the index to the end of the string.<br><br>Can you use the same method to extract "Hello, Swift" instead?<br><br><p style='margin-bottom: 0; font-size: 22px'> 2. <b>Handling Special Characters</b></p><br><br>Special characters like newline (`\n`), tab (`\t`), or Unicode characters often come into play. Let's see how we can handle these.<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>2.1 Escaping Characters</b></p><br><br>In Swift, you need to escape special characters with a backslash. For instance, to include a newline character:<br><br><b>Example:</b><br><br><pre class="swift"><code>let multiLineString = "Hello, World!\nWelcome to Swift programming."
+print(multiLineString)
+// Output:
+// Hello, World!
+// Welcome to Swift programming.</code></pre><br><br><p style='margin-bottom: 0; font-size: 19px'> <b>2.2 Unicode Characters</b></p><br><br>Swift supports Unicode, so you can use special characters from various languages, even emojis.<br><br><b>Example:</b><br><br><pre class="swift"><code>let unicodeString = "Swift is awesome! 🌟"
+print(unicodeString) // Output: Swift is awesome! 🌟</code></pre><br><br><p style='margin-bottom: 0; font-size: 22px'> 3. <b>Searching and Replacing Text</b></p><br><br>Finding and replacing text is a common need. Swift offers methods for searching and replacing substrings.<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>3.1 Searching for a Substring</b></p><br><br>You can use `range(of:)` to search for a substring within a string.<br><br><b>Example:</b><br><br><pre class="swift"><code>let text = "Hello, Swift!"
+if let range = text.range(of: "Swift") {
+    let from = text.distance(from: text.startIndex, to: range.lowerBound)
+    let to = text.distance(from: text.startIndex, to: range.upperBound) - 1
+    print("Found 'Swift' at range From: \(from) To: \(to)")
+} else {
+    print("'Swift' not found")
+}</code></pre><br><br>Notice the two lines we used to calculate the from/to positions. Swift is somewhat unique to other languages when it comes to calculating string ranges and string indices. Make sure to set some time aside to getting familiar with those.<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>3.2 Replacing Substrings</b></p><br><br>To replace occurrences of a substring, use the `replacingOccurrences(of:with:)` method.<br><br><b>Example:</b><br><br><pre class="swift"><code>var message = "Hello, World!"
+message = message.replacingOccurrences(of: "World", with: "Swift")
+print(message) // Output: Hello, Swift!</code></pre><br><br><p style='margin-bottom: 0; font-size: 22px'> 4. <b>String Formatting</b></p><br><br>Formatting strings is crucial for displaying information correctly. It's actually rare where you find yourself using strings without some kind of formatting.<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>4.1 Interpolation</b></p><br><br>Swift provides string interpolation to embed variables into strings.<br><br><b>Example:</b><br><br><pre class="swift"><code>let name = "Alice"
+let age = 30
+let formattedString = "Name: \(name), Age: \(age)"
+print(formattedString) // Output: Name: Alice, Age: 30</code></pre><br><br>Handy, no? You can actually interpolate any object this same exact way, all you need to do is override the implementation of `description` for the object.<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>4.2 Custom Formatting</b></p><br><br>For more complex formatting, you can use `String(format:)`.<br><br><b>Example:</b><br><br><pre class="swift"><code>let temperature = 23.456
+let formattedTemperature = String(format: "Temperature: %.2f°C", temperature)
+print(formattedTemperature) // Output: Temperature: 23.46°C</code></pre><br><br>This is the classic way of formatting strings, most other languages support this same style so make sure to be familiar with it if you plan on trying out other languages in the future.<br><br><img src='1.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 22px'> 5. <b>String case manipulation</b></p><br><br><p style='margin-bottom: 0; font-size: 19px'> <b>5.1 Changing to Uppercase/Lowercase</b></p><br><br>You can easily convert strings to uppercase or lowercase.<br><br><b>Example:</b><br><br><pre class="swift"><code>let originalString = "Swift Programming"
+let uppercaseString = originalString.uppercased()
+let lowercaseString = originalString.lowercased()
+print(uppercaseString) // Output: SWIFT PROGRAMMING
+print(lowercaseString) // Output: swift programming</code></pre><br><br><p style='margin-bottom: 0; font-size: 19px'> <b>5.2 Capitalizing Words</b></p><br><br>To capitalize the first letter of each word, use `capitalized`.<br><br><b>Example:</b><br><br><pre class="swift"><code>let title = "swift programming for beginners"
+let capitalizedTitle = title.capitalized
+print(capitalizedTitle) // Output: Swift Programming For Beginners</code></pre><br><br>These operations are usually useful when converting dictionary keys to display titles, or for example when you are matching strings together, you usually want to lowercase-compare both strings first so that "UppER" = "uPPer" and so on.<br><br><p style='margin-bottom: 0; font-size: 22px'> 6. <b>Trimming and Padding Strings</b></p><br><br>Sometimes you need to clean up or adjust the length of strings.<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>6.1 Trimming Whitespace</b></p><br><br>Use `trimmingCharacters(in:)` to remove leading and trailing whitespace or other characters.<br><br><b>Example:</b><br><br><pre class="swift"><code>let paddedString = "   Hello, Swift!   "
+let trimmedString = paddedString.trimmingCharacters(in: .whitespaces)
+print(trimmedString) // Output: Hello, Swift!</code></pre><br><br>If you deal with API responses, usually this API deals with a DB in the end which may have some white space padding to some of its entries! More common than I'd like to admit but true non-the less. So trimming strings in this way may be an insurance against any weird spacing or padding appearing in your UI and you're non the wiser that it's an extra space from the backend.<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>6.2 Padding Strings</b></p><br><br>To pad a string to a certain length, you can use `padding(toLength:withPad:startingAt:)`.<br><br><b>Example:</b><br><br><pre class="swift"><code>let original = "Swift"
+let padded = original.padding(toLength: 10, withPad: " ", startingAt: 0)
+print(padded) // Output: "Swift     "</code></pre><br><br>Sometimes your backend requires that values are of an exact length. Or maybe you wrote a particular function that relies on the input always being 10 characters. Admittedly, I didn't come across many <i>real world</i> use-cases for this.<br><br><p style='margin-bottom: 0; font-size: 22px'> 7. <b>Splitting and Joining Strings</b></p><br><br><p style='margin-bottom: 0; font-size: 19px'> <b>7.1 Splitting Strings</b></p><br><br>The `components(separatedBy:)` method divides a string into an array of substrings.<br><br><b>Example:</b><br><br><pre class="swift"><code>let csv = "apple,banana,cherry"
+let fruits = csv.components(separatedBy: ",")
+print(fruits) // Output: ["apple", "banana", "cherry"]</code></pre><br><br>Many mahy times, you may come across API responses that give you an array of items like this that you need to split apart yourself, however, make sure that the special separating character does not appear in any of the items themselves; a common pitfall of using spaces as a separator. e.g. "Apple Orange Star Fruit" ("Star Fruit" should be one item but splitting by " " will separate them incorrectly).<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>7.2 Joining Strings</b></p><br><br>To join an array of strings back into a single string, use `joined(separator:)`.<br><br><b>Example:</b><br><br><pre class="swift"><code>let fruitsArray = ["apple", "banana", "cherry"]
+let csvString = fruitsArray.joined(separator: ",")
+print(csvString) // Output: apple,banana,cherry</code></pre><br><br>Same as with separation, joining may also be used with some APIs or if you are constructing CSV data. Remember, just like in separation, to consider your separators carefully before joining.<br><br><p style='margin-bottom: 0; font-size: 22px'> <b>8 Regular Expressions</b></p><br><br>Regular expressions can be used for pattern matching.<br><br><b>Example:</b><br><br><pre class="swift"><code>import Foundation
+
+let regex = try! NSRegularExpression(pattern: "\\d+")
+let text = "The year is 2024"
+let matches = regex.matches(in: text, range: NSRange(location: 0, length: text.utf16.count))
+
+for match in matches {
+    let range = match.range
+    let matchString = (text as NSString).substring(with: range)
+    print("Found number: \(matchString)")
+}
+// Output: Found number: 2024</code></pre><br><br>Regular expressions are a whole world of its own, you'll even find yourself using reqex while doing a simple search in your IDE. Make sure to get familiar with regex as much as you can as it's indispensable to your career as a developer.<br><br><hr><br><br> Keep experimenting with these techniques and soon you'll find string manipulation in Swift to be a breeze. Make sure to <i>feel good</i> by trying tem out, seeing them work and then forgetting about them. Remember, revisiting the basics always keeps your mind and memory sharp, no matter how rudimentary it may be.<br>    </div>
+</div>
+
+
+
+        <div class="articleFooterSection">
+   <div class="container">
+       <div class="searchContainer articleFooterSectionContainer">
+           <p class="title">Search:</p>
+
+           <form action="/blog">
+               <input type="text" id="search" name="search" placeholder="swift, php, raspberry pi ... etc">
+           </form>
+
+       </div>
+       <div class="latestContainer articleFooterSectionContainer">
+           <p class="title">Latest:</p><p class="item"><a href='/blog/swift-guard-statements'>Swift: Guard Statements</a></p><p class="item"><a href='/blog/solving-common-string-problems'>Solving Common String Problems</a></p><p class="item"><a href='/blog/array-manipulation-challenges'>Array Manipulation Challenges</a></p><p class="item"><a href='/blog/swift-concurrency'>Swift: Concurrency</a></p><p class="item"><a href='/blog/solving-the-fizzbuzz-problem'>Solving the FizzBuzz problem</a></p><p class="item"><a href='/blog/swift-sequence-types'>Swift: Sequence Types</a></p></div>
+       <div class="categoriesContainer articleFooterSectionContainer">
+           <p class="title">Categories:</p><p class="item"><a href='/blog/?category=Swift'>Swift</a></p><p class="item"><a href='/blog/?category=Coding'>Coding</a></p><p class="item"><a href='/blog/?category=Slice of life'>Slice of life</a></p></div>
+   </div>
+</div>
+
+        
+            <div class="callToAction">
+                <p onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Interested in what I do? get in touch</p>
+            </div>
+        
+            <!--contact-->
+            <div class="wkycontact" id="contact">
+                <p class="sectionTitle">Contacts</p>
+            
+                <div class="container">
+                    <div class="social">
+                     <div class="innerSocial">
+                         <div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/location.png'); -webkit-mask-image: url('/images/icons/location.png');"></div>
+                                 <p><a href="" target=”_blank”>Located in Cairo, Egypt</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/linkedin.png'); -webkit-mask-image: url('/images/icons/linkedin.png');"></div>
+                                 <p><a href="https://linkedin.com/in/wael-youssef-630206108" target=”_blank”>linkedin.com/in/wael-youssef-630206108</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/github.png'); -webkit-mask-image: url('/images/icons/github.png');"></div>
+                                 <p><a href="https://github.com/WaelKYoussef" target=”_blank”>github.com/WaelKYoussef</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/email.png'); -webkit-mask-image: url('/images/icons/email.png');"></div>
+                                 <p><a href="mailto:wael.k.youssef@gmail.com" target=”_blank”>wael.k.youssef@gmail.com</a></p>
+                              </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright © 2024-2025; ALL RIGHTS RESERVED.</p>
+                <p>Designed & developed by Wael Youssef</p>
+            </div>
+        
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+<link rel="stylesheet" href="/css/highlight.min.css"><script src="/js/highlight.min.js"></script><script>hljs.highlightAll();</script>
+</body>
+</html>

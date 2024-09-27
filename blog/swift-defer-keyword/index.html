@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Swift: Defer Keyword</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/menu.css"><link rel="stylesheet" href="/css/article.css"><link rel="stylesheet" href="/css/contact.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/skills.css"><link rel="stylesheet" href="/css/responsive.css">
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<div class="articleTitleSection cover">
+    <div class="background"></div>
+    <div class="container">
+        <img class="icon" src="/images/avatar_email.png">
+        <p class="title" style="cursor: pointer" onclick="goToBlog()">wael.blog</p>
+        <p class="caption">Where I talk about anything and everything Code!</p>
+    </div>
+</div>
+
+<div class="articleInfoSection">
+    <div class="textContainer">
+        <p style="font-size: 28px; margin: 0;">01, Dec 2023</p>
+        <p class="title">Swift: Defer Keyword</p>
+        One powerful tool that can significantly contribute to clean and sound memory management and resource cleanup in Swift is the 'defer' keyword. Let's cover some applications of 'defer' so we can streamline resource management and ensure critical cleanup tasks are executed consistently.<br><br><img src='cover.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 22px'>Understanding the 'defer' Keyword</p><br>At its core, the 'defer' keyword enables us to delay the execution of a code block until the current scope is exited, regardless of the exit path. This mechanism proves particularly valuable in scenarios where we need to ensure specific cleanup or finalization tasks are executed, irrespective of exceptions, early returns, or other branching conditions.<br><br><p style='margin-bottom: 0; font-size: 22px'>Resource Cleanup:</p><br>A prominent use case for 'defer' lies in resource cleanup. Consider a situation where we open a file, perform various operations, and then need to close the file afterward. By utilizing 'defer', we can guarantee the file's closure. For example:<br><br><pre class="swift"><code>func processFile() throws {
+    let file = openFile()
+    defer {
+        closeFile(file)
+    }
+    // Code to process the file
+}</code></pre><br><br>In this example, the 'openFile' function is invoked to obtain a file handle, and the 'closeFile' function is enclosed within 'defer', ensuring it will always be called, even if an exception is thrown or an early return is encountered.<br><br><p style='margin-bottom: 0; font-size: 22px'>Resource Cleanup; Release and Restore:</p><br>The 'defer' keyword also shines when it comes to releasing and restoring resources. Consider a scenario where we fetch data, perform operations, and then ensure the release of acquired resources:<br><br><pre class="swift"><code>import Foundation
+
+enum CustomError: Error {
+    case generic
+}
+
+class APIHandler {
+    static let shared = APIHandler()
+
+    func fetchData() throws -> String {
+        throw CustomError.generic
+    }
+
+    func cleanup() {
+        // Clean up resources
+        print("Squeaky clean")
+    }
+}
+
+
+func loadData() throws {
+    let apiHandler = APIHandler.shared
+    defer {
+        apiHandler.cleanup()
+    }
+    let data = try apiHandler.fetchData()
+    print("Successful response ?")
+}
+
+try? loadData()</code></pre><br><br>In this snippet, 'defer' guarantees that the 'cleanup' method is invoked, enabling the release of any resources acquired during the 'fetchData' operation. Regardless of how the function exits, the cleanup logic will always execute.<br><br>Notice how even though "Successful response ?" was never printed, "Squeaky clean" still prints normally! Try replacing the line <i>throw CustomError.generic</i> with *return "Some response"*, what do you expect to happen?<br><br><img src='1.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 22px'>Lock Management: Concurrency Control:</p><br>To maintain thread safety and prevent race conditions in concurrent code, acquiring and releasing locks is crucial. However, it is equally important to release acquired locks, even in exceptional situations. Observe the following example illustrating the use of 'defer' for lock management:<br><br><pre class="swift"><code>func performTask() {
+    let myLock = NSLock()
+    myLock.lock()
+    defer {
+        myLock.unlock()
+    }
+    // Code to perform the task
+}</code></pre><br><br>In this snippet, the 'lock' is acquired using 'myLock.lock()' and released using 'defer' with 'myLock.unlock()'. This guarantees the lock will always be released, even if an exception is thrown within the task.<br><br><p style='margin-bottom: 0; font-size: 22px'>Multiple Uses:</p><br>The 'defer' keyword offers remarkable flexibility, allowing us to handle complex scenarios efficiently. Consider the following example:<br><br><pre class="swift"><code>func complexOperation() {
+    // Set up resources
+    defer {
+        // Clean up resources
+    }
+    // Perform subtask A
+    defer {
+        // Clean up subtask A
+    }
+    // Perform subtask B
+    // ...
+}</code></pre><br><br>In this case, 'defer' is employed at different points to ensure proper cleanup. However it's important to know of the order of execution. The rule is, 'defer' statements in the same scope always execute in reverse order of declaration. In this example, 'Clean up subtask A' will execute then 'Clean up resources'.<br><br><p style='margin-bottom: 0; font-size: 22px'>Nested Uses:</p><br>The 'defer' statements can also be nested within each other, simply treat each 'defer' as its own scope and apply the same 'last in first out rule'. Consider the following example:<br><br><pre class="swift"><code>func complexOperation() {
+    // Set up resources
+    defer {
+        // Clean up resources
+
+        defer {
+            // Clean up subtask A
+        }
+
+        defer {
+            // Clean up subtask B
+        }
+    }
+
+    // Perform subtask A
+    // Perform subtask B
+}</code></pre><br><br>In this case, the main 'defer' is executed then the inner 'defers' in reverse order. so the execution order will be: 'Clean up resources', 'Clean up subtask B' then 'Clean up subtask A'.<br><br>In conclusion, The 'defer' keyword in Swift empowers iOS engineers to wield greater control over resource management. However, it is crucial to exercise caution and employ 'defer' judiciously to maintain code clarity and avoid potential pitfalls while also streamlining resource management and enhance the reliability of your applications.    </div>
+</div>
+
+
+
+        <div class="articleFooterSection">
+   <div class="container">
+       <div class="searchContainer articleFooterSectionContainer">
+           <p class="title">Search:</p>
+
+           <form action="/blog">
+               <input type="text" id="search" name="search" placeholder="swift, php, raspberry pi ... etc">
+           </form>
+
+       </div>
+       <div class="latestContainer articleFooterSectionContainer">
+           <p class="title">Latest:</p><p class="item"><a href='/blog/swift-guard-statements'>Swift: Guard Statements</a></p><p class="item"><a href='/blog/solving-common-string-problems'>Solving Common String Problems</a></p><p class="item"><a href='/blog/array-manipulation-challenges'>Array Manipulation Challenges</a></p><p class="item"><a href='/blog/swift-concurrency'>Swift: Concurrency</a></p><p class="item"><a href='/blog/solving-the-fizzbuzz-problem'>Solving the FizzBuzz problem</a></p><p class="item"><a href='/blog/swift-sequence-types'>Swift: Sequence Types</a></p></div>
+       <div class="categoriesContainer articleFooterSectionContainer">
+           <p class="title">Categories:</p><p class="item"><a href='/blog/?category=Swift'>Swift</a></p><p class="item"><a href='/blog/?category=Coding'>Coding</a></p><p class="item"><a href='/blog/?category=Slice of life'>Slice of life</a></p></div>
+   </div>
+</div>
+
+        
+            <div class="callToAction">
+                <p onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Interested in what I do? get in touch</p>
+            </div>
+        
+            <!--contact-->
+            <div class="wkycontact" id="contact">
+                <p class="sectionTitle">Contacts</p>
+            
+                <div class="container">
+                    <div class="social">
+                     <div class="innerSocial">
+                         <div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/location.png'); -webkit-mask-image: url('/images/icons/location.png');"></div>
+                                 <p><a href="" target=”_blank”>Located in Cairo, Egypt</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/linkedin.png'); -webkit-mask-image: url('/images/icons/linkedin.png');"></div>
+                                 <p><a href="https://linkedin.com/in/wael-youssef-630206108" target=”_blank”>linkedin.com/in/wael-youssef-630206108</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/github.png'); -webkit-mask-image: url('/images/icons/github.png');"></div>
+                                 <p><a href="https://github.com/WaelKYoussef" target=”_blank”>github.com/WaelKYoussef</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/email.png'); -webkit-mask-image: url('/images/icons/email.png');"></div>
+                                 <p><a href="mailto:wael.k.youssef@gmail.com" target=”_blank”>wael.k.youssef@gmail.com</a></p>
+                              </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright © 2024-2025; ALL RIGHTS RESERVED.</p>
+                <p>Designed & developed by Wael Youssef</p>
+            </div>
+        
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+<link rel="stylesheet" href="/css/highlight.min.css"><script src="/js/highlight.min.js"></script><script>hljs.highlightAll();</script>
+</body>
+</html>

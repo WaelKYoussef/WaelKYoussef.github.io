@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Swift: Collection Types</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/menu.css"><link rel="stylesheet" href="/css/article.css"><link rel="stylesheet" href="/css/contact.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/skills.css"><link rel="stylesheet" href="/css/responsive.css">
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<div class="articleTitleSection cover">
+    <div class="background"></div>
+    <div class="container">
+        <img class="icon" src="/images/avatar_email.png">
+        <p class="title" style="cursor: pointer" onclick="goToBlog()">wael.blog</p>
+        <p class="caption">Where I talk about anything and everything Code!</p>
+    </div>
+</div>
+
+<div class="articleInfoSection">
+    <div class="textContainer">
+        <p style="font-size: 28px; margin: 0;">14, May 2024</p>
+        <p class="title">Swift: Collection Types</p>
+        Collections are fundamental data structures in Swift that allow you to store and manage groups of values. Understanding and effectively using collection types is essential for structuring you data, and you'll come to know that mastering structuring your data is key to many amazing feats. So let's look at the various collection types available in Swift, their key features, and best practices for using them.<br><br><img src='cover.jpg'></img><br><br><b>Arrays</b><br><br>Arrays are ordered collections of values of the same type, known as lists in some other languages. They're ideal for storing sequences of elements, such as a list of names or a series of numbers.<br><br><pre class="swift"><code>let names = ["Alice", "Bob", "Charlie"]
+let numbers = [1, 2, 3, 4, 5]</code></pre><br><br><b>Key features:</b><br><br>&#8226; <b>Ordered:</b> Elements in an array are stored in a specific order.<br>&#8226; <b>Mutable or immutable:</b> You can create mutable arrays that can be modified or immutable arrays that cannot be changed.<br>&#8226; <b>Indexing:</b> Access elements in an array using their index (starting from 0).<br>&#8226; <b>Fast access:</b> You can access any element of an array using its index in constant time.<br><br><b>Dictionaries</b><br><br>Dictionaries, also known as Maps or HashMaps in other languages, are unordered collections of key-value pairs. They're useful for storing data that needs to be accessed by a key, such as a mapping of names to ages or a configuration file.<br><br><pre class="swift"><code>let person = ["name": "Alice", "age": 30]
+let cities = ["Egypt": "Cairo", "USA": "New York"]</code></pre><br><br>Keys can actually be anything, even instances. The only requirement for a class to be a key is to conform to the `Hashable` protocol:<br><br><pre class="swift"><code>class MyClass: Hashable {
+    static func == (lhs: MyClass, rhs: MyClass) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    let id: String
+
+    init(id: String) {
+        self.id = id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
+let dict: [MyClass:String] = [
+    MyClass(id: "111"): "One",
+    MyClass(id: "222"): "Two",
+    MyClass(id: "333"): "Three",
+]
+
+print(dict[MyClass(id: "222"), default: "Not found"]) // Prints "Two"</code></pre><br><br><b>Key features:</b><br><br>&#8226; <b>Unordered:</b> Elements in a dictionary are not stored in a specific order.<br>&#8226; <b>Key-value pairs:</b> Each element in a dictionary consists of a key and a value.<br>&#8226; <b>Unique keys:</b> Keys in a dictionary must be unique.<br>&#8226; <b>Flexible keys:</b> Keys can be even class instances.<br><br><img src='1.jpg'></img><br><br><b>Sets</b><br><br>Sets are unordered collections of unique values of the same type. They're useful for storing a list of distinct elements, such as a set of unique numbers or a set of allowed characters.<br><br><pre class="swift"><code>let vowels = Set(["a", "e", "i", "o", "u"])
+let numbers = Set([1, 2, 3, 3, 4])</code></pre><br><br>Same as with dictionaries, all a set requires for an object to be in a set is to conform to `Hashable`:<br><br><pre class="swift"><code>class MyClass: Hashable {
+    static func == (lhs: MyClass, rhs: MyClass) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    let id: String
+
+    init(id: String) {
+        self.id = id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
+let set: Set<MyClass> = Set([
+    MyClass(id: "111"),
+    MyClass(id: "111"),
+    MyClass(id: "111"),
+    MyClass(id: "222"),
+    MyClass(id: "222"),
+    MyClass(id: "333"),
+    MyClass(id: "333"),
+    MyClass(id: "333"),
+    MyClass(id: "333"),
+    MyClass(id: "333"),
+    MyClass(id: "333")
+])
+
+print(set.count) // Prints 3</code></pre><br><br><b>Key features:</b><br><br>&#8226; <b>Unordered:</b> Elements in a set are not stored in a specific order.<br>&#8226; <b>Unique values:</b> Sets cannot contain duplicate values.<br>&#8226; <b>Membership testing:</b> Efficiently check if an element is contained in a set -constant time-.<br><br><b>Choosing the Right Collection Type</b><br><br>The choice of collection type depends on the specific requirements of your application. Here are some guidelines:<br><br>&#8226; <b>Arrays:</b> Use arrays for ordered sequences of elements like a list of items.<br>&#8226; <b>Dictionaries:</b> Use dictionaries for key-value pairs where you need to access elements by a key like mapping class instances to server identifiers.<br>&#8226; <b>Sets:</b> Use sets for unordered collections of unique values and existence-checking.<br><br><hr><br><br><b>Additional collections features</b><br><br>&#8226; <b>Subscripting:</b> Access elements in a collection using subscripts i.e. the *object[]<i> syntax.<br></i> <b>Iteration:</b> Iterate over elements in a collection using loops.<br>&#8226; <b>Mutable and immutable variants:</b> Create mutable or static immutable collections.<br>&#8226; <b>Performance optimizations:</b> Swift's collection types are optimized for performance base on the use case.<br><br><b>Best Practices</b><br><br>&#8226; <b>Choose the appropriate collection type:</b> Select the collection type that best suits your needs. Just because one type <i>can</i> be used doesn't mean that it's the <i>best</i> choice.<br>&#8226; <b>Use clear and descriptive names:</b> Give your collections meaningful names to improve readability, true for everything else.<br>&#8226; <b>Avoid unnecessary copying:</b> Minimize copying of collections to improve performance.<br><br><hr><br><br>Collection types are essential building blocks in Swift programming. By understanding the different collection types and their features, you can unlock a superpower of performance and optimization. Remember to choose the right collection type for your specific use case and follow best practices to ensure your code is maintainable and performant.<br>    </div>
+</div>
+
+
+
+        <div class="articleFooterSection">
+   <div class="container">
+       <div class="searchContainer articleFooterSectionContainer">
+           <p class="title">Search:</p>
+
+           <form action="/blog">
+               <input type="text" id="search" name="search" placeholder="swift, php, raspberry pi ... etc">
+           </form>
+
+       </div>
+       <div class="latestContainer articleFooterSectionContainer">
+           <p class="title">Latest:</p><p class="item"><a href='/blog/swift-guard-statements'>Swift: Guard Statements</a></p><p class="item"><a href='/blog/solving-common-string-problems'>Solving Common String Problems</a></p><p class="item"><a href='/blog/array-manipulation-challenges'>Array Manipulation Challenges</a></p><p class="item"><a href='/blog/swift-concurrency'>Swift: Concurrency</a></p><p class="item"><a href='/blog/solving-the-fizzbuzz-problem'>Solving the FizzBuzz problem</a></p><p class="item"><a href='/blog/swift-sequence-types'>Swift: Sequence Types</a></p></div>
+       <div class="categoriesContainer articleFooterSectionContainer">
+           <p class="title">Categories:</p><p class="item"><a href='/blog/?category=Swift'>Swift</a></p><p class="item"><a href='/blog/?category=Coding'>Coding</a></p><p class="item"><a href='/blog/?category=Slice of life'>Slice of life</a></p></div>
+   </div>
+</div>
+
+        
+            <div class="callToAction">
+                <p onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Interested in what I do? get in touch</p>
+            </div>
+        
+            <!--contact-->
+            <div class="wkycontact" id="contact">
+                <p class="sectionTitle">Contacts</p>
+            
+                <div class="container">
+                    <div class="social">
+                     <div class="innerSocial">
+                         <div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/location.png'); -webkit-mask-image: url('/images/icons/location.png');"></div>
+                                 <p><a href="" target=”_blank”>Located in Cairo, Egypt</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/linkedin.png'); -webkit-mask-image: url('/images/icons/linkedin.png');"></div>
+                                 <p><a href="https://linkedin.com/in/wael-youssef-630206108" target=”_blank”>linkedin.com/in/wael-youssef-630206108</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/github.png'); -webkit-mask-image: url('/images/icons/github.png');"></div>
+                                 <p><a href="https://github.com/WaelKYoussef" target=”_blank”>github.com/WaelKYoussef</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/email.png'); -webkit-mask-image: url('/images/icons/email.png');"></div>
+                                 <p><a href="mailto:wael.k.youssef@gmail.com" target=”_blank”>wael.k.youssef@gmail.com</a></p>
+                              </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright © 2024-2025; ALL RIGHTS RESERVED.</p>
+                <p>Designed & developed by Wael Youssef</p>
+            </div>
+        
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+<link rel="stylesheet" href="/css/highlight.min.css"><script src="/js/highlight.min.js"></script><script>hljs.highlightAll();</script>
+</body>
+</html>

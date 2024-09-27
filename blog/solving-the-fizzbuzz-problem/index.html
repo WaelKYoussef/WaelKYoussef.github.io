@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Solving the FizzBuzz problem</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/menu.css"><link rel="stylesheet" href="/css/article.css"><link rel="stylesheet" href="/css/contact.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/skills.css"><link rel="stylesheet" href="/css/responsive.css">
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<div class="articleTitleSection cover">
+    <div class="background"></div>
+    <div class="container">
+        <img class="icon" src="/images/avatar_email.png">
+        <p class="title" style="cursor: pointer" onclick="goToBlog()">wael.blog</p>
+        <p class="caption">Where I talk about anything and everything Code!</p>
+    </div>
+</div>
+
+<div class="articleInfoSection">
+    <div class="textContainer">
+        <p style="font-size: 28px; margin: 0;">20, Jul 2024</p>
+        <p class="title">Solving the FizzBuzz problem</p>
+        The first time I came across the FizzBuzz problem was through a Youtube video by Tom Scott. I first thought *"Well that's easy!"*; alas, I was the naive one. Whether you're a beginner or an experienced coder, this exercise is a great way to hone your programming skills and put you in the interviewer seat for a bit. We'll dive into different solutions, ramping up the complexity and adding a sprinkle of Swift-specific elegance.<br><br><img src='cover.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 19px'> What is the FizzBuzz problem?</p><br><br>Loop through *"n"<i>, if the </i>i<i> is divisible by 3: print </i>"Fizz"<i>. If </i>i<i> is divisible by 5: print </i>"Buzz"<i>. If </i>i&#8226; is divisible by both 3 & 5: print *"FizzBuzz"<i>. If none of the above: print the value of </i>i&#8226; <br>Simple, right, almost .. too simple ...<br><br><p style='margin-bottom: 0; font-size: 19px'> The basic FizzBuzz solution</p><br><br>Let's start with the simplest approach. We'll use a loop to iterate through the numbers from 1 to 100 and apply our FizzBuzz logic. Here's how it looks:<br><br><pre class="swift"><code>for i in 1...100 {
+    if i % 3 == 0 && i % 5 == 0 {
+        print("FizzBuzz")
+    } else if i % 3 == 0 {
+        print("Fizz")
+    } else if i % 5 == 0 {
+        print("Buzz")
+    } else {
+        print(i)
+    }
+}</code></pre><br><br>This code is straightforward. It checks if a number is divisible by both 3 and 5 first, then handles divisibility by 3 or 5 separately. This works, but you may have noticed that it uses the modulus operation % four different times per iteration, can we do better?<br><br>Let’s explore FizzBuzz with Swift specific twist:<br><br>*<i>Using a </i>`switch`<i> statement:</i>&#8226; <br><pre class="swift"><code>for i in 1...100 {
+    switch (n % 3 == 0, n % 5 == 0) {
+    case (true, true):
+        print("FizzBuzz")
+    case (true, false):
+        print("Fizz")
+    case (false, true):
+        print("Buzz")
+    default:
+        print(i)
+    }
+}</code></pre><br><br>In this version the `switch` statement Simplifies the conditional logic, the code more readable, and we can see that the modulus operand is used only twice per iteration. Notice that the same can be achieved with simple two boolean flags and `if` statements. But can we do even better?<br><br><img src='1.jpg'></img><br><br><b>Using counters:</b><br><br><pre class="swift"><code>var three = 1
+var five = 1
+
+for i in 1...100 {
+    var out = ""
+
+    if three == 3 {
+      out = "Fizz"
+      three = 1
+    } else {
+      three += 1
+    }
+
+    if five == 5 {
+      out += "Buzz"
+      five = 1
+    } else {
+      five += 1
+    }
+
+    if out.isEmpty {
+        out = "\(i)"
+    }
+
+    print(out)
+}</code></pre><br><br>Here, no modulus operations are used, everything is counted step by step, once we counted "3" steps; add "Fizz" to the output. Once we count "5" steps, concatenate "Buzz" to the output. If the output string is empty, just assign the string value of 'i' to the output.<br><br>I personally think this is one of the best solutions to come up with during an interview, but make no mistake, there are even crazier solutions out there. I remember once seeing a one line python solution somewhere on the web!<br><br>Always keep this exercise at the back of your mind to sharpen your coding skills. I really encourage you to explore other solutions with different languages and contexts, you'd be surprised how many are out there. So next time you encounter FizzBuzz, whether in an interview or just for fun, be ready with a variety of solutions. Keep experimenting, keep coding, and most importantly; Enjoy it!    </div>
+</div>
+
+
+
+        <div class="articleFooterSection">
+   <div class="container">
+       <div class="searchContainer articleFooterSectionContainer">
+           <p class="title">Search:</p>
+
+           <form action="/blog">
+               <input type="text" id="search" name="search" placeholder="swift, php, raspberry pi ... etc">
+           </form>
+
+       </div>
+       <div class="latestContainer articleFooterSectionContainer">
+           <p class="title">Latest:</p><p class="item"><a href='/blog/swift-guard-statements'>Swift: Guard Statements</a></p><p class="item"><a href='/blog/solving-common-string-problems'>Solving Common String Problems</a></p><p class="item"><a href='/blog/array-manipulation-challenges'>Array Manipulation Challenges</a></p><p class="item"><a href='/blog/swift-concurrency'>Swift: Concurrency</a></p><p class="item"><a href='/blog/solving-the-fizzbuzz-problem'>Solving the FizzBuzz problem</a></p><p class="item"><a href='/blog/swift-sequence-types'>Swift: Sequence Types</a></p></div>
+       <div class="categoriesContainer articleFooterSectionContainer">
+           <p class="title">Categories:</p><p class="item"><a href='/blog/?category=Swift'>Swift</a></p><p class="item"><a href='/blog/?category=Coding'>Coding</a></p><p class="item"><a href='/blog/?category=Slice of life'>Slice of life</a></p></div>
+   </div>
+</div>
+
+        
+            <div class="callToAction">
+                <p onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Interested in what I do? get in touch</p>
+            </div>
+        
+            <!--contact-->
+            <div class="wkycontact" id="contact">
+                <p class="sectionTitle">Contacts</p>
+            
+                <div class="container">
+                    <div class="social">
+                     <div class="innerSocial">
+                         <div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/location.png'); -webkit-mask-image: url('/images/icons/location.png');"></div>
+                                 <p><a href="" target=”_blank”>Located in Cairo, Egypt</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/linkedin.png'); -webkit-mask-image: url('/images/icons/linkedin.png');"></div>
+                                 <p><a href="https://linkedin.com/in/wael-youssef-630206108" target=”_blank”>linkedin.com/in/wael-youssef-630206108</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/github.png'); -webkit-mask-image: url('/images/icons/github.png');"></div>
+                                 <p><a href="https://github.com/WaelKYoussef" target=”_blank”>github.com/WaelKYoussef</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/email.png'); -webkit-mask-image: url('/images/icons/email.png');"></div>
+                                 <p><a href="mailto:wael.k.youssef@gmail.com" target=”_blank”>wael.k.youssef@gmail.com</a></p>
+                              </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright © 2024-2025; ALL RIGHTS RESERVED.</p>
+                <p>Designed & developed by Wael Youssef</p>
+            </div>
+        
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+<link rel="stylesheet" href="/css/highlight.min.css"><script src="/js/highlight.min.js"></script><script>hljs.highlightAll();</script>
+</body>
+</html>

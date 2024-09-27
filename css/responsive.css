@@ -12,6 +12,12 @@
         grid-template-columns: 1fr 1fr 1fr;
     }
 
+    /*articles*/
+    .articles .container {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto;
+    }
+
     /*projects*/
     .projects .container {
         grid-template-columns: 50% 50%;
@@ -91,6 +97,12 @@
     /*    grid-column-start: auto;*/
     /*}*/
 
+
+    /*articles*/
+    .articles .container {
+        grid-template-columns: 33.3% 33.3% 33.3%;
+        grid-template-rows: auto;
+    }
 
     /*projects*/
     .projects .container {

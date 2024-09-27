@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Swift: Optional Chaining</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/menu.css"><link rel="stylesheet" href="/css/article.css"><link rel="stylesheet" href="/css/contact.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/skills.css"><link rel="stylesheet" href="/css/responsive.css">
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<div class="articleTitleSection cover">
+    <div class="background"></div>
+    <div class="container">
+        <img class="icon" src="/images/avatar_email.png">
+        <p class="title" style="cursor: pointer" onclick="goToBlog()">wael.blog</p>
+        <p class="caption">Where I talk about anything and everything Code!</p>
+    </div>
+</div>
+
+<div class="articleInfoSection">
+    <div class="textContainer">
+        <p style="font-size: 28px; margin: 0;">20, Dec 2023</p>
+        <p class="title">Swift: Optional Chaining</p>
+        Optional Chaining is a powerful feature in Swift that allows you to safely access properties or call methods on optional values. It's a way to avoid the dreaded `nil` crashes that may have plagued your code in the past with Objective-C.<br><br><img src='cover.jpg'></img><br><br><b>Understanding Optionals</b><br><br>Before anything, let's recap what an optional is in Swift. An optional is a type that can hold either a value of the specified type or `nil`. This is useful when dealing with values that might not always be present, like data from a network request or user input.<br><br><pre class="swift"><code>var name: String? = "John"
+var age: Int? = nil</code></pre><br><br><b>Introducing Optional Chaining</b><br><br>Optional Chaining is a concise way to access properties or call methods on optional values. If any of the optional values in the chain is `nil`, the chain is terminated, and the result is also `nil`.<br><br><pre class="swift"><code>struct Address {
+    let city: String?
+}
+
+struct Person {
+    let address: Address?
+}
+
+let person: Person? = nil
+let city = person?.address?.city</code></pre><br><br>In the above example, if `person` or `address` is `nil`, the chain will be terminated, and `city` will be `nil` as well. In this case, the Swift compiler infers the type of `city` to be `String?`.<br><br><b>Unwrapping Optionals Safely</b><br><br>While Optional Chaining is great for avoiding crashes, you'll often need to unwrap the optional value to work with its contents. Here are some common techniques:<br><br><p style='margin-bottom: 0; font-size: 19px'> Forced Unwrapping</p><br><b>Caution:</b> Use forced unwrapping only when you're absolutely certain that the optional value will never be `nil`. Otherwise, it can lead to runtime errors. In fact, many teams' lint rules contain a definit "No force unwraps". This means that it has been determined to be more dangerous to have a forced unwrap in your code than any extra work you may need to avoid it.<br><br><pre class="swift"><code>let person: Person? = Person(name: "Alice")
+let address = person!.address // Force unwrap</code></pre><br><br><p style='margin-bottom: 0; font-size: 19px'> Optional Binding</p><br>Optional binding is a safer way to unwrap optionals. It checks if the optional has a value and binds it to a temporary constant or variable if it does.<br><br><pre class="swift"><code>let person: Person? = Person(name: "Alice")
+if let address = person?.address {
+    print(address)
+} else {
+    print("Address is nil")
+}</code></pre><br><br>This is a great way to use optional chaining as well to ensure there is always proper handling in-case of nils. This same approach can also be used with guard statements:<br><pre class="swift"><code>func printAddress(person: Person?) {
+    guard let address = person?.address else { return }
+    print(address)
+}</code></pre><br><br><p style='margin-bottom: 0; font-size: 19px'> Nil-Coalescing Operator (??)</p><br>The nil-coalescing operator provides a concise way to provide a default value if an optional is `nil`.<br><br><pre class="swift"><code>let person: Person? = Person(name: "Alice")
+let city = person?.address?.city ?? "Unknown"</code></pre><br><br><img src='1.jpg'></img><br><br><b>Optional Chaining in practice</b><br><br>Let's explore some real-world use cases of Optional Chaining:<br><br><p style='margin-bottom: 0; font-size: 19px'> Working with JSON Data</p><br>When parsing JSON data, Optional Chaining is invaluable for safely accessing nested properties.<br><br><pre class="swift"><code>let jsonData: [String: Any] = ... // Assuming you have JSON data
+
+if let user = jsonData["user"] as? [String: Any],
+   let name = user["name"] as? String,
+   let age = user["age"] as? Int {
+    print("Name: \(name), Age: \(age)")
+} else {
+    print("Invalid JSON data")
+}</code></pre><br><br><p style='margin-bottom: 0; font-size: 19px'> Dealing with User Input</p><br>When handling user input, Optional Chaining can help you avoid crashes when the user enters invalid data.<br><br><pre class="swift"><code>let userInput: String = ... // Assuming you have user input
+
+if let age = Int(userInput) { // userInput may fail to convert to Int
+    print("Age: \(age)")
+} else {
+    print("Invalid age")
+}</code></pre><br><br><p style='margin-bottom: 0; font-size: 19px'> Working with Collections</p><br>Optional Chaining can be used to safely access elements in collections like arrays and dictionaries.<br><br><pre class="swift"><code>let people: [Person] = ... // Assuming you have an array of optional Person objects
+
+if let firstPerson = people.first { // An empty array would return nil
+    print(firstPerson.name)
+} else {
+    print("No people found")
+}</code></pre><br><br><b>Best Practices for Optional Chaining</b><br><br>&#8226; <b>Use it judiciously:</b> Don't overuse Optional Chaining to the point where your code becomes hard to read.<br>&#8226; <b>Favor optional binding:</b> Optional binding is much much safer than forced unwrapping.<br>&#8226; <b>Consider using guard statements:</b> Guard statements can help you avoid nested `if-else` blocks when dealing with multiple optionals.<br>&#8226; <b>Test your code thoroughly:</b> Ensure that your code handles `nil` values gracefully.<br><br><hr><br><br>Optional Chaining is a powerful tool in Swift that helps you write safer and more robust code. I admit how difficult it was to wrap my head around these concepts back since Swift's inception. But many years later it's decisively one of the ever best improvements in modern languages.    </div>
+</div>
+
+
+
+        <div class="articleFooterSection">
+   <div class="container">
+       <div class="searchContainer articleFooterSectionContainer">
+           <p class="title">Search:</p>
+
+           <form action="/blog">
+               <input type="text" id="search" name="search" placeholder="swift, php, raspberry pi ... etc">
+           </form>
+
+       </div>
+       <div class="latestContainer articleFooterSectionContainer">
+           <p class="title">Latest:</p><p class="item"><a href='/blog/swift-guard-statements'>Swift: Guard Statements</a></p><p class="item"><a href='/blog/solving-common-string-problems'>Solving Common String Problems</a></p><p class="item"><a href='/blog/array-manipulation-challenges'>Array Manipulation Challenges</a></p><p class="item"><a href='/blog/swift-concurrency'>Swift: Concurrency</a></p><p class="item"><a href='/blog/solving-the-fizzbuzz-problem'>Solving the FizzBuzz problem</a></p><p class="item"><a href='/blog/swift-sequence-types'>Swift: Sequence Types</a></p></div>
+       <div class="categoriesContainer articleFooterSectionContainer">
+           <p class="title">Categories:</p><p class="item"><a href='/blog/?category=Swift'>Swift</a></p><p class="item"><a href='/blog/?category=Coding'>Coding</a></p><p class="item"><a href='/blog/?category=Slice of life'>Slice of life</a></p></div>
+   </div>
+</div>
+
+        
+            <div class="callToAction">
+                <p onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Interested in what I do? get in touch</p>
+            </div>
+        
+            <!--contact-->
+            <div class="wkycontact" id="contact">
+                <p class="sectionTitle">Contacts</p>
+            
+                <div class="container">
+                    <div class="social">
+                     <div class="innerSocial">
+                         <div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/location.png'); -webkit-mask-image: url('/images/icons/location.png');"></div>
+                                 <p><a href="" target=”_blank”>Located in Cairo, Egypt</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/linkedin.png'); -webkit-mask-image: url('/images/icons/linkedin.png');"></div>
+                                 <p><a href="https://linkedin.com/in/wael-youssef-630206108" target=”_blank”>linkedin.com/in/wael-youssef-630206108</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/github.png'); -webkit-mask-image: url('/images/icons/github.png');"></div>
+                                 <p><a href="https://github.com/WaelKYoussef" target=”_blank”>github.com/WaelKYoussef</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/email.png'); -webkit-mask-image: url('/images/icons/email.png');"></div>
+                                 <p><a href="mailto:wael.k.youssef@gmail.com" target=”_blank”>wael.k.youssef@gmail.com</a></p>
+                              </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright © 2024-2025; ALL RIGHTS RESERVED.</p>
+                <p>Designed & developed by Wael Youssef</p>
+            </div>
+        
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+<link rel="stylesheet" href="/css/highlight.min.css"><script src="/js/highlight.min.js"></script><script>hljs.highlightAll();</script>
+</body>
+</html>

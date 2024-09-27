@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Swift: Memory Management</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/menu.css"><link rel="stylesheet" href="/css/article.css"><link rel="stylesheet" href="/css/contact.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/skills.css"><link rel="stylesheet" href="/css/responsive.css">
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<div class="articleTitleSection cover">
+    <div class="background"></div>
+    <div class="container">
+        <img class="icon" src="/images/avatar_email.png">
+        <p class="title" style="cursor: pointer" onclick="goToBlog()">wael.blog</p>
+        <p class="caption">Where I talk about anything and everything Code!</p>
+    </div>
+</div>
+
+<div class="articleInfoSection">
+    <div class="textContainer">
+        <p style="font-size: 28px; margin: 0;">20, Apr 2024</p>
+        <p class="title">Swift: Memory Management</p>
+        Memory management is a critical aspect of software development that involves allocating and deallocating memory for objects. In Swift, memory management is handled automatically by the Automatic Reference Counting (ARC) system, long have we came since the rays of <i>retain/release</i>. However, understanding how ARC works and best practices for memory management can help you write more efficient and robust code.<br><br><img src='cover.jpg'></img><br><br><b>Automatic Reference Counting (ARC)</b><br><br>ARC is a system that automatically keeps track of references to objects and deallocates them when they are no longer needed. This eliminates the need for manual memory management, which can be error-prone and time-consuming, but as we'll come to find out, it's not always so simple:<br><br><b>How ARC Works</b><br><br>Every object created in Swift has a count of references. When created, ARC increments the object's reference count. Every time a reference to the object is created, the reference count is incremented. When a reference is released or the object goes out of scope, the reference count is decremented. If the reference count reaches zero, the object is deallocated.<br><br><b>Strong References</b><br><br>By default, variables and constants in Swift hold strong references to objects. This means that the reference count of an object is incremented when it is assigned to a strong reference.<br><br><pre class="swift"><code>class Person {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+}
+
+let person = Person(name: "Alice") // Strong reference to the person object</code></pre><br><br><b>Weak References</b><br><br>Weak references are references that do not increase the reference count of an object. They are often used to prevent retain cycles (or memory leaks), which can occur when two objects have strong references to each other.<br><br><pre class="swift"><code>class Person {
+    weak var parent: Person?
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+}</code></pre><br><br>Note that a weak reference <i>must</i> be optional.<br><br><img src='1.jpg'></img><br><br><b>Unowned References</b><br><br>Unowned references are similar to weak references, but they do not allow for `nil` values. They are typically used for objects that are guaranteed to have a lifetime that is at least as long as the object holding the unowned reference.<br><br><pre class="swift"><code>class Department {
+    var name: String
+    var employees: [Employee]
+    init(name: String) {
+        self.name = name
+        self.employees = []
+    }
+}
+
+class Employee {
+    unowned var department: Department
+    var name: String
+    init(name: String, department: Department) {
+        self.name = name
+        self.department = department
+    }
+}</code></pre><br><br>Treat unowned as a force unwrapped optional. If you are to ever try to access an unowned reference which has been released by ARC, a runtime error will occur:<br><pre class="swift"><code>class Department {
+    var name: String
+    var employees: [Employee]
+    init(name: String) {
+        self.name = name
+        self.employees = []
+    }
+}
+
+class Employee {
+    unowned var department: Department
+    var name: String
+    init(name: String, department: Department) {
+        self.name = name
+        self.department = department
+    }
+}
+
+var department = Department(name: "IT")
+let employee = Employee(name: "John", department: department)
+department.employees = [employee]
+print(employee.department.name) // "IT"
+
+department = Department(name: "Finance")
+print(employee.department.name) // Error</code></pre><br><br><b>Memory Leaks</b><br><br>Memory leaks occur when objects are no longer needed but are still being referenced. This can lead to memory exhaustion and performance issues. To avoid memory leaks, be careful when using strong references and consider using weak or unowned references when appropriate.<br><br><b>Best Practices</b><br><br>&#8226; <b>Deepen your knowledge of ARC:</b> Understand how ARC works and avoid creating unnecessary strong references.<br>&#8226; <b>Use weak and unowned references appropriately:</b> Use weak references for objects that might be deallocated before the object holding the reference. Use unowned references for objects that are guaranteed to have a lifetime that is at least as long as the object holding the unowned reference.<br>&#8226; <b>Be mindful of retain cycles:</b> Watch out for situations where two objects have strong references to each other, which can lead to memory leaks.<br><i> </i>*Use `deinit` to clean up resources:*&#8226; If your class needs to perform cleanup tasks before being deallocated, implement the `deinit` method.<br>&#8226; <b>Profile your code for memory leaks:</b> Use tools like Instruments to detect and fix memory leaks.<br><br><hr><br><br>Memory management is a critical aspect of Swift development. By understanding how ARC works and following best practices, you can write more efficient and robust code. Minding runtime memory is one of the more challenging aspects of development as it's usually *"invisible"&#8226; and not immediately apparent.<br>    </div>
+</div>
+
+
+
+        <div class="articleFooterSection">
+   <div class="container">
+       <div class="searchContainer articleFooterSectionContainer">
+           <p class="title">Search:</p>
+
+           <form action="/blog">
+               <input type="text" id="search" name="search" placeholder="swift, php, raspberry pi ... etc">
+           </form>
+
+       </div>
+       <div class="latestContainer articleFooterSectionContainer">
+           <p class="title">Latest:</p><p class="item"><a href='/blog/swift-guard-statements'>Swift: Guard Statements</a></p><p class="item"><a href='/blog/solving-common-string-problems'>Solving Common String Problems</a></p><p class="item"><a href='/blog/array-manipulation-challenges'>Array Manipulation Challenges</a></p><p class="item"><a href='/blog/swift-concurrency'>Swift: Concurrency</a></p><p class="item"><a href='/blog/solving-the-fizzbuzz-problem'>Solving the FizzBuzz problem</a></p><p class="item"><a href='/blog/swift-sequence-types'>Swift: Sequence Types</a></p></div>
+       <div class="categoriesContainer articleFooterSectionContainer">
+           <p class="title">Categories:</p><p class="item"><a href='/blog/?category=Swift'>Swift</a></p><p class="item"><a href='/blog/?category=Coding'>Coding</a></p><p class="item"><a href='/blog/?category=Slice of life'>Slice of life</a></p></div>
+   </div>
+</div>
+
+        
+            <div class="callToAction">
+                <p onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Interested in what I do? get in touch</p>
+            </div>
+        
+            <!--contact-->
+            <div class="wkycontact" id="contact">
+                <p class="sectionTitle">Contacts</p>
+            
+                <div class="container">
+                    <div class="social">
+                     <div class="innerSocial">
+                         <div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/location.png'); -webkit-mask-image: url('/images/icons/location.png');"></div>
+                                 <p><a href="" target=”_blank”>Located in Cairo, Egypt</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/linkedin.png'); -webkit-mask-image: url('/images/icons/linkedin.png');"></div>
+                                 <p><a href="https://linkedin.com/in/wael-youssef-630206108" target=”_blank”>linkedin.com/in/wael-youssef-630206108</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/github.png'); -webkit-mask-image: url('/images/icons/github.png');"></div>
+                                 <p><a href="https://github.com/WaelKYoussef" target=”_blank”>github.com/WaelKYoussef</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/email.png'); -webkit-mask-image: url('/images/icons/email.png');"></div>
+                                 <p><a href="mailto:wael.k.youssef@gmail.com" target=”_blank”>wael.k.youssef@gmail.com</a></p>
+                              </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright © 2024-2025; ALL RIGHTS RESERVED.</p>
+                <p>Designed & developed by Wael Youssef</p>
+            </div>
+        
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+<link rel="stylesheet" href="/css/highlight.min.css"><script src="/js/highlight.min.js"></script><script>hljs.highlightAll();</script>
+</body>
+</html>

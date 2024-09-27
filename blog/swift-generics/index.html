@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Swift: Generics</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/menu.css"><link rel="stylesheet" href="/css/article.css"><link rel="stylesheet" href="/css/contact.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/skills.css"><link rel="stylesheet" href="/css/responsive.css">
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<div class="articleTitleSection cover">
+    <div class="background"></div>
+    <div class="container">
+        <img class="icon" src="/images/avatar_email.png">
+        <p class="title" style="cursor: pointer" onclick="goToBlog()">wael.blog</p>
+        <p class="caption">Where I talk about anything and everything Code!</p>
+    </div>
+</div>
+
+<div class="articleInfoSection">
+    <div class="textContainer">
+        <p style="font-size: 28px; margin: 0;">27, Feb 2024</p>
+        <p class="title">Swift: Generics</p>
+        Generics allow you to create reusable code that can work with different data types. By using generics, you can write more flexible and type-safe code without compromising on type-safety.<br><br><img src='cover.jpg'></img><br><br><b>Understanding Generics</b><br><br>A generic type is a placeholder for a specific type that will be determined at runtime. This allows you to create functions, classes, and structs that can work with different data types without sacrificing type safety. Think of it as: "I don't know what the type is yet!".<br><br><pre class="swift"><code>func swap<T>(_ a: inout T, _ b: inout T) {
+    let temp = a
+    a = b
+    b = temp
+}
+
+var a = "A"
+var b = "B"
+swap(&a, &b)
+print(a) //B
+print(b) //A</code></pre><br><br>In the above example, the `swap` function is generic. It takes two inout parameters of type `T` and swaps their values. The `T` can be any type, such as `Int`, `String`, or a custom struct. A feature of generics is that it forces both inputs to be of the same type. if for example `b` was of type <i>int</i> while `a` is a <i>string</i>, a compile time error would be thrown.<br><br><b>Generic Functions</b><br><br>Generic functions are functions that can work with different data types. They are defined using angle brackets (`<>`) after the function name, followed by a placeholder type.<br><br><pre class="swift"><code>func findMax<T: Comparable>(_ array: [T]) -> T? {
+    guard !array.isEmpty else {
+        return nil
+    }
+    var max = array[0]
+    for element in array {
+        if element > max {
+            max = element
+        }
+    }
+    return max
+}
+
+print(findMax([3,4,5,6,2,3,4,5,6,7,3])) // 7
+print(findMax(["Hello", "Swift"])) // Swift</code></pre><br><br>In this example, the `findMax` function takes an array of elements of type `T` and returns the maximum element. The `T` must conform to the `Comparable` protocol, which means it must implement the `==` and `<` operators. We were able to use it successfully on both arrays of integers and string, but NOT a mix of the two.<br><br><img src='1.jpg'></img><br><br><b>Generic Structs and Classes</b><br><br>You can also create generic structs and classes. This allows you to create reusable data structures that can work with different data types.<br><br><pre class="swift"><code>struct Stack<T> {
+    private var items = [T]()
+
+    mutating func push(_ item: T) {
+        items.append(item)
+    }
+
+    mutating func pop() -> T? {
+        return items.popLast()
+    }
+}
+
+var stack = Stack<Int>()
+stack.push(3)
+stack.push(2)
+stack.push(1)
+
+while let ii = stack.pop() {
+    print(ii)
+}</code></pre><br><br>In this example, the `Stack` struct is generic. It can store elements of any type `Element`. Notice how we internally used and Array<T> to store the elements which uses the same generic type as we declared with the Stack.<br><br><b>Benefits of Generics</b><br><br>&#8226; <b>Reusability:</b> Generics allow you to write reusable code that can work with different data types, without sacrificing type safety.<br>&#8226; <b>Type Safety:</b> Generics help you write type-safe code, which can prevent runtime errors.<br><br><b>Best Practices</b><br><br>&#8226; <b>Use meaningful type names:</b> Choose type names that clearly convey the purpose of the generic type.<br>&#8226; <b>Consider using associated types:</b> Associated types can make your generic types more flexible.<br><br><hr><br><br>Generics are a powerful feature in Swift that can help you write more reusable, type-safe, and flexible code. By understanding how to use generics effectively, you can create more robust and maintainable applications.<br>    </div>
+</div>
+
+
+
+        <div class="articleFooterSection">
+   <div class="container">
+       <div class="searchContainer articleFooterSectionContainer">
+           <p class="title">Search:</p>
+
+           <form action="/blog">
+               <input type="text" id="search" name="search" placeholder="swift, php, raspberry pi ... etc">
+           </form>
+
+       </div>
+       <div class="latestContainer articleFooterSectionContainer">
+           <p class="title">Latest:</p><p class="item"><a href='/blog/swift-guard-statements'>Swift: Guard Statements</a></p><p class="item"><a href='/blog/solving-common-string-problems'>Solving Common String Problems</a></p><p class="item"><a href='/blog/array-manipulation-challenges'>Array Manipulation Challenges</a></p><p class="item"><a href='/blog/swift-concurrency'>Swift: Concurrency</a></p><p class="item"><a href='/blog/solving-the-fizzbuzz-problem'>Solving the FizzBuzz problem</a></p><p class="item"><a href='/blog/swift-sequence-types'>Swift: Sequence Types</a></p></div>
+       <div class="categoriesContainer articleFooterSectionContainer">
+           <p class="title">Categories:</p><p class="item"><a href='/blog/?category=Swift'>Swift</a></p><p class="item"><a href='/blog/?category=Coding'>Coding</a></p><p class="item"><a href='/blog/?category=Slice of life'>Slice of life</a></p></div>
+   </div>
+</div>
+
+        
+            <div class="callToAction">
+                <p onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Interested in what I do? get in touch</p>
+            </div>
+        
+            <!--contact-->
+            <div class="wkycontact" id="contact">
+                <p class="sectionTitle">Contacts</p>
+            
+                <div class="container">
+                    <div class="social">
+                     <div class="innerSocial">
+                         <div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/location.png'); -webkit-mask-image: url('/images/icons/location.png');"></div>
+                                 <p><a href="" target=”_blank”>Located in Cairo, Egypt</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/linkedin.png'); -webkit-mask-image: url('/images/icons/linkedin.png');"></div>
+                                 <p><a href="https://linkedin.com/in/wael-youssef-630206108" target=”_blank”>linkedin.com/in/wael-youssef-630206108</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/github.png'); -webkit-mask-image: url('/images/icons/github.png');"></div>
+                                 <p><a href="https://github.com/WaelKYoussef" target=”_blank”>github.com/WaelKYoussef</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/email.png'); -webkit-mask-image: url('/images/icons/email.png');"></div>
+                                 <p><a href="mailto:wael.k.youssef@gmail.com" target=”_blank”>wael.k.youssef@gmail.com</a></p>
+                              </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright © 2024-2025; ALL RIGHTS RESERVED.</p>
+                <p>Designed & developed by Wael Youssef</p>
+            </div>
+        
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+<link rel="stylesheet" href="/css/highlight.min.css"><script src="/js/highlight.min.js"></script><script>hljs.highlightAll();</script>
+</body>
+</html>

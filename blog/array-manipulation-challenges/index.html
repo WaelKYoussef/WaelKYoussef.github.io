@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Array Manipulation Challenges</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <link rel="stylesheet" href="/css/navigation.css"><link rel="stylesheet" href="/css/menu.css"><link rel="stylesheet" href="/css/article.css"><link rel="stylesheet" href="/css/contact.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/skills.css"><link rel="stylesheet" href="/css/responsive.css">
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MYX80W6J2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag("js", new Date());
+                gtag("config", "G-1MYX80W6J2");
+            </script>
+        </head>
+
+<body>
+
+<div class="articleTitleSection cover">
+    <div class="background"></div>
+    <div class="container">
+        <img class="icon" src="/images/avatar_email.png">
+        <p class="title" style="cursor: pointer" onclick="goToBlog()">wael.blog</p>
+        <p class="caption">Where I talk about anything and everything Code!</p>
+    </div>
+</div>
+
+<div class="articleInfoSection">
+    <div class="textContainer">
+        <p style="font-size: 28px; margin: 0;">10, Aug 2024</p>
+        <p class="title">Array Manipulation Challenges</p>
+        Okay, so sometimes the little things matter a whole lot, it may sound odd but I've found great benefit in taking a break from the big stuff and returning to the bare basics every once in a while. So let's play around a bit with one of these basics: Arrays.<br>Arrays are like the Swiss-army knife of programming; versatile and indispensable. But, just like that knife, they come with their own set of challenges. In this post, we’re going to explore some common array manipulation challenges and how to tackle them using Swift.<br><br><img src='cover.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 19px'> <b>1. Reversing an Array</b></p><br><br>Let’s start with a classic: reversing an array. Sounds straightforward, right? But it’s a great way to get familiar with array manipulation.<br><br><b>Problem:</b> Given an array of integers, reverse its elements.<br><br><b>Example:</b><br><pre class="swift"><code>let arr = [1, 2, 3, 4, 5]
+// Expected Output: [5, 4, 3, 2, 1]</code></pre><br><br><b>Solution:</b><br><br>In Swift, this is quite simple, all you need to use is <i>Array.reversed()</i>:<br><pre class="swift"><code>print(arr.reversed())  // Output: [5, 4, 3, 2, 1]</code></pre><br><br>Here, <i>arr.reversed()</i> returns a reversed collection of the array. Note that it returns a `ReversedCollection` rather than a new array, so you probably will need to convert it back to an array by using <i>Array(ReversedCollection)</i>.<br><br>An advanced solution would use two pointers to swap elements of the array in-place, can you work it out?<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>2. Finding the Maximum Product of Two Elements</b></p><br><br>Another easy one. We need to find the maximum product of any two elements in an array of integers.<br><br><b>Example:</b><br><pre class="swift"><code>let arr = [1, 10, 2, 6, 5]
+// Expected Output: 60 (because 10 &#8226; 6 = 60)</code></pre><br><br><b>Solution:</b><br><br>This becomes a trivial issue if only you sort the array first:<br><pre class="swift"><code>func maxProduct(_ arr: [Int]) -> Int? {
+    guard arr.count >= 2 else { return nil }
+    let sortedArr = arr.sorted()
+    return sortedArr[sortedArr.count - 1] &#8226; sortedArr[sortedArr.count - 2]
+}
+
+print(maxProduct(arr))  // Output: 60</code></pre><br><br>Sorting will make the last two elements guaranteed to be the largest, so their product will be the maximum.<br><br>A better solution would avoid sorting and use a single pass to find the two largest numbers.<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>3. Finding the Missing Number</b></p><br><br>This challenge often pops up in coding interviews and is a good test of your problem-solving skills.<br><br><b>Problem:</b> Given an array containing (n) distinct numbers taken from 0 to (n), find the one number that is missing.<br><br><b>Example:</b><br><pre class="swift"><code>let arr = [0, 1, 3]
+// Expected Output: 2</code></pre><br><br><b>Solution:</b><br><br>Here’s a nifty trick using the sum of numbers:<br><pre class="swift"><code>func findMissingNumber(_ arr: [Int]) -> Int {
+    let n = arr.count
+    let totalSum = (n &#8226; (n + 1)) / 2
+    let arraySum = arr.reduce(0, +)
+    return totalSum - arraySum
+}
+
+print(findMissingNumber([0, 1, 3]))  // Output: 2</code></pre><br><br>The formula <i>(n </i> (n + 1)) / 2&#8226; computes the sum of the first (n) natural numbers. By subtracting the sum of the array from this value, you get the missing number.<br>Keep in mind that this solution is limited to only one number missing in a perfect sequence.<br><br><img src='1.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 19px'> <b>4. Rotating an Array</b></p><br><br>Rotating an array means shifting its elements around. It’s like turning the array to the left or right.<br><br><b>Problem:</b> Rotate an array to the right by (k) steps.<br><br><b>Example:</b><br><pre class="swift"><code>let arr = [1, 2, 3, 4, 5, 6, 7]
+let k = 3
+// Expected Output: [5, 6, 7, 1, 2, 3, 4]</code></pre><br><br><b>Solution:</b><br><br>The bruteforce way world be to loop for <i>k</i> and bring the last element to the beginning of the array, but here's a smarter way:<br><pre class="swift"><code>func rotateArray(_ arr: [Int], by k: Int) -> [Int] {
+    let k = k % arr.count  // In case k is greater than the length of the array
+    return Array(arr[(arr.count - k)...] + arr[..<(arr.count - k)])
+}
+
+print(rotateArray([1, 2, 3, 4, 5, 6, 7], by: 3))  // Output: [5, 6, 7, 1, 2, 3, 4]</code></pre><br><br>By dividing (slicing) up the array into two parts and then concatenating them in reverse, you achieve the rotation. Imagine this happening with an array of 1,000,000 elements vs the bruteforce method to appreciate why this solution is much superior.<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>5. Finding the Intersection of Two Arrays</b></p><br><br>Finding common elements between two arrays is a problem with various applications. We will keep it simple by finding out only elements that appear in both arrays at the same time.<br><br><b>Problem:</b> Given two arrays, find the intersection of the two.<br><br><b>Example:</b><br><pre class="swift"><code>let arr1 = [1, 2, 2, 1]
+let arr2 = [2, 2]
+// Expected Output: [2, 2]</code></pre><br><br><b>Solution:</b><br><br>You can use a dictionary to count occurrences:<br><pre class="swift"><code>func intersectArrays(_ arr1: [Int], _ arr2: [Int]) -> [Int] {
+    var countDict = [Int: Int]()
+    var intersection = [Int]()
+    
+    for num in arr1 {
+        countDict[num, default: 0] += 1
+    }
+    
+    for num in arr2 {
+        if let count = countDict[num], count > 0 {
+            intersection.append(num)
+            countDict[num] = count - 1
+        }
+    }
+    
+    return intersection
+}
+
+print(intersectArrays([1, 2, 2, 1], [2, 2]))  // Output: [2, 2]</code></pre><br><br>Using a dictionary helps track and count elements from both arrays. This method is clever in that in using a <i>count dictionary</i>, it ensures that an element is only counted once from both sides.<br>An evolution of this problem is <i>Finding the biggest common sub-array</i> which requires finding the biggest array that appears exactly in both original arrays with its same sequence.<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>6. Implementing a Moving Average</b></p><br><br>Moving averages are used in various applications, including financial data analysis and signal processing.<br><br><b>Problem:</b> Compute the moving average of a given window size over an array.<br><br><b>Example:</b><br><pre class="swift"><code>let arr = [1, 2, 3, 4, 5, 6, 7, 8]
+let windowSize = 3
+// Expected Output: [2.0, 3.0, 4.0, 5.0, 6.0, 7.0]</code></pre><br><br><b>Solution:</b><br><br>We can use a sliding window approach:<br><pre class="swift"><code>func movingAverage(_ arr: [Int], windowSize: Int) -> [Double] {
+    guard windowSize &lt;= arr.count else { return [] }
+    
+    var averages = [Double]()
+    var windowSum = arr.prefix(windowSize).reduce(0, +)
+    averages.append(Double(windowSum) / Double(windowSize))
+    
+    for i in windowSize..&lt;arr.count {
+        windowSum += arr[i] - arr[i - windowSize]
+        averages.append(Double(windowSum) / Double(windowSize))
+    }
+    
+    return averages
+}
+
+print(movingAverage([1, 2, 3, 4, 5, 6, 7, 8], windowSize: 3))  // Output: [2.0, 3.0, 4.0, 5.0, 6.0, 7.0]</code></pre><br><br>The cool thing about this solution, is that <i>windowSum</i> is calculated once, then with every iteration, we only subtract the value of the first value from the previous window while adding the new value from the new windows (think of <i>windowSize</i> being huge and it'll be obvious why this is an advantage).<br><br><hr><br><br>I really hope you enjoyed playing around with arrays with these simple problems. Such examples, simple as they may seem, really open up the mind to greater solutions to bigger -real world- challenges.<br><br>If you’re trying your own solutions, remember to keep your code clean and efficient. Experiment with different approaches, and don’t hesitate to try out different languages or techniques. Happy coding, and may your arrays always be well-managed!    </div>
+</div>
+
+
+
+        <div class="articleFooterSection">
+   <div class="container">
+       <div class="searchContainer articleFooterSectionContainer">
+           <p class="title">Search:</p>
+
+           <form action="/blog">
+               <input type="text" id="search" name="search" placeholder="swift, php, raspberry pi ... etc">
+           </form>
+
+       </div>
+       <div class="latestContainer articleFooterSectionContainer">
+           <p class="title">Latest:</p><p class="item"><a href='/blog/swift-guard-statements'>Swift: Guard Statements</a></p><p class="item"><a href='/blog/solving-common-string-problems'>Solving Common String Problems</a></p><p class="item"><a href='/blog/array-manipulation-challenges'>Array Manipulation Challenges</a></p><p class="item"><a href='/blog/swift-concurrency'>Swift: Concurrency</a></p><p class="item"><a href='/blog/solving-the-fizzbuzz-problem'>Solving the FizzBuzz problem</a></p><p class="item"><a href='/blog/swift-sequence-types'>Swift: Sequence Types</a></p></div>
+       <div class="categoriesContainer articleFooterSectionContainer">
+           <p class="title">Categories:</p><p class="item"><a href='/blog/?category=Swift'>Swift</a></p><p class="item"><a href='/blog/?category=Coding'>Coding</a></p><p class="item"><a href='/blog/?category=Slice of life'>Slice of life</a></p></div>
+   </div>
+</div>
+
+        
+            <div class="callToAction">
+                <p onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Interested in what I do? get in touch</p>
+            </div>
+        
+            <!--contact-->
+            <div class="wkycontact" id="contact">
+                <p class="sectionTitle">Contacts</p>
+            
+                <div class="container">
+                    <div class="social">
+                     <div class="innerSocial">
+                         <div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/location.png'); -webkit-mask-image: url('/images/icons/location.png');"></div>
+                                 <p><a href="" target=”_blank”>Located in Cairo, Egypt</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/linkedin.png'); -webkit-mask-image: url('/images/icons/linkedin.png');"></div>
+                                 <p><a href="https://linkedin.com/in/wael-youssef-630206108" target=”_blank”>linkedin.com/in/wael-youssef-630206108</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/github.png'); -webkit-mask-image: url('/images/icons/github.png');"></div>
+                                 <p><a href="https://github.com/WaelKYoussef" target=”_blank”>github.com/WaelKYoussef</a></p>
+                              </div><div class="item">
+                                 <div class="icon" style="mask-image: url('/images/icons/email.png'); -webkit-mask-image: url('/images/icons/email.png');"></div>
+                                 <p><a href="mailto:wael.k.youssef@gmail.com" target=”_blank”>wael.k.youssef@gmail.com</a></p>
+                              </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright © 2024-2025; ALL RIGHTS RESERVED.</p>
+                <p>Designed & developed by Wael Youssef</p>
+            </div>
+        
+             <!--navigation-->
+            <div class="wkynavigation">
+                <p class="label" onclick="window.location.href='/'">wael.studio</p>
+                <div class="linksContainer">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+                <div class="menuButton" onclick="openNav()">
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                    <div class="space"></div>
+                    <div class="bar"></div>
+                </div>
+            </div><script src="/js/navigation.js"></script>
+             <!--menu-->
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a onclick="window.location.href='/#about'">About</a>
+                    <a onclick="window.location.href='/#services'">Services</a>
+                    <a onclick="window.location.href='/#skills'">Skills</a>
+                    <a onclick="window.location.href='/#projects'">Projects</a>
+                    <a onclick="window.location.href='/blog'">Blog</a>
+                    <a onclick="document.querySelector('.wkycontact').scrollIntoView({ behavior: 'smooth' });closeNav();">Contact</a>
+                </div>
+            </div><script src="/js/menu.js"></script>
+<link rel="stylesheet" href="/css/highlight.min.css"><script src="/js/highlight.min.js"></script><script>hljs.highlightAll();</script>
+</body>
+</html>
