@@ -35,7 +35,19 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">27, Feb 2024</p>
         <p class="title">Swift: Generics</p>
-        Generics allow you to create reusable code that can work with different data types. By using generics, you can write more flexible and type-safe code without compromising on type-safety.<br><br><img src='cover.jpg'></img><br><br><b>Understanding Generics</b><br><br>A generic type is a placeholder for a specific type that will be determined at runtime. This allows you to create functions, classes, and structs that can work with different data types without sacrificing type safety. Think of it as: "I don't know what the type is yet!".<br><br><pre class="swift"><code>func swap<T>(_ a: inout T, _ b: inout T) {
+        Generics allow you to create reusable code that can work with different data types. By using generics, you can write more flexible and type-safe code without compromising on type-safety.<br><br><img src='cover.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Understanding Generics</b><br><br>A generic type is a placeholder for a specific type that will be determined at runtime. This allows you to create functions, classes, and structs that can work with different data types without sacrificing type safety. Think of it as: "I don't know what the type is yet!".<br><br><pre class="swift"><code>func swap<T>(_ a: inout T, _ b: inout T) {
     let temp = a
     a = b
     b = temp
@@ -59,7 +71,19 @@ print(b) //A</code></pre><br><br>In the above example, the `swap` function is ge
 }
 
 print(findMax([3,4,5,6,2,3,4,5,6,7,3])) // 7
-print(findMax(["Hello", "Swift"])) // Swift</code></pre><br><br>In this example, the `findMax` function takes an array of elements of type `T` and returns the maximum element. The `T` must conform to the `Comparable` protocol, which means it must implement the `==` and `<` operators. We were able to use it successfully on both arrays of integers and string, but NOT a mix of the two.<br><br><img src='1.jpg'></img><br><br><b>Generic Structs and Classes</b><br><br>You can also create generic structs and classes. This allows you to create reusable data structures that can work with different data types.<br><br><pre class="swift"><code>struct Stack<T> {
+print(findMax(["Hello", "Swift"])) // Swift</code></pre><br><br>In this example, the `findMax` function takes an array of elements of type `T` and returns the maximum element. The `T` must conform to the `Comparable` protocol, which means it must implement the `==` and `<` operators. We were able to use it successfully on both arrays of integers and string, but NOT a mix of the two.<br><br><img src='1.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Generic Structs and Classes</b><br><br>You can also create generic structs and classes. This allows you to create reusable data structures that can work with different data types.<br><br><pre class="swift"><code>struct Stack<T> {
     private var items = [T]()
 
     mutating func push(_ item: T) {

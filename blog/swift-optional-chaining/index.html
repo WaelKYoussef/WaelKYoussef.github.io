@@ -35,7 +35,19 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">20, Dec 2023</p>
         <p class="title">Swift: Optional Chaining</p>
-        Optional Chaining is a powerful feature in Swift that allows you to safely access properties or call methods on optional values. It's a way to avoid the dreaded `nil` crashes that may have plagued your code in the past with Objective-C.<br><br><img src='cover.jpg'></img><br><br><b>Understanding Optionals</b><br><br>Before anything, let's recap what an optional is in Swift. An optional is a type that can hold either a value of the specified type or `nil`. This is useful when dealing with values that might not always be present, like data from a network request or user input.<br><br><pre class="swift"><code>var name: String? = "John"
+        Optional Chaining is a powerful feature in Swift that allows you to safely access properties or call methods on optional values. It's a way to avoid the dreaded `nil` crashes that may have plagued your code in the past with Objective-C.<br><br><img src='cover.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Understanding Optionals</b><br><br>Before anything, let's recap what an optional is in Swift. An optional is a type that can hold either a value of the specified type or `nil`. This is useful when dealing with values that might not always be present, like data from a network request or user input.<br><br><pre class="swift"><code>var name: String? = "John"
 var age: Int? = nil</code></pre><br><br><b>Introducing Optional Chaining</b><br><br>Optional Chaining is a concise way to access properties or call methods on optional values. If any of the optional values in the chain is `nil`, the chain is terminated, and the result is also `nil`.<br><br><pre class="swift"><code>struct Address {
     let city: String?
 }
@@ -55,7 +67,19 @@ if let address = person?.address {
     guard let address = person?.address else { return }
     print(address)
 }</code></pre><br><br><p style='margin-bottom: 0; font-size: 19px'> Nil-Coalescing Operator (??)</p><br>The nil-coalescing operator provides a concise way to provide a default value if an optional is `nil`.<br><br><pre class="swift"><code>let person: Person? = Person(name: "Alice")
-let city = person?.address?.city ?? "Unknown"</code></pre><br><br><img src='1.jpg'></img><br><br><b>Optional Chaining in practice</b><br><br>Let's explore some real-world use cases of Optional Chaining:<br><br><p style='margin-bottom: 0; font-size: 19px'> Working with JSON Data</p><br>When parsing JSON data, Optional Chaining is invaluable for safely accessing nested properties.<br><br><pre class="swift"><code>let jsonData: [String: Any] = ... // Assuming you have JSON data
+let city = person?.address?.city ?? "Unknown"</code></pre><br><br><img src='1.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Optional Chaining in practice</b><br><br>Let's explore some real-world use cases of Optional Chaining:<br><br><p style='margin-bottom: 0; font-size: 19px'> Working with JSON Data</p><br>When parsing JSON data, Optional Chaining is invaluable for safely accessing nested properties.<br><br><pre class="swift"><code>let jsonData: [String: Any] = ... // Assuming you have JSON data
 
 if let user = jsonData["user"] as? [String: Any],
    let name = user["name"] as? String,

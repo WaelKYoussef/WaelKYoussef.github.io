@@ -35,10 +35,34 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">30, Mar 2024</p>
         <p class="title">Swift: Nil-Coalescing Operator</p>
-        Optionals are a powerful concept for representing values that might or might not be present. It's the definite roads towards dramatically reducing nil-related runtime errors. When working with optionals, it's crucial to handle potential `nil` values gracefully to avoid runtime errors. One of the most useful tools in Swift for dealing with optionals is the <b>nil-coalescing operator</b> (??). So let's tap into what the nil-coalescing operator does, how to use it effectively, and when to consider alternative approaches.<br><br><img src='cover.jpg'></img><br><br><b>Understanding Optionals</b><br><br>First, let's recap what optionals are in Swift. An optional is a type that can hold either a value of the specified type or `nil`. This is particularly useful when dealing with values that might not always be available, such as data from a network request or user input.<br><br><pre class="swift"><code>var name: String? = "John"
+        Optionals are a powerful concept for representing values that might or might not be present. It's the definite roads towards dramatically reducing nil-related runtime errors. When working with optionals, it's crucial to handle potential `nil` values gracefully to avoid runtime errors. One of the most useful tools in Swift for dealing with optionals is the <b>nil-coalescing operator</b> (??). So let's tap into what the nil-coalescing operator does, how to use it effectively, and when to consider alternative approaches.<br><br><img src='cover.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Understanding Optionals</b><br><br>First, let's recap what optionals are in Swift. An optional is a type that can hold either a value of the specified type or `nil`. This is particularly useful when dealing with values that might not always be available, such as data from a network request or user input.<br><br><pre class="swift"><code>var name: String? = "John"
 var age: Int? = nil</code></pre><br><br><b>Introducing the Nil-Coalescing Operator</b><br><br>The nil-coalescing operator (??) provides a concise and efficient way to provide a default value for an optional if it's `nil`. It takes two operands: an optional value and a default value. If the optional value is not `nil`, the operator returns the unwrapped value. Otherwise, it returns the default value.<br><br><pre class="swift"><code>let person: Person? = Person(name: "Alice")
 let city = person?.address?.city ?? "Unknown"</code></pre><br><br>In the above example, if `person`, `address`, or `city` is `nil` (optional chaining), the `??` operator will return the default value "Unknown". Notice that in this case, the compiler will infer the type of `city` to be `String` rather than `String?`<br><br><b>Common Use Cases</b><br><br>The nil-coalescing operator is a versatile tool with many practical applications:<br><br><p style='margin-bottom: 0; font-size: 19px'> Providing Default Values</p><br>&#8226; <b>User Interface:</b> Set default values for UI elements based on user preferences or system settings.<br>&#8226; <b>Data Validation:</b> Provide default values for missing data in forms or user input.<br>&#8226; <b>Configuration Files:</b> Set default values for configuration options.<br><br><pre class="swift"><code>let username = userPreferences["username"] ?? "Guest"
-let defaultLanguage = languageSetting ?? "English"</code></pre><br><br><img src='1.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 19px'> Chaining Optionals</p><br>&#8226; <b>Accessing Nested Properties:</b> Safely access nested properties of optional values.<br>&#8226; <b>Handling Optional Collections:</b> Provide default values for empty collections or missing elements.<br><br><pre class="swift"><code>let firstPerson = people.first?.name ?? "No person found"
+let defaultLanguage = languageSetting ?? "English"</code></pre><br><br><img src='1.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><p style='margin-bottom: 0; font-size: 19px'> Chaining Optionals</p><br>&#8226; <b>Accessing Nested Properties:</b> Safely access nested properties of optional values.<br>&#8226; <b>Handling Optional Collections:</b> Provide default values for empty collections or missing elements.<br><br><pre class="swift"><code>let firstPerson = people.first?.name ?? "No person found"
 let defaultColor = colorPreferences["accentColor"] ?? .systemBlue</code></pre><br><br><p style='margin-bottom: 0; font-size: 19px'> Simplifying Conditional Logic</p><br><i> </i>*Avoid Nested `if-else` Statements:*&#8226; Reduce code complexity by using the nil-coalescing operator instead of multiple conditional checks.<br><br><pre class="swift"><code>let isLoggedIn = userSession?.isLoggedIn ?? false
 if isLoggedIn {
     // User is logged in

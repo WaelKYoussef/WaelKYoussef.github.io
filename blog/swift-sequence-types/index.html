@@ -35,7 +35,19 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">05, Jul 2024</p>
         <p class="title">Swift: Sequence Types</p>
-        Sequence types provide a unified interface for working with collections of elements. They offer a powerful way to iterate over, filter, map, and reduce collections of data. Let's explore the sequence types available in Swift, their key features, and best practices for using them to dramatically simplify what used to take quite a bit of boiler-plate code.<br><br><img src='cover.jpg'></img><br><br><b>Understanding Sequence Types</b><br><br>A sequence type is any type that conforms to the `Sequence` protocol. This protocol defines a single requirement: the `makeIterator()` function implementation, which returns an `IteratorProtocol` that can be used to iterate over the sequence's elements.<br><br><pre class="swift"><code>protocol Sequence {
+        Sequence types provide a unified interface for working with collections of elements. They offer a powerful way to iterate over, filter, map, and reduce collections of data. Let's explore the sequence types available in Swift, their key features, and best practices for using them to dramatically simplify what used to take quite a bit of boiler-plate code.<br><br><img src='cover.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Understanding Sequence Types</b><br><br>A sequence type is any type that conforms to the `Sequence` protocol. This protocol defines a single requirement: the `makeIterator()` function implementation, which returns an `IteratorProtocol` that can be used to iterate over the sequence's elements.<br><br><pre class="swift"><code>protocol Sequence {
     associatedtype Element where Self.Element == Self.Iterator.Element
 
     func makeIterator() -> Self.Iterator
@@ -59,7 +71,19 @@ let squares = evenNumbers.map { $0 &#8226; $0 }
 // Reduce numbers to their sum
 let sum = squares.reduce(0, +)</code></pre><br><br>Or to make it shorter:<br><pre class="swift"><code>let numbers = [1, 2, 3, 4, 5]
 
-let sum = numbers.filter { $0 % 2 == 0 }.map { $0 &#8226; $0 }.reduce(0, +)</code></pre><br><br><img src='1.jpg'></img><br><br><b>Custom Sequences</b><br><br>As mentioned previously, you can create custom sequence types by conforming to the `Sequence` protocol and implementing the `makeIterator()` method.<br><br><pre class="swift"><code>struct FibonacciSequence: Sequence {
+let sum = numbers.filter { $0 % 2 == 0 }.map { $0 &#8226; $0 }.reduce(0, +)</code></pre><br><br><img src='1.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Custom Sequences</b><br><br>As mentioned previously, you can create custom sequence types by conforming to the `Sequence` protocol and implementing the `makeIterator()` method.<br><br><pre class="swift"><code>struct FibonacciSequence: Sequence {
     typealias Element = Int
 
     func makeIterator() -> FibonacciIterator {

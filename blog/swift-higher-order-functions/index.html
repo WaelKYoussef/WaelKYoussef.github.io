@@ -35,7 +35,19 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">04, May 2024</p>
         <p class="title">Swift: Higher-Order Functions</p>
-        Higher-order functions are functions that can take other functions as arguments or return functions as results. They're a fundamental concept in functional programming that can lead to more concise, expressive, and reusable code. We'll look at different types of higher-order functions in Swift, their use cases, and best practices for using them effectively.<br><br><img src='cover.jpg'></img><br><br><b>Function types</b><br><br>Before diving into higher-order functions, let's briefly discuss function types. Think of it as you declaring a function as a variable that you can pass around. In Swift, a function type is defined by its input parameters and return type. For example, a function that takes an `Int` as input and returns a `Bool` has the type `(Int) -> Bool`.<br><br><b>Higher-Order functions that take functions as arguments</b><br><br>&#8226; <b>Map:</b> The `map` function transforms each element of a sequence into a new element using a provided function.<br><br><pre class="swift"><code>let numbers = [1, 2, 3, 4, 5]
+        Higher-order functions are functions that can take other functions as arguments or return functions as results. They're a fundamental concept in functional programming that can lead to more concise, expressive, and reusable code. We'll look at different types of higher-order functions in Swift, their use cases, and best practices for using them effectively.<br><br><img src='cover.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Function types</b><br><br>Before diving into higher-order functions, let's briefly discuss function types. Think of it as you declaring a function as a variable that you can pass around. In Swift, a function type is defined by its input parameters and return type. For example, a function that takes an `Int` as input and returns a `Bool` has the type `(Int) -> Bool`.<br><br><b>Higher-Order functions that take functions as arguments</b><br><br>&#8226; <b>Map:</b> The `map` function transforms each element of a sequence into a new element using a provided function.<br><br><pre class="swift"><code>let numbers = [1, 2, 3, 4, 5]
 let squares = numbers.map({
     num in
     return num &#8226; num
@@ -46,7 +58,19 @@ print(sum) //34</code></pre><br><br>Did you notice how we used `+` in itself as 
 let sum = numbers.reduce(0, { partialResult, element in
     return partialResult + element
 })
-print(sum) //34</code></pre><br><br><img src='1.jpg'></img><br><br><b>Higher-Order functions that return functions</b><br><br>&#8226; <b>Closure Expressions:</b> Closure expressions are anonymous functions that can be used as arguments to higher-order functions.<br><br><pre class="swift"><code>let numbers = [1, 2, 3, 4, 5, 6, 7, 6]
+print(sum) //34</code></pre><br><br><img src='1.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Higher-Order functions that return functions</b><br><br>&#8226; <b>Closure Expressions:</b> Closure expressions are anonymous functions that can be used as arguments to higher-order functions.<br><br><pre class="swift"><code>let numbers = [1, 2, 3, 4, 5, 6, 7, 6]
 let increment = { (x: Int) -> Int in
     return x + 1
 }

@@ -35,7 +35,19 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">20, Apr 2024</p>
         <p class="title">Swift: Memory Management</p>
-        Memory management is a critical aspect of software development that involves allocating and deallocating memory for objects. In Swift, memory management is handled automatically by the Automatic Reference Counting (ARC) system, long have we came since the rays of <i>retain/release</i>. However, understanding how ARC works and best practices for memory management can help you write more efficient and robust code.<br><br><img src='cover.jpg'></img><br><br><b>Automatic Reference Counting (ARC)</b><br><br>ARC is a system that automatically keeps track of references to objects and deallocates them when they are no longer needed. This eliminates the need for manual memory management, which can be error-prone and time-consuming, but as we'll come to find out, it's not always so simple:<br><br><b>How ARC Works</b><br><br>Every object created in Swift has a count of references. When created, ARC increments the object's reference count. Every time a reference to the object is created, the reference count is incremented. When a reference is released or the object goes out of scope, the reference count is decremented. If the reference count reaches zero, the object is deallocated.<br><br><b>Strong References</b><br><br>By default, variables and constants in Swift hold strong references to objects. This means that the reference count of an object is incremented when it is assigned to a strong reference.<br><br><pre class="swift"><code>class Person {
+        Memory management is a critical aspect of software development that involves allocating and deallocating memory for objects. In Swift, memory management is handled automatically by the Automatic Reference Counting (ARC) system, long have we came since the rays of <i>retain/release</i>. However, understanding how ARC works and best practices for memory management can help you write more efficient and robust code.<br><br><img src='cover.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Automatic Reference Counting (ARC)</b><br><br>ARC is a system that automatically keeps track of references to objects and deallocates them when they are no longer needed. This eliminates the need for manual memory management, which can be error-prone and time-consuming, but as we'll come to find out, it's not always so simple:<br><br><b>How ARC Works</b><br><br>Every object created in Swift has a count of references. When created, ARC increments the object's reference count. Every time a reference to the object is created, the reference count is incremented. When a reference is released or the object goes out of scope, the reference count is decremented. If the reference count reaches zero, the object is deallocated.<br><br><b>Strong References</b><br><br>By default, variables and constants in Swift hold strong references to objects. This means that the reference count of an object is incremented when it is assigned to a strong reference.<br><br><pre class="swift"><code>class Person {
     var name: String
     init(name: String) {
         self.name = name
@@ -48,7 +60,19 @@ let person = Person(name: "Alice") // Strong reference to the person object</cod
     init(name: String) {
         self.name = name
     }
-}</code></pre><br><br>Note that a weak reference <i>must</i> be optional.<br><br><img src='1.jpg'></img><br><br><b>Unowned References</b><br><br>Unowned references are similar to weak references, but they do not allow for `nil` values. They are typically used for objects that are guaranteed to have a lifetime that is at least as long as the object holding the unowned reference.<br><br><pre class="swift"><code>class Department {
+}</code></pre><br><br>Note that a weak reference <i>must</i> be optional.<br><br><img src='1.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Unowned References</b><br><br>Unowned references are similar to weak references, but they do not allow for `nil` values. They are typically used for objects that are guaranteed to have a lifetime that is at least as long as the object holding the unowned reference.<br><br><pre class="swift"><code>class Department {
     var name: String
     var employees: [Employee]
     init(name: String) {

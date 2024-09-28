@@ -35,7 +35,19 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">01, Dec 2023</p>
         <p class="title">Swift: Defer Keyword</p>
-        One powerful tool that can significantly contribute to clean and sound memory management and resource cleanup in Swift is the 'defer' keyword. Let's cover some applications of 'defer' so we can streamline resource management and ensure critical cleanup tasks are executed consistently.<br><br><img src='cover.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 22px'>Understanding the 'defer' Keyword</p><br>At its core, the 'defer' keyword enables us to delay the execution of a code block until the current scope is exited, regardless of the exit path. This mechanism proves particularly valuable in scenarios where we need to ensure specific cleanup or finalization tasks are executed, irrespective of exceptions, early returns, or other branching conditions.<br><br><p style='margin-bottom: 0; font-size: 22px'>Resource Cleanup:</p><br>A prominent use case for 'defer' lies in resource cleanup. Consider a situation where we open a file, perform various operations, and then need to close the file afterward. By utilizing 'defer', we can guarantee the file's closure. For example:<br><br><pre class="swift"><code>func processFile() throws {
+        One powerful tool that can significantly contribute to clean and sound memory management and resource cleanup in Swift is the 'defer' keyword. Let's cover some applications of 'defer' so we can streamline resource management and ensure critical cleanup tasks are executed consistently.<br><br><img src='cover.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><p style='margin-bottom: 0; font-size: 22px'>Understanding the 'defer' Keyword</p><br>At its core, the 'defer' keyword enables us to delay the execution of a code block until the current scope is exited, regardless of the exit path. This mechanism proves particularly valuable in scenarios where we need to ensure specific cleanup or finalization tasks are executed, irrespective of exceptions, early returns, or other branching conditions.<br><br><p style='margin-bottom: 0; font-size: 22px'>Resource Cleanup:</p><br>A prominent use case for 'defer' lies in resource cleanup. Consider a situation where we open a file, perform various operations, and then need to close the file afterward. By utilizing 'defer', we can guarantee the file's closure. For example:<br><br><pre class="swift"><code>func processFile() throws {
     let file = openFile()
     defer {
         closeFile(file)
@@ -70,7 +82,19 @@ func loadData() throws {
     print("Successful response ?")
 }
 
-try? loadData()</code></pre><br><br>In this snippet, 'defer' guarantees that the 'cleanup' method is invoked, enabling the release of any resources acquired during the 'fetchData' operation. Regardless of how the function exits, the cleanup logic will always execute.<br><br>Notice how even though "Successful response ?" was never printed, "Squeaky clean" still prints normally! Try replacing the line <i>throw CustomError.generic</i> with *return "Some response"*, what do you expect to happen?<br><br><img src='1.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 22px'>Lock Management: Concurrency Control:</p><br>To maintain thread safety and prevent race conditions in concurrent code, acquiring and releasing locks is crucial. However, it is equally important to release acquired locks, even in exceptional situations. Observe the following example illustrating the use of 'defer' for lock management:<br><br><pre class="swift"><code>func performTask() {
+try? loadData()</code></pre><br><br>In this snippet, 'defer' guarantees that the 'cleanup' method is invoked, enabling the release of any resources acquired during the 'fetchData' operation. Regardless of how the function exits, the cleanup logic will always execute.<br><br>Notice how even though "Successful response ?" was never printed, "Squeaky clean" still prints normally! Try replacing the line <i>throw CustomError.generic</i> with *return "Some response"*, what do you expect to happen?<br><br><img src='1.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><p style='margin-bottom: 0; font-size: 22px'>Lock Management: Concurrency Control:</p><br>To maintain thread safety and prevent race conditions in concurrent code, acquiring and releasing locks is crucial. However, it is equally important to release acquired locks, even in exceptional situations. Observe the following example illustrating the use of 'defer' for lock management:<br><br><pre class="swift"><code>func performTask() {
     let myLock = NSLock()
     myLock.lock()
     defer {

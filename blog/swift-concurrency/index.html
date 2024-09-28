@@ -35,7 +35,19 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">28, Jul 2024</p>
         <p class="title">Swift: Concurrency</p>
-        Concurrency is the ability to perform multiple tasks simultaneously, think showing a loading wheel while a document is being retrieved from a server. In Swift, there are several techniques for achieving concurrency, including Grand Central Dispatch (GCD), OperationQueues, and asynchronous programming with `async` and `await`. Let's explore these techniques and provide practical examples to help you understand how to write effective concurrent code which won't send your colleagues -or you- to the mad house.<br><br><img src='cover.jpg'></img><br><br><b>Grand Central Dispatch (GCD)</b><br><br>GCD is a powerful framework for performing asynchronous tasks. It provides a simple API for managing tasks and dispatching them to appropriate queues.<br><br><pre class="swift"><code>DispatchQueue.global(qos: .background).async {
+        Concurrency is the ability to perform multiple tasks simultaneously, think showing a loading wheel while a document is being retrieved from a server. In Swift, there are several techniques for achieving concurrency, including Grand Central Dispatch (GCD), OperationQueues, and asynchronous programming with `async` and `await`. Let's explore these techniques and provide practical examples to help you understand how to write effective concurrent code which won't send your colleagues -or you- to the mad house.<br><br><img src='cover.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Grand Central Dispatch (GCD)</b><br><br>GCD is a powerful framework for performing asynchronous tasks. It provides a simple API for managing tasks and dispatching them to appropriate queues.<br><br><pre class="swift"><code>DispatchQueue.global(qos: .background).async {
     // Perform background task
 }
 
@@ -59,7 +71,19 @@ let operation2 = BlockOperation {
     print("Two")
 }
 queue.addOperations([operation1, operation2], waitUntilFinished: false)
-print("Three")</code></pre><br><br>`waitUntilFinished` is set to `false`, so this will print first an immediate "Three", a "One" after a 2 second delay and a "Two" after a 3 second delay. What do you think will happen if `waitUntilFinished` is set to `true` ?<br><br><img src='1.jpg'></img><br><br>**Asynchronous Programming with `async` and `await`**<br><br>Swift 5.5 introduced `async` and `await` keywords, which make asynchronous programming more concise and easier to read.<br><br><pre class="swift"><code>class User {
+print("Three")</code></pre><br><br>`waitUntilFinished` is set to `false`, so this will print first an immediate "Three", a "One" after a 2 second delay and a "Two" after a 3 second delay. What do you think will happen if `waitUntilFinished` is set to `true` ?<br><br><img src='1.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br>**Asynchronous Programming with `async` and `await`**<br><br>Swift 5.5 introduced `async` and `await` keywords, which make asynchronous programming more concise and easier to read.<br><br><pre class="swift"><code>class User {
     let name: String
 
     init(data: Data) {

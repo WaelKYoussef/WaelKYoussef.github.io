@@ -35,7 +35,19 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">10, Jan 2024</p>
         <p class="title">Swift: Closures</p>
-        <br>Closures are self-contained blocks of code that can be passed around and executed at a later time. It's a way to treat a piece of executable code as a variable that you can store just like you would a string or an int; this can lead to more concise, expressive, and reusable code. Let's explore what closures are, how to define them, and when they're most beneficial.<br><br><img src='cover.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 22px'>Understanding Closures</p><br><br>A closure is a self-contained block of code that can capture and store references to variables from the surrounding context. Closures can be used as arguments to functions, returned from functions, or assigned to variables.<br><br><pre class="swift"><code>let increment = { (x: Int) -> Int in
+        <br>Closures are self-contained blocks of code that can be passed around and executed at a later time. It's a way to treat a piece of executable code as a variable that you can store just like you would a string or an int; this can lead to more concise, expressive, and reusable code. Let's explore what closures are, how to define them, and when they're most beneficial.<br><br><img src='cover.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><p style='margin-bottom: 0; font-size: 22px'>Understanding Closures</p><br><br>A closure is a self-contained block of code that can capture and store references to variables from the surrounding context. Closures can be used as arguments to functions, returned from functions, or assigned to variables.<br><br><pre class="swift"><code>let increment = { (x: Int) -> Int in
     return x + 1
 }
 
@@ -64,7 +76,19 @@ let doSomethingExpensive = { [weak expensiveObject] in
     expensiveObject.somethingExpensive()
 }
 
-doSomethingExpensive()</code></pre><br><br>Declaring the capture list as `[weak expensiveObject]` turned `expensiveObject` into an optional. This means that the closure will not hold a <i>strong reference</i> to the object, so that when all references to the object are released, it'll become <i>nil</i> when the closer is executed after its release.<br><br><img src='1.jpg'></img><br><br><b>Closure expressions</b><br><br>Closure expressions are a concise way to define closures. They can be used to create inline functions without explicitly defining a named function.<br><br><pre class="swift"><code>let numbers = [4, 5, 2, 5, 7, 2, 6, 3]
+doSomethingExpensive()</code></pre><br><br>Declaring the capture list as `[weak expensiveObject]` turned `expensiveObject` into an optional. This means that the closure will not hold a <i>strong reference</i> to the object, so that when all references to the object are released, it'll become <i>nil</i> when the closer is executed after its release.<br><br><img src='1.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Closure expressions</b><br><br>Closure expressions are a concise way to define closures. They can be used to create inline functions without explicitly defining a named function.<br><br><pre class="swift"><code>let numbers = [4, 5, 2, 5, 7, 2, 6, 3]
 let sortedNumbers1 = numbers.sorted { $0 < $1 }
 let sortedNumbers2 = numbers.sorted(by: { (n1, n2) in
     return n1 < n2

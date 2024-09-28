@@ -35,7 +35,19 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">01, Jun 2024</p>
         <p class="title">Swift: Subscripts</p>
-        Subscripts are a powerful feature in Swift that allow you to access elements in collections concisely, think of how you access elements in an array or a dictionary. By defining custom subscripts, you can create more expressive and intuitive collection types that closely resemble how arrays are accessed.<br><br><img src='cover.jpg'></img><br><br><b>Understanding Subscripts</b><br><br>A subscript is a computed property that takes an index as a parameter and returns a value of a specific type, that's it really. It's a function that trades in some sort of <i>key</i> for some <i>value</i>:<br><br><pre class="swift"><code>struct MyCollection {
+        Subscripts are a powerful feature in Swift that allow you to access elements in collections concisely, think of how you access elements in an array or a dictionary. By defining custom subscripts, you can create more expressive and intuitive collection types that closely resemble how arrays are accessed.<br><br><img src='cover.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Understanding Subscripts</b><br><br>A subscript is a computed property that takes an index as a parameter and returns a value of a specific type, that's it really. It's a function that trades in some sort of <i>key</i> for some <i>value</i>:<br><br><pre class="swift"><code>struct MyCollection {
     var items = [Int]()
 
     subscript(index: Int) -> Int? {
@@ -66,7 +78,19 @@ print(collection[5])</code></pre><br><br>In the above example, the `MyCollection
 let collection = MyCollection()
 print(collection[5])
 print(collection["Hello, Swift!"])
-print(collection[[1,2,3,4]])</code></pre><br><br><img src='1.jpg'></img><br><br><b>Key Features of Subscripts</b><br><br>&#8226; <b>Customizable:</b> You can define subscripts with any number of parameters and return types, even variadic parameters.<br>&#8226; <b>Read-only or read-write:</b> Subscripts can be read-only (only `get`) or read-write (both `get` and `set`).<br>&#8226; <b>Type safety:</b> Subscripts provide type safety by specifying the types of the index and the returned value, additionally, you can specify a generic for your custom collections.<br>&#8226; <b>Flexibility:</b> Subscripts can be used to implement various collection behaviors, such as accessing elements by index, key or even ranges.<br><br><b>Common Use Cases</b><br><br>&#8226; <b>Matrix operations:</b> Implement matrix operations using subscripts to access elements by row and column.<br>&#8226; <b>Sparse data structures:</b> Store sparse data efficiently using subscripts.<br>&#8226; <b>Specialized data structures:</b> Create specialized data structures with custom access patterns.<br><br><b>Best Practices</b><br><br>&#8226; <b>Use clear and descriptive names:</b> Choose names for your subscripts that clearly convey their purpose.<br>&#8226; <b>Validate input:</b> Ensure that the input to your subscripts is valid to avoid errors.<br>&#8226; <b>Consider performance implications:</b> Subscripts can have performance implications, especially when dealing with large collections.<br>&#8226; <b>Use read-only subscripts when appropriate:</b> If your collection should be read-only, define read-only subscripts.<br><br><b>Advanced Topics</b><br><br>&#8226; <b>Multiple subscripts:</b> You can define multiple subscripts with different parameters and return types.<br>&#8226; <b>Subscripts with ranges:</b> Implement subscripts that take a range as an index.<br>&#8226; <b>Subscripts with custom types:</b> Create subscripts that take custom types as indices.<br><br><pre class="swift"><code>struct MyCollection {
+print(collection[[1,2,3,4]])</code></pre><br><br><img src='1.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Key Features of Subscripts</b><br><br>&#8226; <b>Customizable:</b> You can define subscripts with any number of parameters and return types, even variadic parameters.<br>&#8226; <b>Read-only or read-write:</b> Subscripts can be read-only (only `get`) or read-write (both `get` and `set`).<br>&#8226; <b>Type safety:</b> Subscripts provide type safety by specifying the types of the index and the returned value, additionally, you can specify a generic for your custom collections.<br>&#8226; <b>Flexibility:</b> Subscripts can be used to implement various collection behaviors, such as accessing elements by index, key or even ranges.<br><br><b>Common Use Cases</b><br><br>&#8226; <b>Matrix operations:</b> Implement matrix operations using subscripts to access elements by row and column.<br>&#8226; <b>Sparse data structures:</b> Store sparse data efficiently using subscripts.<br>&#8226; <b>Specialized data structures:</b> Create specialized data structures with custom access patterns.<br><br><b>Best Practices</b><br><br>&#8226; <b>Use clear and descriptive names:</b> Choose names for your subscripts that clearly convey their purpose.<br>&#8226; <b>Validate input:</b> Ensure that the input to your subscripts is valid to avoid errors.<br>&#8226; <b>Consider performance implications:</b> Subscripts can have performance implications, especially when dealing with large collections.<br>&#8226; <b>Use read-only subscripts when appropriate:</b> If your collection should be read-only, define read-only subscripts.<br><br><b>Advanced Topics</b><br><br>&#8226; <b>Multiple subscripts:</b> You can define multiple subscripts with different parameters and return types.<br>&#8226; <b>Subscripts with ranges:</b> Implement subscripts that take a range as an index.<br>&#8226; <b>Subscripts with custom types:</b> Create subscripts that take custom types as indices.<br><br><pre class="swift"><code>struct MyCollection {
 
     subscript(key: String) -> String {
         get { key.uppercased() }

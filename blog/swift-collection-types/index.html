@@ -35,7 +35,19 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">14, May 2024</p>
         <p class="title">Swift: Collection Types</p>
-        Collections are fundamental data structures in Swift that allow you to store and manage groups of values. Understanding and effectively using collection types is essential for structuring you data, and you'll come to know that mastering structuring your data is key to many amazing feats. So let's look at the various collection types available in Swift, their key features, and best practices for using them.<br><br><img src='cover.jpg'></img><br><br><b>Arrays</b><br><br>Arrays are ordered collections of values of the same type, known as lists in some other languages. They're ideal for storing sequences of elements, such as a list of names or a series of numbers.<br><br><pre class="swift"><code>let names = ["Alice", "Bob", "Charlie"]
+        Collections are fundamental data structures in Swift that allow you to store and manage groups of values. Understanding and effectively using collection types is essential for structuring you data, and you'll come to know that mastering structuring your data is key to many amazing feats. So let's look at the various collection types available in Swift, their key features, and best practices for using them.<br><br><img src='cover.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Arrays</b><br><br>Arrays are ordered collections of values of the same type, known as lists in some other languages. They're ideal for storing sequences of elements, such as a list of names or a series of numbers.<br><br><pre class="swift"><code>let names = ["Alice", "Bob", "Charlie"]
 let numbers = [1, 2, 3, 4, 5]</code></pre><br><br><b>Key features:</b><br><br>&#8226; <b>Ordered:</b> Elements in an array are stored in a specific order.<br>&#8226; <b>Mutable or immutable:</b> You can create mutable arrays that can be modified or immutable arrays that cannot be changed.<br>&#8226; <b>Indexing:</b> Access elements in an array using their index (starting from 0).<br>&#8226; <b>Fast access:</b> You can access any element of an array using its index in constant time.<br><br><b>Dictionaries</b><br><br>Dictionaries, also known as Maps or HashMaps in other languages, are unordered collections of key-value pairs. They're useful for storing data that needs to be accessed by a key, such as a mapping of names to ages or a configuration file.<br><br><pre class="swift"><code>let person = ["name": "Alice", "age": 30]
 let cities = ["Egypt": "Cairo", "USA": "New York"]</code></pre><br><br>Keys can actually be anything, even instances. The only requirement for a class to be a key is to conform to the `Hashable` protocol:<br><br><pre class="swift"><code>class MyClass: Hashable {
     static func == (lhs: MyClass, rhs: MyClass) -> Bool {
@@ -59,7 +71,19 @@ let dict: [MyClass:String] = [
     MyClass(id: "333"): "Three",
 ]
 
-print(dict[MyClass(id: "222"), default: "Not found"]) // Prints "Two"</code></pre><br><br><b>Key features:</b><br><br>&#8226; <b>Unordered:</b> Elements in a dictionary are not stored in a specific order.<br>&#8226; <b>Key-value pairs:</b> Each element in a dictionary consists of a key and a value.<br>&#8226; <b>Unique keys:</b> Keys in a dictionary must be unique.<br>&#8226; <b>Flexible keys:</b> Keys can be even class instances.<br><br><img src='1.jpg'></img><br><br><b>Sets</b><br><br>Sets are unordered collections of unique values of the same type. They're useful for storing a list of distinct elements, such as a set of unique numbers or a set of allowed characters.<br><br><pre class="swift"><code>let vowels = Set(["a", "e", "i", "o", "u"])
+print(dict[MyClass(id: "222"), default: "Not found"]) // Prints "Two"</code></pre><br><br><b>Key features:</b><br><br>&#8226; <b>Unordered:</b> Elements in a dictionary are not stored in a specific order.<br>&#8226; <b>Key-value pairs:</b> Each element in a dictionary consists of a key and a value.<br>&#8226; <b>Unique keys:</b> Keys in a dictionary must be unique.<br>&#8226; <b>Flexible keys:</b> Keys can be even class instances.<br><br><img src='1.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Sets</b><br><br>Sets are unordered collections of unique values of the same type. They're useful for storing a list of distinct elements, such as a set of unique numbers or a set of allowed characters.<br><br><pre class="swift"><code>let vowels = Set(["a", "e", "i", "o", "u"])
 let numbers = Set([1, 2, 3, 3, 4])</code></pre><br><br>Same as with dictionaries, all a set requires for an object to be in a set is to conform to `Hashable`:<br><br><pre class="swift"><code>class MyClass: Hashable {
     static func == (lhs: MyClass, rhs: MyClass) -> Bool {
         lhs.id == rhs.id

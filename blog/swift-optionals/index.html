@@ -35,14 +35,38 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">18, Jun 2024</p>
         <p class="title">Swift: Optionals</p>
-        Optionals are a fundamental concept in Swift that allow you to represent values that may or may not be present. They're a powerful tool for handling potential `nil` values and preventing runtime errors. Long have we gone since the lovely numerous crashes our code was plagued with in the good ol' days of Objective-C.<br><br><img src='cover.jpg'></img><br><br><b>Understanding Optionals</b><br><br>An optional is a type that can hold either a value of the specified type or `nil`. This is particularly useful when dealing with values that might not always be available, such as data from a network request or user input.<br><br><pre class="swift"><code>var name: String? = "John"
+        Optionals are a fundamental concept in Swift that allow you to represent values that may or may not be present. They're a powerful tool for handling potential `nil` values and preventing runtime errors. Long have we gone since the lovely numerous crashes our code was plagued with in the good ol' days of Objective-C.<br><br><img src='cover.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Understanding Optionals</b><br><br>An optional is a type that can hold either a value of the specified type or `nil`. This is particularly useful when dealing with values that might not always be available, such as data from a network request or user input.<br><br><pre class="swift"><code>var name: String? = "John"
 var age: Int? = nil</code></pre><br><br>In the above example, `name` is an optional string that currently holds the value "John", while `age` is an optional integer that is currently `nil`.<br><br><b>Creating Optionals</b><br><br>There are several ways to create optionals:<br><br>&#8226; <b>Implicitly:</b> When you declare a variable from a function which;s return type is optional without specifying a default value, it becomes an optional.<br>&#8226; <b>Explicitly:</b> Use the `?` symbol after a type to indicate that it's optional.<br><i> </i>*Using the `Optional` type:*&#8226; Wrap a value in the `Optional` type.<br><br><pre class="swift"><code>func getResult() -> Int? {
     return nil
 }
 let x = getResult() // Implicitly optional
 let y: String? = "Hello" // Explicitly optional
 let z: Optional<Bool> = Optional(true) // Using the Optional type, very uncommon though</code></pre><br><br><b>Unwrapping Optionals</b><br><br>To work with the value inside an optional, you need to unwrap it. There are several ways to unwrap optionals:<br><br>&#8226; <b>Forced Unwrapping:</b> Use the `!` operator to force unwrap an optional. This should be done with caution, as it can lead to runtime errors if the optional is `nil`. In fact, many teams' lint rules contain a definit "No force unwraps". This means that it has been determined to be more dangerous to have a forced unwrap in your code than any extra work you may need to avoid it.<br><br><pre class="swift"><code>let name: String? = "John"
-let greeting = "Hello, \(name!)" // Forced unwrapping</code></pre><br><br><img src='1.jpg'></img><br><br>&#8226; <b>Optional Binding:</b> Use `if let` or `guard let` to bind the value of an optional to a temporary constant or variable if it's not `nil`.<br><br><pre class="swift"><code>let name: String? = "John"
+let greeting = "Hello, \(name!)" // Forced unwrapping</code></pre><br><br><img src='1.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br>&#8226; <b>Optional Binding:</b> Use `if let` or `guard let` to bind the value of an optional to a temporary constant or variable if it's not `nil`.<br><br><pre class="swift"><code>let name: String? = "John"
 if let unwrappedName = name {
     print("Hello, \(unwrappedName)!")
 } else {

@@ -35,7 +35,19 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">20, Aug 2024</p>
         <p class="title">Solving Common String Problems</p>
-        Okay, so sometimes the little things matter a whole lot, it may sound odd but I've found great benefit in taking a break from the big stuff and returning to the bare basics every once in a while. So let's play around a bit with one of these basics: Strings.<br>You’ve probably spent some time wrangling with strings. Strings are fundamental in programming, but they can be a bit tricky to handle at times. Whether you're just starting out or have been coding for a while, mastering string manipulation is essential. Today, we’re going to explore some common string problems and how to solve them using Swift. So grab your coffee you beautiful nerd ...<br><br><img src='cover.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 22px'> 1. <b>Basic String Operations</b></p><br><br>Before the complex stuff, let’s cover some basics. Swift provides a range of powerful tools for string manipulation. Here are a few essential operations:<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>1.1 Concatenation</b></p><br><br>Combining strings is a frequent task. In Swift, you can concatenate strings using the `+` operator or the `append` method.<br><br><b>Example:</b><br><br><pre class="swift"><code>let firstName = "John"
+        Okay, so sometimes the little things matter a whole lot, it may sound odd but I've found great benefit in taking a break from the big stuff and returning to the bare basics every once in a while. So let's play around a bit with one of these basics: Strings.<br>You’ve probably spent some time wrangling with strings. Strings are fundamental in programming, but they can be a bit tricky to handle at times. Whether you're just starting out or have been coding for a while, mastering string manipulation is essential. Today, we’re going to explore some common string problems and how to solve them using Swift. So grab your coffee you beautiful nerd ...<br><br><img src='cover.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><p style='margin-bottom: 0; font-size: 22px'> 1. <b>Basic String Operations</b></p><br><br>Before the complex stuff, let’s cover some basics. Swift provides a range of powerful tools for string manipulation. Here are a few essential operations:<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>1.1 Concatenation</b></p><br><br>Combining strings is a frequent task. In Swift, you can concatenate strings using the `+` operator or the `append` method.<br><br><b>Example:</b><br><br><pre class="swift"><code>let firstName = "John"
 let lastName = "Doe"
 let fullName = firstName + " " + lastName
 print(fullName) // Output: John Doe</code></pre><br><br>Or, using `append`:<br><br><pre class="swift"><code>var greeting = "Hello"
@@ -63,7 +75,19 @@ let age = 30
 let formattedString = "Name: \(name), Age: \(age)"
 print(formattedString) // Output: Name: Alice, Age: 30</code></pre><br><br>Handy, no? You can actually interpolate any object this same exact way, all you need to do is override the implementation of `description` for the object.<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>4.2 Custom Formatting</b></p><br><br>For more complex formatting, you can use `String(format:)`.<br><br><b>Example:</b><br><br><pre class="swift"><code>let temperature = 23.456
 let formattedTemperature = String(format: "Temperature: %.2f°C", temperature)
-print(formattedTemperature) // Output: Temperature: 23.46°C</code></pre><br><br>This is the classic way of formatting strings, most other languages support this same style so make sure to be familiar with it if you plan on trying out other languages in the future.<br><br><img src='1.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 22px'> 5. <b>String case manipulation</b></p><br><br><p style='margin-bottom: 0; font-size: 19px'> <b>5.1 Changing to Uppercase/Lowercase</b></p><br><br>You can easily convert strings to uppercase or lowercase.<br><br><b>Example:</b><br><br><pre class="swift"><code>let originalString = "Swift Programming"
+print(formattedTemperature) // Output: Temperature: 23.46°C</code></pre><br><br>This is the classic way of formatting strings, most other languages support this same style so make sure to be familiar with it if you plan on trying out other languages in the future.<br><br><img src='1.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><p style='margin-bottom: 0; font-size: 22px'> 5. <b>String case manipulation</b></p><br><br><p style='margin-bottom: 0; font-size: 19px'> <b>5.1 Changing to Uppercase/Lowercase</b></p><br><br>You can easily convert strings to uppercase or lowercase.<br><br><b>Example:</b><br><br><pre class="swift"><code>let originalString = "Swift Programming"
 let uppercaseString = originalString.uppercased()
 let lowercaseString = originalString.lowercased()
 print(uppercaseString) // Output: SWIFT PROGRAMMING

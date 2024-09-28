@@ -35,7 +35,19 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">25, Jan 2024</p>
         <p class="title">Swift: Error Handling</p>
-        Error handling is a crucial aspect of software development that helps you write reliable code. Swift provides a powerful and flexible error handling mechanism that allows you to gracefully handle errors and prevent your application from crashing. Let's explore the different ways to handle errors in Swift, including throwing, catching, and propagating errors.<br><br><img src='cover.jpg'></img><br><br><b>Throwing Errors</b><br><br>To indicate that a function can throw an error, you use the `throws` keyword after the function's parameter list. When a function throws an error, it must be called within a `do-catch` block.<br><br><pre class="swift"><code>struct DivisionByZeroError: Error {
+        Error handling is a crucial aspect of software development that helps you write reliable code. Swift provides a powerful and flexible error handling mechanism that allows you to gracefully handle errors and prevent your application from crashing. Let's explore the different ways to handle errors in Swift, including throwing, catching, and propagating errors.<br><br><img src='cover.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Throwing Errors</b><br><br>To indicate that a function can throw an error, you use the `throws` keyword after the function's parameter list. When a function throws an error, it must be called within a `do-catch` block.<br><br><pre class="swift"><code>struct DivisionByZeroError: Error {
 
 }
 
@@ -62,7 +74,19 @@ do {
 
 struct MyStructError: Error {
 
-}</code></pre><br><br><img src='1.jpg'></img><br><br><b>Propagating Errors</b><br><br>If a function throws an error, you can propagate it to the calling function using the `try` operator.<br><br><pre class="swift"><code>func fetchData() throws -> Data {
+}</code></pre><br><br><img src='1.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Propagating Errors</b><br><br>If a function throws an error, you can propagate it to the calling function using the `try` operator.<br><br><pre class="swift"><code>func fetchData() throws -> Data {
     // Fetch data from network
     return try Data(contentsOf: URL(string: "https://api.example.com")!)
 }

@@ -35,7 +35,19 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">20, Jul 2024</p>
         <p class="title">Solving the FizzBuzz problem</p>
-        The first time I came across the FizzBuzz problem was through a Youtube video by Tom Scott. I first thought *"Well that's easy!"*; alas, I was the naive one. Whether you're a beginner or an experienced coder, this exercise is a great way to hone your programming skills and put you in the interviewer seat for a bit. We'll dive into different solutions, ramping up the complexity and adding a sprinkle of Swift-specific elegance.<br><br><img src='cover.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 19px'> What is the FizzBuzz problem?</p><br><br>Loop through *"n"<i>, if the </i>i<i> is divisible by 3: print </i>"Fizz"<i>. If </i>i<i> is divisible by 5: print </i>"Buzz"<i>. If </i>i&#8226; is divisible by both 3 & 5: print *"FizzBuzz"<i>. If none of the above: print the value of </i>i*<br><br>Simple, right, almost .. too simple ...<br><br><p style='margin-bottom: 0; font-size: 19px'> The basic FizzBuzz solution</p><br><br>Let's start with the simplest approach. We'll use a loop to iterate through the numbers from 1 to 100 and apply our FizzBuzz logic. Here's how it looks:<br><br><pre class="swift"><code>for i in 1...100 {
+        The first time I came across the FizzBuzz problem was through a Youtube video by Tom Scott. I first thought *"Well that's easy!"*; alas, I was the naive one. Whether you're a beginner or an experienced coder, this exercise is a great way to hone your programming skills and put you in the interviewer seat for a bit. We'll dive into different solutions, ramping up the complexity and adding a sprinkle of Swift-specific elegance.<br><br><img src='cover.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><p style='margin-bottom: 0; font-size: 19px'> What is the FizzBuzz problem?</p><br><br>Loop through *"n"<i>, if the </i>i<i> is divisible by 3: print </i>"Fizz"<i>. If </i>i<i> is divisible by 5: print </i>"Buzz"<i>. If </i>i&#8226; is divisible by both 3 & 5: print *"FizzBuzz"<i>. If none of the above: print the value of </i>i*<br><br>Simple, right, almost .. too simple ...<br><br><p style='margin-bottom: 0; font-size: 19px'> The basic FizzBuzz solution</p><br><br>Let's start with the simplest approach. We'll use a loop to iterate through the numbers from 1 to 100 and apply our FizzBuzz logic. Here's how it looks:<br><br><pre class="swift"><code>for i in 1...100 {
     if i % 3 == 0 && i % 5 == 0 {
         print("FizzBuzz")
     } else if i % 3 == 0 {
@@ -56,7 +68,19 @@
     default:
         print(i)
     }
-}</code></pre><br><br>In this version the `switch` statement Simplifies the conditional logic, the code more readable, and we can see that the modulus operand is used only twice per iteration. Notice that the same can be achieved with simple two boolean flags and `if` statements. But can we do even better?<br><br><img src='1.jpg'></img><br><br><b>Using counters:</b><br><br><pre class="swift"><code>var three = 1
+}</code></pre><br><br>In this version the `switch` statement Simplifies the conditional logic, the code more readable, and we can see that the modulus operand is used only twice per iteration. Notice that the same can be achieved with simple two boolean flags and `if` statements. But can we do even better?<br><br><img src='1.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><b>Using counters:</b><br><br><pre class="swift"><code>var three = 1
 var five = 1
 
 for i in 1...100 {

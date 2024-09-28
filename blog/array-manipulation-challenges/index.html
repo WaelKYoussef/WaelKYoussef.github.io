@@ -35,7 +35,19 @@
     <div class="textContainer">
         <p style="font-size: 28px; margin: 0;">10, Aug 2024</p>
         <p class="title">Array Manipulation Challenges</p>
-        Okay, so sometimes the little things matter a whole lot, it may sound odd but I've found great benefit in taking a break from the big stuff and returning to the bare basics every once in a while. So let's play around a bit with one of these basics: Arrays.<br>Arrays are like the Swiss-army knife of programming; versatile and indispensable. But, just like that knife, they come with their own set of challenges. In this post, we’re going to explore some common array manipulation challenges and how to tackle them using Swift.<br><br><img src='cover.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 19px'> <b>1. Reversing an Array</b></p><br><br>Let’s start with a classic: reversing an array. Sounds straightforward, right? But it’s a great way to get familiar with array manipulation.<br><br><b>Problem:</b> Given an array of integers, reverse its elements.<br><br><b>Example:</b><br><pre class="swift"><code>let arr = [1, 2, 3, 4, 5]
+        Okay, so sometimes the little things matter a whole lot, it may sound odd but I've found great benefit in taking a break from the big stuff and returning to the bare basics every once in a while. So let's play around a bit with one of these basics: Arrays.<br>Arrays are like the Swiss-army knife of programming; versatile and indispensable. But, just like that knife, they come with their own set of challenges. In this post, we’re going to explore some common array manipulation challenges and how to tackle them using Swift.<br><br><img src='cover.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><p style='margin-bottom: 0; font-size: 19px'> <b>1. Reversing an Array</b></p><br><br>Let’s start with a classic: reversing an array. Sounds straightforward, right? But it’s a great way to get familiar with array manipulation.<br><br><b>Problem:</b> Given an array of integers, reverse its elements.<br><br><b>Example:</b><br><pre class="swift"><code>let arr = [1, 2, 3, 4, 5]
 // Expected Output: [5, 4, 3, 2, 1]</code></pre><br><br><b>Solution:</b><br><br>In Swift, this is quite simple, all you need to use is <i>Array.reversed()</i>:<br><pre class="swift"><code>print(arr.reversed())  // Output: [5, 4, 3, 2, 1]</code></pre><br><br>Here, <i>arr.reversed()</i> returns a reversed collection of the array. Note that it returns a `ReversedCollection` rather than a new array, so you probably will need to convert it back to an array by using <i>Array(ReversedCollection)</i>.<br><br>An advanced solution would use two pointers to swap elements of the array in-place, can you work it out?<br><br><p style='margin-bottom: 0; font-size: 19px'> <b>2. Finding the Maximum Product of Two Elements</b></p><br><br>Another easy one. We need to find the maximum product of any two elements in an array of integers.<br><br><b>Example:</b><br><pre class="swift"><code>let arr = [1, 10, 2, 6, 5]
 // Expected Output: 60 (because 10 &#8226; 6 = 60)</code></pre><br><br><b>Solution:</b><br><br>This becomes a trivial issue if only you sort the array first:<br><pre class="swift"><code>func maxProduct(_ arr: [Int]) -> Int? {
     guard arr.count >= 2 else { return nil }
@@ -51,7 +63,19 @@ print(maxProduct(arr))  // Output: 60</code></pre><br><br>Sorting will make the 
     return totalSum - arraySum
 }
 
-print(findMissingNumber([0, 1, 3]))  // Output: 2</code></pre><br><br>The formula <i>(n </i> (n + 1)) / 2&#8226; computes the sum of the first (n) natural numbers. By subtracting the sum of the array from this value, you get the missing number.<br>Keep in mind that this solution is limited to only one number missing in a perfect sequence.<br><br><img src='1.jpg'></img><br><br><p style='margin-bottom: 0; font-size: 19px'> <b>4. Rotating an Array</b></p><br><br>Rotating an array means shifting its elements around. It’s like turning the array to the left or right.<br><br><b>Problem:</b> Rotate an array to the right by (k) steps.<br><br><b>Example:</b><br><pre class="swift"><code>let arr = [1, 2, 3, 4, 5, 6, 7]
+print(findMissingNumber([0, 1, 3]))  // Output: 2</code></pre><br><br>The formula <i>(n </i> (n + 1)) / 2&#8226; computes the sum of the first (n) natural numbers. By subtracting the sum of the array from this value, you get the missing number.<br>Keep in mind that this solution is limited to only one number missing in a perfect sequence.<br><br><img src='1.jpg'></img><br>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3517934074958643"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-3517934074958643"
+     data-ad-slot="1480200335"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <br><br><p style='margin-bottom: 0; font-size: 19px'> <b>4. Rotating an Array</b></p><br><br>Rotating an array means shifting its elements around. It’s like turning the array to the left or right.<br><br><b>Problem:</b> Rotate an array to the right by (k) steps.<br><br><b>Example:</b><br><pre class="swift"><code>let arr = [1, 2, 3, 4, 5, 6, 7]
 let k = 3
 // Expected Output: [5, 6, 7, 1, 2, 3, 4]</code></pre><br><br><b>Solution:</b><br><br>The bruteforce way world be to loop for <i>k</i> and bring the last element to the beginning of the array, but here's a smarter way:<br><pre class="swift"><code>func rotateArray(_ arr: [Int], by k: Int) -> [Int] {
     let k = k % arr.count  // In case k is greater than the length of the array
